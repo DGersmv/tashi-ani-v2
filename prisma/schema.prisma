@@ -1,0 +1,423 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./prod.db"
+}
+
+// Пользователи
+model User {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  name      String?
+  role      UserRole   @default(USER)
+  password  String // Пароль для всех пользователей
+  createdAt DateTime   @default(now())
+  lastLogin DateTime?
+  status    UserStatus @default(ACTIVE)
+  metadata  String? // JSON строка с дополнительной информацией (телефон, компания, заметки)
+  fcmToken  String? // FCM токен для push-уведомлений
+
+  objects           Object[]
+  messages          Message[]
+  photoComments     PhotoComment[]
+  panoramaComments  PanoramaComment[]
+  bimModelComments  BimModelComment[]
+  uploadedBimModels BimModel[]        @relation("UploadedBimModels")
+  notifications     Notification[]
+
+  @@map("users")
+}
+
+// Объекты (участки, дома и т.д.)
+model Object {
+  id          Int          @id @default(autoincrement())
+  userId      Int
+  title       String
+  description String?
+  address     String?
+  status      ObjectStatus @default(ACTIVE)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects     Project[]
+  photos       Photo[]
+  panoramas    Panorama[]
+  documents    Document[]
+  messages     Message[]
+  photoFolders PhotoFolder[]
+  bimModels    BimModel[]
+
+  @@map("objects")
+}
+
+// Проекты (дизайн-проекты для объекта)
+model Project {
+  id          Int           @id @default(autoincrement())
+  objectId    Int
+  title       String
+  description String?
+  status      ProjectStatus @default(PLANNING)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  object    Object         @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  stages    ProjectStage[]
+  photos    Photo[]
+  documents Document[]
+  messages  Message[]
+  bimModels BimModel[]
+
+  @@map("projects")
+}
+
+// Этапы проекта
+model ProjectStage {
+  id          Int         @id @default(autoincrement())
+  projectId   Int
+  title       String
+  description String?
+  status      StageStatus @default(PENDING)
+  orderIndex  Int
+  createdAt   DateTime    @default(now())
+
+  project   Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  photos    Photo[]
+  bimModels BimModel[]
+
+  @@map("project_stages")
+}
+
+// Папки для фотографий
+model PhotoFolder {
+  id         Int      @id @default(autoincrement())
+  objectId   Int
+  name       String
+  orderIndex Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  object Object  @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  photos Photo[]
+
+  @@map("photo_folders")
+}
+
+// Фотографии
+model Photo {
+  id                  Int      @id @default(autoincrement())
+  objectId            Int?
+  projectId           Int?
+  stageId             Int?
+  folderId            Int?
+  filename            String
+  originalName        String
+  filePath            String
+  fileSize            Int
+  mimeType            String
+  isVisibleToCustomer Boolean  @default(false)
+  uploadedAt          DateTime @default(now())
+  thumbnailFilename   String?
+  thumbnailFilePath   String?
+  thumbnailFileSize   Int?
+  thumbnailWidth      Int?
+  thumbnailHeight     Int?
+  thumbnailMimeType   String?
+
+  object   Object?        @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  project  Project?       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  stage    ProjectStage?  @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  folder   PhotoFolder?   @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  comments PhotoComment[]
+
+  @@map("photos")
+}
+
+// Панорамы
+model Panorama {
+  id                  Int                @id @default(autoincrement())
+  objectId            Int
+  filename            String
+  originalName        String
+  filePath            String
+  fileSize            Int
+  mimeType            String
+  isVisibleToCustomer Boolean            @default(false)
+  uploadedAt          DateTime           @default(now())
+  thumbnailFilename   String?
+  thumbnailFilePath   String?
+  thumbnailFileSize   Int?
+  thumbnailWidth      Int?
+  thumbnailHeight     Int?
+  thumbnailMimeType   String?
+  originalWidth       Int?
+  originalHeight      Int?
+  projectionType      PanoramaProjection @default(EQUIRECTANGULAR)
+
+  object   Object            @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  comments PanoramaComment[]
+
+  @@map("panoramas")
+}
+
+// Комментарии к панорамам
+model PanoramaComment {
+  id               Int      @id @default(autoincrement())
+  panoramaId       Int
+  userId           Int
+  content          String
+  yaw              Float?
+  pitch            Float?
+  isAdminComment   Boolean  @default(false)
+  isReadByAdmin    Boolean  @default(false)
+  isReadByCustomer Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  panorama Panorama @relation(fields: [panoramaId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("panorama_comments")
+}
+
+// Комментарии к фото
+model PhotoComment {
+  id               Int      @id @default(autoincrement())
+  photoId          Int
+  userId           Int
+  content          String
+  isAdminComment   Boolean  @default(false)
+  isReadByAdmin    Boolean  @default(false)
+  isReadByCustomer Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("photo_comments")
+}
+
+// Документы
+model Document {
+  id           Int          @id @default(autoincrement())
+  objectId     Int?
+  projectId    Int?
+  filename     String
+  originalName String
+  filePath     String
+  fileSize     Int
+  mimeType     String
+  documentType DocumentType @default(OTHER)
+  isPaid       Boolean      @default(false)
+  uploadedAt   DateTime     @default(now())
+
+  object  Object?  @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("documents")
+}
+
+// Сообщения
+model Message {
+  id               Int      @id @default(autoincrement())
+  objectId         Int?
+  projectId        Int?
+  userId           Int
+  content          String
+  isAdminMessage   Boolean  @default(false)
+  isReadByAdmin    Boolean  @default(false)
+  isReadByCustomer Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  object  Object?  @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+// Коды верификации (временные)
+model VerificationCode {
+  id        Int      @id @default(autoincrement())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("verification_codes")
+}
+
+// Enums
+enum UserRole {
+  MASTER
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum ObjectStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  COMPLETED
+  ON_HOLD
+}
+
+enum StageStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum PanoramaProjection {
+  EQUIRECTANGULAR
+  CYLINDRICAL
+  UNKNOWN
+}
+
+enum DocumentType {
+  CONTRACT
+  PLAN
+  PERMIT
+  INVOICE
+  OTHER
+}
+
+// ============================================
+// 3D МОДЕЛИ (BIM)
+// ============================================
+
+enum BimModelFormat {
+  SKETCHUP // SketchUp (.skp)
+  REVIT // Revit (.rvt)
+  ARCHICAD // ArchiCAD (.pln, .pla)
+  IFC // Industry Foundation Classes (.ifc)
+  GLTF // glTF (.gltf, .glb)
+  OBJ // Wavefront OBJ (.obj)
+  THREE_DS // 3D Studio (.3ds)
+  OTHER // Другие форматы
+}
+
+// 3D модели для проектов
+model BimModel {
+  id        Int  @id @default(autoincrement())
+  objectId  Int?
+  projectId Int?
+  stageId   Int?
+
+  // Метаданные
+  name        String
+  description String?
+  version     String? // Версия модели (например: "v1.0", "v2.1")
+
+  // Исходный файл (обязательный)
+  originalFilename String
+  originalFilePath String
+  originalFileSize Int
+  originalMimeType String
+  originalFormat   BimModelFormat // Формат исходного файла
+
+  // Файл для просмотра (опциональный - IFC или glTF)
+  viewableFilename String? // Имя файла для просмотра
+  viewableFilePath String? // Путь к файлу для просмотра
+  viewableFileSize Int? // Размер файла для просмотра
+  viewableMimeType String? // MIME тип файла для просмотра
+  viewableFormat   BimModelFormat? // Формат файла для просмотра (IFC или GLTF)
+
+  // Превью/миниатюра
+  thumbnailFilename String?
+  thumbnailFilePath String?
+  thumbnailFileSize Int?
+  thumbnailWidth    Int?
+  thumbnailHeight   Int?
+  thumbnailMimeType String?
+
+  // Видимость и статус
+  isVisibleToCustomer Boolean @default(false)
+
+  // Автор
+  uploadedByUserId Int?
+  uploadedAt       DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Связи
+  object         Object?           @relation(fields: [objectId], references: [id], onDelete: Cascade)
+  project        Project?          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  stage          ProjectStage?     @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  uploadedByUser User?             @relation("UploadedBimModels", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  comments       BimModelComment[]
+
+  @@map("bim_models")
+}
+
+// Комментарии к 3D моделям
+model BimModelComment {
+  id                  Int      @id @default(autoincrement())
+  bimModelId          Int
+  userId              Int
+  content             String
+  x                   Float? // Координата X в 3D пространстве
+  y                   Float? // Координата Y в 3D пространстве
+  z                   Float? // Координата Z в 3D пространстве
+  isVisibleToCustomer Boolean  @default(true)
+  isAdminComment      Boolean  @default(false)
+  isReadByAdmin       Boolean  @default(false)
+  isReadByCustomer    Boolean  @default(false)
+  createdAt           DateTime @default(now())
+
+  bimModel BimModel @relation(fields: [bimModelId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("bim_model_comments")
+}
+
+// Настройки сайта (singleton: один ряд)
+model SiteSettings {
+  id        Int      @id @default(autoincrement())
+  json      String   // JSON: menuFont, headingFont, contactPhone, contactWhatsApp, contactTelegram, contactEmail, mapCenterLon, mapCenterLat, mapLogoPath
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+// Уведомления для пользователей
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  type      NotificationType
+  title     String
+  message   String
+  objectId  Int?
+  photoId   Int?
+  projectId Int?
+  documentId Int?
+  commentId Int?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("notifications")
+  @@index([userId, isRead])
+}
+
+enum NotificationType {
+  PHOTO_COMMENT
+  PANORAMA_COMMENT
+  MESSAGE
+  DOCUMENT_UPLOADED
+  PROJECT_CREATED
+  PHOTO_UPLOADED
+}

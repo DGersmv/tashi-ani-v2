@@ -1,0 +1,52 @@
+-- CreateTable
+CREATE TABLE "bim_models" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "objectId" INTEGER,
+    "projectId" INTEGER,
+    "stageId" INTEGER,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "version" TEXT,
+    "originalFilename" TEXT NOT NULL,
+    "originalFilePath" TEXT NOT NULL,
+    "originalFileSize" INTEGER NOT NULL,
+    "originalMimeType" TEXT NOT NULL,
+    "originalFormat" TEXT NOT NULL,
+    "viewableFilename" TEXT,
+    "viewableFilePath" TEXT,
+    "viewableFileSize" INTEGER,
+    "viewableMimeType" TEXT,
+    "viewableFormat" TEXT,
+    "thumbnailFilename" TEXT,
+    "thumbnailFilePath" TEXT,
+    "thumbnailFileSize" INTEGER,
+    "thumbnailWidth" INTEGER,
+    "thumbnailHeight" INTEGER,
+    "thumbnailMimeType" TEXT,
+    "isVisibleToCustomer" BOOLEAN NOT NULL DEFAULT false,
+    "uploadedByUserId" INTEGER,
+    "uploadedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "bim_models_objectId_fkey" FOREIGN KEY ("objectId") REFERENCES "objects" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "bim_models_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "projects" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "bim_models_stageId_fkey" FOREIGN KEY ("stageId") REFERENCES "project_stages" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT "bim_models_uploadedByUserId_fkey" FOREIGN KEY ("uploadedByUserId") REFERENCES "users" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "bim_model_comments" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "bimModelId" INTEGER NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "content" TEXT NOT NULL,
+    "x" REAL,
+    "y" REAL,
+    "z" REAL,
+    "isVisibleToCustomer" BOOLEAN NOT NULL DEFAULT true,
+    "isAdminComment" BOOLEAN NOT NULL DEFAULT false,
+    "isReadByAdmin" BOOLEAN NOT NULL DEFAULT false,
+    "isReadByCustomer" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "bim_model_comments_bimModelId_fkey" FOREIGN KEY ("bimModelId") REFERENCES "bim_models" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "bim_model_comments_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);

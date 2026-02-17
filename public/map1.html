@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Demo Map</title>
+  <link rel="stylesheet" href="/external/og/lib/og.css">
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    #globus { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="globus"></div>
+  <script type="module">
+    import * as og from "/external/og/lib/og.es.js";
+    window.og = og;
+
+    const { Globe, GlobusRgbTerrain, XYZ, LonLat, Vector, Entity } = og;
+
+    // Точки тура (добавляй любые)
+    const TOUR_POINTS = [
+      [32.2, 60.1, 8000],    // Ленобласть
+      [30.31, 59.93, 8000],  // Питер
+      [32.39, 59.46, 6000],  // Кириши
+      [32.35, 59.92, 6000],  // Волхов
+    ];
+
+    const FLY_DURATION = 3.3;      // Секунд — длительность анимации
+    const PAUSE_ON_POINT = 1800;   // Миллисекунд — сколько стоим на точке
+    const DIST_TO_HORIZON = 90;    // Км! — насколько далеко "вперёд" смотреть
+
+    // ==== Функция: рассчитать азимут (градусы) ====
+    function getBearing(from, to) {
+      const lat1 = from[1] * Math.PI / 180;
+      const lat2 = to[1] * Math.PI / 180;
+      const dLon = (to[0] - from[0]) * Math.PI / 180;
+      const y = Math.sin(dLon) * Math.cos(lat2);
+      const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+      let brng = Math.atan2(y, x) * 180 / Math.PI;
+      return (brng + 360) % 360;
+    }
+
+    // ==== Функция: получить точку на горизонте в том же уровне Z ====
+    function getLookToCoord(from, bearing, distKm) {
+      const R = 6371; // Радиус Земли, км
+      const d = distKm / R;
+      const lat1 = from[1] * Math.PI / 180;
+      const lon1 = from[0] * Math.PI / 180;
+      const brng = bearing * Math.PI / 180;
+
+      const lat2 = Math.asin(Math.sin(lat1) * Math.cos(d) +
+        Math.cos(lat1) * Math.sin(d) * Math.cos(brng));
+      const lon2 = lon1 + Math.atan2(
+        Math.sin(brng) * Math.sin(d) * Math.cos(lat1),
+        Math.cos(d) - Math.sin(lat1) * Math.sin(lat2)
+      );
+      // Сохраняем ту же высоту (Z)
+      return [lon2 * 180 / Math.PI, lat2 * 180 / Math.PI, from[2]];
+    }
+
+    // ==== OSM слой и маркеры ====
+    const osm = new XYZ("OpenStreetMap", {
+      isBaseLayer: true,
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      visibility: true,
+      attribution: 'Data @ OpenStreetMap contributors, ODbL'
+    });
+
+    const pointLayer = new Vector("points", { clampToGround: true, async: false });
+    TOUR_POINTS.forEach((coords, i) => {
+      pointLayer.add(new Entity({
+        lonlat: [coords[0], coords[1]],
+        billboard: { src: '/external/og/lib/res/marker.png', size: [48,48], offset: [0,24] }
+      }));
+    });
+
+    // ==== Глобус ====
+    const globe = new Globe({
+      target: "globus",
+      terrain: new GlobusRgbTerrain(),
+      layers: [osm, pointLayer],
+      resourcesSrc: "/external/og/lib/res",
+      fontsSrc: "/external/og/lib/res/fonts"
+    });
+
+    // ==== Запуск тура ====
+    setTimeout(() => {
+      let idx = 0;
+      function nextStep() {
+        const flyTo = TOUR_POINTS[idx];
+        const nextIdx = (idx + 1) % TOUR_POINTS.length;
+        const nextPoint = TOUR_POINTS[nextIdx];
+        const bearing = getBearing(flyTo, nextPoint);
+
+        // Вычисляем точку на горизонте по азимуту
+        const lookTo = getLookToCoord(flyTo, bearing, DIST_TO_HORIZON);
+
+        const destPos = new LonLat(...flyTo);
+        const viewPoi = new LonLat(...lookTo);
+        const ell = globe.planet.ellipsoid;
+        const flyCart = ell.lonLatToCartesian(destPos);
+        const lookCart = ell.lonLatToCartesian(viewPoi);
+        const upVec = ell.geodeticSurfaceNormal
+          ? ell.geodeticSurfaceNormal(flyCart)
+          : flyCart.normalize();
+
+        // Логи для отладки
+        console.log(
+          `[Tour] Step ${idx+1} / ${TOUR_POINTS.length}`,
+          "\n   -> FlyTo:", flyTo,
+          "\n   -> NextPoint:", nextPoint,
+          "\n   -> Bearing:", bearing.toFixed(2),
+          "\n   -> LookTo:", lookTo,
+          "\n   -> flyCart:", flyCart,
+          "\n   -> lookCart:", lookCart,
+          "\n   -> upVec:", upVec
+        );
+
+        globe.planet.camera.flyLonLat(destPos, lookCart, upVec, FLY_DURATION);
+
+        idx = (idx + 1) % TOUR_POINTS.length;
+        setTimeout(nextStep, FLY_DURATION * 1000 + PAUSE_ON_POINT);
+      }
+      nextStep();
+    }, 1700);
+
+  </script>
+</body>
+</html>

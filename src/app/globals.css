@@ -1,0 +1,407 @@
+/* =================== ШРИФТЫ =================== */
+@font-face {
+  font-family: 'ChinaCyr';
+  src: url('/fonts/ChinaCyr.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =================== БАЗОВЫЕ УСТАНОВКИ =================== */
+/* управление скроллом */
+html { scrollbar-gutter: stable both-edges; }
+body { overflow-y: auto; }
+main { overflow-anchor: none; }
+
+/* фон, цвет и базовый шрифт */
+body {
+  background: #111820;
+  color: #f6f8fa;
+  margin: 0;
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+}
+
+/* заголовки и меню — шрифт из настроек (--font-menu, --font-heading задаются SiteSettingsProvider) */
+.menu-strip {
+  font-family: var(--font-menu, 'ChinaCyr', Arial, Helvetica, sans-serif);
+}
+h1, h2, h3 {
+  font-family: var(--font-heading, 'ChinaCyr', Arial, Helvetica, sans-serif);
+}
+
+/* =================== ГЛОБАЛЬНЫЕ УТИЛИТЫ =================== */
+html, body { overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* =================== ПЕРЕМЕННЫЕ ОТСТУПОВ =================== */
+:root {
+  --font-menu: 'ChinaCyr', Arial, Helvetica, sans-serif;
+  --font-heading: 'ChinaCyr', Arial, Helvetica, sans-serif;
+  --font-main-heading: 'ChinaCyr', Arial, Helvetica, sans-serif;
+  --font-main-text: 'ChinaCyr', Arial, Helvetica, sans-serif;
+  --hero-top: 16px;
+  --content-gutter: clamp(20px, 5vw, 48px);  /* одинаковый отступ слева и справа */
+  --content-max: 1400px;                    /* макс. ширина контентной зоны */
+
+  /* Дизайн-токены UI-redesign (Таши-Ани v5) */
+  --ink: #1C1B16;
+  --moss: #3A5236;
+  --sage: #7A9E72;
+  --stone: #C8BEA8;
+  --cream: #F2EDE3;
+  --warm-white: #FAF7F2;
+  --gold: #C9A96E;
+}
+
+@media (min-width: 650px) {
+  :root {
+    --hero-top: 96px;
+    --content-gutter: clamp(32px, 6vw, 80px);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --hero-top: 130px;
+    --content-gutter: clamp(48px, 7vw, 120px);
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --hero-top: 180px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --hero-top: 180px;
+    --content-gutter: clamp(80px, 8vw, 160px);
+  }
+}
+
+
+/* =================== ОБЁРТКА КОНТЕНТА =================== */
+/* Симметричная сетка: одинаковые отступы по бокам */
+.page-wrap {
+  padding-top: var(--hero-top);
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+  margin: 0 auto;
+  max-width: var(--content-max);
+  box-sizing: border-box;
+}
+
+/* Главная: контент от левого края (текст = по левому margin), без центрирования */
+.page-wrap--home {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Сетка главной: три части по ширине — 2/3 текст, gap, 1/3 карта */
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* =================== КНОПКА МЕНЮ =================== */
+.menu-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 2px 32px #a4c3b2, 0 0px 0px 0 #fff4;
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background .23s;
+}
+.menu-btn:hover { background: rgba(255,255,255,0.26); }
+.menu-btn .glare {
+  position: absolute; left: 8px; top: 8px; width: 32px; height: 10px;
+  border-radius: 50px; background: rgba(255,255,255,0.32);
+  filter: blur(3px);
+  opacity: 0.7;
+  pointer-events: none;
+  transform: rotate(15deg);
+}
+
+/* активные стили кнопки меню (hover + open) */
+.menu-btn {
+  width: 56px !important; height: 56px !important;
+  border-radius: 50% !important;
+  background: #222 !important;
+  box-shadow: 0 0 16px #08f8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  cursor: pointer !important;
+  transition: background 0.23s, box-shadow 0.23s, transform 0.22s;
+}
+.menu-btn:hover {
+  background: #444 !important;
+  box-shadow: 0 0 36px #0ffb !important;
+  transform: translateY(-7px) scale(1.06) !important;
+}
+
+/* гамбургер-иконка */
+.hamburger {
+  position: absolute !important;
+  left: 16px !important; top: 17px !important;
+  width: 24px !important; height: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  opacity: 1 !important;
+  transition: opacity .22s !important;
+}
+.menu-btn.open .hamburger { opacity: 0 !important; }
+
+/* линии гамбургера */
+.bar {
+  width: 24px !important; height: 4px !important;
+  background: #fff !important;
+  border-radius: 4px !important;
+  margin: 0 !important; padding: 0 !important;
+  transition: transform 0.23s, opacity 0.18s, background 0.13s !important;
+  opacity: 1 !important;
+  display: block !important;
+  z-index: 5 !important;
+}
+.bar1.open { transform: translateY(9px) rotate(45deg) !important; }
+.bar2.open { opacity: 0 !important; }
+.bar3.open { transform: translateY(-9px) rotate(-45deg) !important; }
+
+/* иконка закрытия меню */
+.menu-close {
+  position: absolute !important;
+  left: 17px !important; top: 11px !important;
+  width: 24px !important; height: 24px !important;
+  color: #fff !important;
+  font-size: 2.2em !important;
+  line-height: 24px !important;
+  font-weight: bold !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transform: scale(0.75) rotate(-30deg) !important;
+  transition: opacity 0.22s, transform 0.22s !important;
+  z-index: 3 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  text-align: center !important;
+}
+.menu-close.open {
+  opacity: 1 !important;
+  transform: scale(1) rotate(0deg) !important;
+  pointer-events: all !important;
+}
+
+/* =================== МЕНЮ-ПАНЕЛЬ =================== */
+/* Панель в потоке хедера — не position:fixed, чтобы не наезжать на логотип и не вылезать за экран */
+.menu-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 24px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.20);
+  box-shadow: 0 4px 48px #0057;
+  border: 1.5px solid rgba(90, 107, 151, 0.884);
+  backdrop-filter: blur(22px) saturate(1.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0.96) translateX(14px);
+  transition: all .35s cubic-bezier(.62,.12,.45,1.18);
+  z-index: 260;
+  min-width: 0;
+  max-width: 100%;
+}
+.menu-strip.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: scaleX(1) translateX(0);
+}
+.menu-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; min-width: 0; }
+/* Единый стиль для ссылок и кнопок меню */
+.menu-link {
+  color: #fff;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  letter-spacing: .03em;
+  font-size: clamp(14px, 1.15vw, 18px);
+  font-family: 'ChinaCyr', var(--font-montserrat), sans-serif;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.menu-link:hover {
+  background: rgba(255, 255, 255, 0.20);
+  color: #17242f;
+}
+
+
+/* =================== МОБИЛЬНОЕ МЕНЮ =================== */
+@media (max-width: 650px) {
+  .menu-strip, .menu-strip.open {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+  .menu-links { 
+    justify-content: center; 
+    gap: 4px; 
+    flex-wrap: wrap;
+  }
+  .menu-link  { 
+    font-size: clamp(11px, 3vw, 14px);
+    padding: 4px 6px;
+    white-space: nowrap;
+  }
+}
+
+/* =================== ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ =================== */
+@media (max-width: 480px) {
+  .menu-strip, .menu-strip.open {
+    padding: 4px 6px;
+    border-radius: 8px;
+  }
+  .menu-links { 
+    gap: 3px; 
+  }
+  .menu-link  { 
+    font-size: clamp(10px, 2.8vw, 13px);
+    padding: 3px 5px;
+  }
+}
+
+/* =================== ДОП. УТИЛИТЫ =================== */
+/* ограничение ширины для левой колонки */
+.left-col { max-width: 720px; }
+
+/* красивая анимация пульса */
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 16px #ff4d4d44; }
+  50% { opacity: 1; box-shadow: 0 0 32px #ff4d4d77; }
+}
+
+/* принудительно тянем текст влево */
+.force-left {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 12px;
+  justify-self: start !important;
+  align-self: flex-start !important;
+}
+
+/* бегущая подпись как в твоём примере: animate-[scrollText_20s_linear_infinite] */
+@keyframes scrollText {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* чтобы картинки не имели «лишних» пробелов/разрывов */
+img { display: block; }
+
+/* по желанию: чутка сгладим */
+* { -webkit-tap-highlight-color: transparent; }
+
+.cards-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 420px));
+  justify-content: center;
+}
+
+/* ===== PERF HELPERS: слойность и композитинг ===== */
+.gpu {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Изоляция фиксированных слоёв (фон/оверлеи) от репейнтов остальной страницы */
+.fixed-layer {
+  contain: layout paint;
+  will-change: opacity;
+}
+
+/* ===== 3D PARALLAX LENS EFFECT ===== */
+:root {
+  --move-x: 0deg;
+  --move-y: 0deg;
+  --parallax-transition: 1.5s cubic-bezier(.05, .5, 0, 1);
+}
+
+.parallax-3d-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.parallax-3d-wrapper {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.parallax-layer {
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Если есть стеклянная полоса/панель — чуть облегчаем фильтр и подсказываем композитору */
+.menu-strip {
+  will-change: transform, opacity, filter;
+  backdrop-filter: blur(18px) saturate(1.1);
+}
+
+/* Стабильная ширина viewport: предотвращает сдвиг при появлении скроллбара */
+html { scrollbar-gutter: stable both-edges; }
+
+/* На случай, если где-то не задана переменная, даём безопасное значение по-умолчанию */
+:root { --hero-top: 145px; } /* подгони при желании: высота меню + нужный отступ */
+
+html, body {
+  overflow-y: auto;   /* скролл появляется только если нужен */
+  height: 100%;
+}
+
+/* Стили для главной с fullpage-слайдами (применять к обёртке, не к body глобально) */
+.fullpage-root {
+  cursor: none;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+/* При активном кастомном курсоре убираем «палец» на ссылках и кнопках */
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor .menu-link {
+  cursor: none !important;
+}
+
+html {
+  scrollbar-gutter: stable; /* резерв под скролл */
+}
+
+
+  

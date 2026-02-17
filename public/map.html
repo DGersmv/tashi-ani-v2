@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenGlobus Camera Control</title>
+  <link rel="stylesheet" href="https://openglobus.org/og.css">
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    #globus { width: 100vw; height: 100vh; }
+    .control-panel { 
+      position: absolute; top: 10px; left: 10px; 
+      background: rgba(0,0,0,0.7); padding: 15px; 
+      border-radius: 8px; color: white; z-index: 1000; 
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="globus"></div>
+  <div class="control-panel">
+    <h3>Управление туром</h3>
+    <button id="startTour">Старт тура</button>
+    <button id="stopTour">Стоп</button>
+    <div>Текущая точка: <span id="currentPoint">-</span></div>
+  </div>
+
+  <script type="module">
+    import * as og from "https://openglobus.org/og.es.js";
+    const { Globe, GlobusTerrain, XYZ, LonLat, Vector, Entity, Vec3 } = og;
+
+    // Конфигурация тура
+    const TOUR_POINTS = [
+      { name: "Ленобласть", lon: 32.2, lat: 60.1, height: 8000 },
+      { name: "Питер", lon: 30.31, lat: 59.93, height: 8000 },
+      { name: "Кириши", lon: 32.39, lat: 59.46, height: 6000 },
+      { name: "Волхов", lon: 32.35, lat: 59.92, height: 6000 }
+    ];
+
+    const FLY_DURATION = 3;
+    const PAUSE_ON_POINT = 2000;
+    const LOOK_AHEAD_DISTANCE = 10000000; // 10 000 км
+
+    // Инициализация глобуса
+    const globe = new Globe({
+      target: "globus",
+      terrain: new GlobusTerrain(),
+      layers: [
+        new XYZ("OpenStreetMap", {
+          isBaseLayer: true,
+          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          attribution: '© OpenStreetMap contributors'
+        })
+      ],
+      autoActivate: true,
+      viewExtent: [20, 55, 40, 65] // Начальный вид
+    });
+
+    // Добавляем маркеры
+    const markers = new Vector("tour-markers");
+    TOUR_POINTS.forEach(point => {
+      markers.add(new Entity({
+        name: point.name,
+        lonlat: [point.lon, point.lat],
+        billboard: {
+          src: 'https://openglobus.org/examples/marker.png',
+          size: [32, 32],
+          offset: [0, 16]
+        }
+      }));
+    });
+    globe.planet.addLayer(markers);
+
+    // Основная функция тура
+    let tourActive = false;
+    async function startTour() {
+      tourActive = true;
+      let currentIndex = 0;
+      
+      while (tourActive) {
+        const currentPoint = TOUR_POINTS[currentIndex];
+        const nextPoint = TOUR_POINTS[(currentIndex + 1) % TOUR_POINTS.length];
+        
+        // Обновляем UI
+        document.getElementById('currentPoint').textContent = currentPoint.name;
+        
+        // Позиция камеры
+        const cameraPosition = new LonLat(
+          currentPoint.lon, 
+          currentPoint.lat, 
+          currentPoint.height
+        );
+        
+        // Декартовы координаты
+        const ellipsoid = globe.planet.ellipsoid;
+        const cameraCart = ellipsoid.lonLatToCartesian(cameraPosition);
+        
+        // Координаты следующей точки
+        const nextPointLonLat = new LonLat(
+          nextPoint.lon, 
+          nextPoint.lat, 
+          nextPoint.height
+        );
+        const nextPointCart = ellipsoid.lonLatToCartesian(nextPointLonLat);
+        
+        // Вектор направления
+        const direction = new Vec3(
+          nextPointCart.x - cameraCart.x,
+          nextPointCart.y - cameraCart.y,
+          nextPointCart.z - cameraCart.z
+        ).normalize();
+        
+        // Точка направления взгляда
+        const lookAtCart = new Vec3(
+          cameraCart.x + direction.x * LOOK_AHEAD_DISTANCE,
+          cameraCart.y + direction.y * LOOK_AHEAD_DISTANCE,
+          cameraCart.z + direction.z * LOOK_AHEAD_DISTANCE
+        );
+        
+        // Вектор "вверх"
+        const upVector = ellipsoid.getSurfaceNormal3v(cameraCart);
+        
+        // Выполняем анимацию
+        await globe.planet.camera.flyCartesian({
+          cartesian: cameraCart,
+          lookAt: lookAtCart,
+          up: upVector,
+          duration: FLY_DURATION
+        });
+        
+        // Пауза на точке
+        await new Promise(resolve => setTimeout(resolve, PAUSE_ON_POINT));
+        
+        // Переход к следующей точке
+        currentIndex = (currentIndex + 1) % TOUR_POINTS.length;
+      }
+    }
+
+    // Управление туром
+    document.getElementById('startTour').addEventListener('click', () => {
+      if (!tourActive) {
+        startTour().catch(e => console.error("Ошибка тура:", e));
+      }
+    });
+
+    document.getElementById('stopTour').addEventListener('click', () => {
+      tourActive = false;
+      globe.planet.camera.stopFlying();
+    });
+
+    // Инициализация камеры
+    setTimeout(() => {
+      globe.planet.camera.setView({
+        lon: 32.2,
+        lat: 60.1,
+        height: 10000000
+      });
+    }, 1000);
+  </script>
+</body>
+</html>
