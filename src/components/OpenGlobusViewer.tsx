@@ -11,6 +11,11 @@ const LOOK_REL_UP = 0.1;
 const LOOK_AHEAD_M = 50_000;
 const TICK_MS = 40;
 
+// ====== НАСТРОЙКИ ОТОБРАЖЕНИЯ ======
+// Масштабирование и смещение для скрытия черной полосы управления внизу карты
+const MAP_SCALE_FACTOR = 1.15;     // увеличение на 15% для обрезки нижней части
+const MAP_VERTICAL_OFFSET = '-8%'; // смещение вверх для центрирования планеты
+
 const OG_MARKER = '/external/og/lib/res/marker.png';
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
 const DEFAULT_LOGO = '/points/default.png';
@@ -247,7 +252,7 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
           inset: 0, 
           borderRadius: 'inherit', 
           overflow: 'hidden',
-          transform: 'scale(1.15) translateY(-8%)',
+          transform: `scale(${MAP_SCALE_FACTOR}) translateY(${MAP_VERTICAL_OFFSET})`,
           transformOrigin: 'center center'
         }}
       />
