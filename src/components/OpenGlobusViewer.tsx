@@ -239,10 +239,17 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
   }, [paused]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 'inherit' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 'inherit', overflow: 'hidden' }}>
       <div
         ref={containerRef}
-        style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', overflow: 'hidden' }}
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          borderRadius: 'inherit', 
+          overflow: 'hidden',
+          transform: 'scale(1.15) translateY(-8%)',
+          transformOrigin: 'center center'
+        }}
       />
       
     </div>
