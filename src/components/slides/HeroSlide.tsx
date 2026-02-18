@@ -165,14 +165,15 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
           variants={item}
           style={{
             flex: 1,
-            height: "50vh",
-            minHeight: 280,
+            aspectRatio: "4 / 3",
+            minHeight: 320,
+            maxHeight: "55vh",
             background: "rgba(28,27,22,0.6)",
             border: "1px solid rgba(201,169,110,.2)",
             borderRadius: 8,
             position: "relative",
             overflow: "hidden",
-            maxWidth: 480,
+            maxWidth: 520,
           }}
         >
           <OpenGlobusViewer ready={isActive} />
