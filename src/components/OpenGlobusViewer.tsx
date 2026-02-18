@@ -13,6 +13,9 @@ const TICK_MS = 40;
 
 // ====== НАСТРОЙКИ ОТОБРАЖЕНИЯ ======
 // Масштабирование и смещение для скрытия черной полосы управления внизу карты
+// OpenGlobus рендерит панель управления в нижней части (~13% высоты)
+// Увеличиваем масштаб на 15% и смещаем вверх на 8%, чтобы обрезать нижнюю часть,
+// при этом сохраняя видимость планеты, неба и маркеров
 const MAP_SCALE_FACTOR = 1.15;     // увеличение на 15% для обрезки нижней части
 const MAP_VERTICAL_OFFSET = '-8%'; // смещение вверх для центрирования планеты
 
@@ -250,8 +253,7 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
         style={{ 
           position: 'absolute', 
           inset: 0, 
-          borderRadius: 'inherit', 
-          overflow: 'hidden',
+          borderRadius: 'inherit',
           transform: `scale(${MAP_SCALE_FACTOR}) translateY(${MAP_VERTICAL_OFFSET})`,
           transformOrigin: 'center center'
         }}
