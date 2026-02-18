@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useFullPageScroll } from "@/components/FullPageScroll";
+import OpenGlobusViewer from "@/components/OpenGlobusViewer";
 
 const container = {
   hidden: { opacity: 0 },
@@ -52,29 +52,6 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
         }
       `}</style>
 
-      {/* Watermark логотип */}
-      <div
-        style={{
-          position: "absolute",
-          right: -60,
-          top: "50%",
-          transform: "translateY(-50%)",
-          width: 520,
-          height: 520,
-          opacity: 0.07,
-          filter: "invert(1) sepia(0.3) saturate(2) hue-rotate(60deg)",
-          pointerEvents: "none",
-        }}
-      >
-        <Image
-          src="/logo_new.png"
-          alt=""
-          width={520}
-          height={520}
-          style={{ objectFit: "contain" }}
-        />
-      </div>
-
       {/* Вертикальная линия */}
       <div
         style={{
@@ -101,9 +78,10 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
           padding: "0 clamp(24px, 5vw, 52px)",
           display: "flex",
           alignItems: "center",
+          gap: 40,
         }}
       >
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", flexShrink: 0 }}>
           <motion.div
             variants={item}
             style={{
@@ -181,6 +159,24 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
             </button>
           </motion.div>
         </div>
+
+        {/* Карта с планетой, анимацией, точками и логотипами */}
+        <motion.div
+          variants={item}
+          style={{
+            flex: 1,
+            height: "50vh",
+            minHeight: 280,
+            background: "rgba(28,27,22,0.6)",
+            border: "1px solid rgba(201,169,110,.2)",
+            borderRadius: 8,
+            position: "relative",
+            overflow: "hidden",
+            maxWidth: 480,
+          }}
+        >
+          <OpenGlobusViewer ready={isActive} />
+        </motion.div>
       </motion.div>
 
       {/* Статистика справа внизу */}
@@ -220,29 +216,6 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
           </div>
         ))}
       </motion.div>
-
-      {/* Стрелка-подсказка */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isActive ? { opacity: 0.6 } : { opacity: 0 }}
-        transition={{ delay: 0.8 }}
-        style={{
-          position: "absolute",
-          bottom: 28,
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 2,
-          animation: "heroArrowBounce 2s ease-in-out infinite",
-        }}
-      >
-        <span style={{ fontSize: "1.5rem", color: "var(--gold)" }}>↓</span>
-      </motion.div>
-      <style>{`
-        @keyframes heroArrowBounce {
-          0%, 100% { transform: translateX(-50%) translateY(0); }
-          50% { transform: translateX(-50%) translateY(6px); }
-        }
-      `}</style>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import React, {
 import { AnimatePresence, motion } from "framer-motion";
 import SlideNav from "@/components/SlideNav";
 import SiteNav from "@/components/SiteNav";
+import ScrollHint from "@/components/ScrollHint";
 
 const easing = [0.77, 0, 0.18, 1] as const;
 const duration = 0.9;
@@ -156,6 +157,7 @@ export default function FullPageScroll({
         </AnimatePresence>
         <SiteNav />
         <SlideNav />
+        <ScrollHint />
       </div>
     </FullPageScrollContext.Provider>
   );
