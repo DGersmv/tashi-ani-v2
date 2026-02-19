@@ -11,6 +11,14 @@ const LOOK_REL_UP = 0.1;
 const LOOK_AHEAD_M = 50_000;
 const TICK_MS = 40;
 
+// ====== НАСТРОЙКИ ОТОБРАЖЕНИЯ ======
+// Масштабирование и смещение для скрытия черной полосы управления внизу карты
+// OpenGlobus рендерит панель управления в нижней части (~13% высоты)
+// Увеличиваем масштаб до 199% (1.99x) и смещаем вверх на 25%, чтобы обрезать нижнюю часть,
+// при этом сохраняя видимость планеты, неба и маркеров
+const MAP_SCALE_FACTOR = 1.99;     // масштаб 199% (1.99x) для обрезки нижней части
+const MAP_VERTICAL_OFFSET = '25%'; // смещение вверх для центрирования планеты
+
 const OG_MARKER = '/external/og/lib/res/marker.png';
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
 const DEFAULT_LOGO = '/points/default.png';
@@ -121,8 +129,8 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
           lonlat: [p.lon, p.lat, 1],
           billboard: {
             src: p.img || pinSrcRef.current,
-            width: 48,
-            height: 48,
+            width: 40,
+            height: 40,
             offset: [0, 35],
           }
         }));
@@ -242,7 +250,14 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
     <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 'inherit' }}>
       <div
         ref={containerRef}
-        style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', overflow: 'hidden' }}
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          borderRadius: 'inherit', 
+          overflow: 'hidden',
+          transform: `scale(${MAP_SCALE_FACTOR}) translateY(-${MAP_VERTICAL_OFFSET})`,
+          transformOrigin: 'center center'
+        }}
       />
       
     </div>
