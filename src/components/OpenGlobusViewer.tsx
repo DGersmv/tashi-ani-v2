@@ -11,7 +11,7 @@ const LOOK_REL_UP = 0.1;
 const LOOK_AHEAD_M = 50_000;
 const TICK_MS = 40;
 
-const OG_MARKER = '/external/og/lib/res/marker.png';
+const OG_MARKER = '/external/og/lib/res/marker.svg';
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
 const DEFAULT_LOGO = '/points/default.png';
 
