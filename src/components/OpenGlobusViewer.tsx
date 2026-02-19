@@ -5,7 +5,7 @@ import useTourPoints from '@/lib/useTourPoints';
 
 // ====== НАСТРОЙКИ ОРБИТЫ И ВЗГЛЯДА ======
 const EYE_ALT_M  = 10_000;        // высота зависания камеры (м)
-const ORBIT_R_M  = 20_000;        // радиус орбиты (м)
+const ORBIT_R_M  = 50_000;        // радиус орбиты (м)
 const ORBIT_DEG_PER_SEC = 6;      // скорость вращения (град/сек)
 const LOOK_REL_UP = 0.1;
 const LOOK_AHEAD_M = 100_000;
