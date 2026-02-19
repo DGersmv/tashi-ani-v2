@@ -129,8 +129,8 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
           lonlat: [p.lon, p.lat, 1],
           billboard: {
             src: p.img || pinSrcRef.current,
-            width: 48,
-            height: 48,
+            width: 20,
+            height: 20,
             offset: [0, 35],
           }
         }));
