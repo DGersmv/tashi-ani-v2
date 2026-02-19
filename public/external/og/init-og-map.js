@@ -32,7 +32,7 @@ TOUR_POINTS.forEach(([lon, lat], i) => {
     name: `Метка ${i + 1}`,
     lonlat: [lon, lat],
     billboard: {
-      src: '/external/og/lib/res/marker.png',
+      src: '/external/og/lib/res/marker.svg',
       size: [48, 48],
       offset: [0, 24]
     }
@@ -79,7 +79,7 @@ globe.renderer.events.on("lclick", function (e) {
     name: 'New Marker',
     lonlat: ll,
     billboard: {
-      src: '/external/og/lib/res/marker.png',
+      src: '/external/og/lib/res/marker.svg',
       size: [48, 48],
       offset: [0, 24]
     }
