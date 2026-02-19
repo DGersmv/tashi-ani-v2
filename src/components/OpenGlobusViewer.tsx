@@ -131,7 +131,7 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
             src: p.img || pinSrcRef.current,
             width: 20,
             height: 20,
-            offset: [0, 35],
+            offset: [0, 15],
           }
         }));
       });
