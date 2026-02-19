@@ -17,7 +17,7 @@ const TICK_MS = 40;
 // Увеличиваем масштаб на 15% и смещаем вверх на 8%, чтобы обрезать нижнюю часть,
 // при этом сохраняя видимость планеты, неба и маркеров
 const MAP_SCALE_FACTOR = 1.2;     // увеличение на 15% для обрезки нижней части
-const MAP_VERTICAL_OFFSET = '-45%'; // смещение вверх для центрирования планеты
+const MAP_VERTICAL_OFFSET = '45%'; // смещение вверх для центрирования планеты
 
 const OG_MARKER = '/external/og/lib/res/marker.png';
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
