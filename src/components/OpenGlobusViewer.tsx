@@ -5,11 +5,19 @@ import useTourPoints from '@/lib/useTourPoints';
 
 // ====== НАСТРОЙКИ ОРБИТЫ И ВЗГЛЯДА ======
 const EYE_ALT_M  = 10_000;        // высота зависания камеры (м)
-const ORBIT_R_M  = 5_000;        // радиус орбиты (м)
+const ORBIT_R_M  = 1_000;        // радиус орбиты (м)
 const ORBIT_DEG_PER_SEC = 6;      // скорость вращения (град/сек)
 const LOOK_REL_UP = 0.1;
-const LOOK_AHEAD_M = 50_000;
+const LOOK_AHEAD_M = 100_000;
 const TICK_MS = 40;
+
+// ====== НАСТРОЙКИ ОТОБРАЖЕНИЯ ======
+// Масштабирование и смещение для скрытия черной полосы управления внизу карты
+// OpenGlobus рендерит панель управления в нижней части (~13% высоты)
+// Увеличиваем масштаб на 15% и смещаем вверх на 8%, чтобы обрезать нижнюю часть,
+// при этом сохраняя видимость планеты, неба и маркеров
+const MAP_SCALE_FACTOR = 1.99;     // увеличение на 15% для обрезки нижней части
+const MAP_VERTICAL_OFFSET = '10%'; // смещение вверх для центрирования планеты
 
 const OG_MARKER = '/external/og/lib/res/marker.svg';
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
@@ -242,7 +250,11 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
     <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 'inherit' }}>
       <div
         ref={containerRef}
-        style={{ position: 'absolute', inset: 0, borderRadius: 'inherit', overflow: 'hidden' }}
+        style={{
+          position: 'absolute', inset: 0, borderRadius: 'inherit', overflow: 'hidden',
+          transform: `scale(${MAP_SCALE_FACTOR}) translateY(-${MAP_VERTICAL_OFFSET})`,
+          transformOrigin: 'center',
+        }}
       />
       
     </div>
