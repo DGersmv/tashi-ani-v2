@@ -72,7 +72,7 @@ async function normalize(src: string): Promise<string> {
     ctx.drawImage(im, 0, 0, size, size);
     return canvas.toDataURL('image/png');
   } catch {
-    return '/external/og/lib/res/marker.svg'; // fallback на OG-маркер
+    return '/external/og/lib/res/marker.png'; // fallback на PNG 1024×1024 для четкости
   }
 }
 
