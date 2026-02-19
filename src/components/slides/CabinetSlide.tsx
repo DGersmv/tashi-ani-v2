@@ -66,9 +66,10 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0 5%',
+        padding: '5vh 5%',
         background: 'var(--moss)',
-        color: 'var(--warm-white)'
+        color: 'var(--warm-white)',
+        overflow: 'hidden'
       }}
     >
       <motion.div
@@ -78,10 +79,13 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
         style={{
           width: '100%',
           maxWidth: '1400px',
+          height: '100%',
+          maxHeight: '90vh',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '4rem',
-          alignItems: 'center'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
+          gap: '2rem',
+          alignItems: 'center',
+          overflow: 'auto'
         }}
       >
         {/* Левая часть: текст и описание */}
@@ -104,10 +108,10 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
             variants={itemVariants}
             style={{
               fontFamily: 'var(--font-cormorant)',
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 300,
               lineHeight: 1.2,
-              marginBottom: '2rem',
+              marginBottom: '1.5rem',
               color: 'var(--warm-white)'
             }}
           >
@@ -117,10 +121,10 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
           <motion.p
             variants={itemVariants}
             style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.7,
+              fontSize: '1rem',
+              lineHeight: 1.6,
               color: 'var(--cream)',
-              marginBottom: '3rem',
+              marginBottom: '2rem',
               maxWidth: '500px'
             }}
           >
@@ -133,7 +137,7 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
             variants={containerVariants}
             style={{
               display: 'grid',
-              gap: '1.5rem'
+              gap: '1rem'
             }}
           >
             {features.map((feature, idx) => (
@@ -142,13 +146,13 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
                 variants={itemVariants}
                 style={{
                   display: 'flex',
-                  gap: '1rem',
+                  gap: '0.75rem',
                   alignItems: 'flex-start'
                 }}
               >
                 <div
                   style={{
-                    fontSize: '2rem',
+                    fontSize: '1.5rem',
                     flexShrink: 0
                   }}
                 >
@@ -158,9 +162,9 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
                   <h3
                     style={{
                       fontFamily: 'var(--font-cormorant)',
-                      fontSize: '1.25rem',
+                      fontSize: '1.1rem',
                       fontWeight: 400,
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.25rem',
                       color: 'var(--warm-white)'
                     }}
                   >
@@ -168,8 +172,8 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
                   </h3>
                   <p
                     style={{
-                      fontSize: '0.95rem',
-                      lineHeight: 1.6,
+                      fontSize: '0.875rem',
+                      lineHeight: 1.5,
                       color: 'var(--stone)',
                       fontWeight: 300
                     }}
@@ -184,7 +188,7 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
           <motion.div
             variants={itemVariants}
             style={{
-              marginTop: '3rem'
+              marginTop: '1.5rem'
             }}
           >
             <motion.button
@@ -220,13 +224,14 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
           style={{
             position: 'relative',
             width: '100%',
+            maxHeight: '400px',
             aspectRatio: '16/10',
             background: 'linear-gradient(135deg, rgba(28,27,22,0.6) 0%, rgba(28,27,22,0.9) 100%)',
-            borderRadius: '12px',
+            borderRadius: '8px',
             border: '1px solid rgba(201, 169, 110, 0.2)',
-            padding: '2rem',
+            padding: '1rem',
             backdropFilter: 'blur(20px)',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
+            boxShadow: '0 10px 30px rgba(0,0,0,0.4)'
           }}
         >
           {/* Мокап окна браузера */}
@@ -235,35 +240,35 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
               width: '100%',
               height: '100%',
               background: 'rgba(250, 247, 242, 0.95)',
-              borderRadius: '8px',
+              borderRadius: '6px',
               overflow: 'hidden',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+              boxShadow: '0 5px 20px rgba(0,0,0,0.3)'
             }}
           >
             {/* Header окна */}
             <div
               style={{
-                height: '36px',
+                height: '28px',
                 background: 'rgba(28,27,22,0.95)',
                 display: 'flex',
                 alignItems: 'center',
-                padding: '0 1rem',
-                gap: '0.5rem'
+                padding: '0 0.75rem',
+                gap: '0.4rem'
               }}
             >
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#FF5F56' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#FFBD2E' }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27C93F' }} />
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FF5F56' }} />
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FFBD2E' }} />
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27C93F' }} />
             </div>
 
             {/* Контент мокапа */}
             <div
               style={{
-                padding: '2rem',
-                height: 'calc(100% - 36px)',
+                padding: '1rem',
+                height: 'calc(100% - 28px)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.5rem'
+                gap: '1rem'
               }}
             >
               {/* Dashboard header */}
@@ -276,17 +281,17 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
               >
                 <div
                   style={{
-                    height: '24px',
+                    height: '20px',
                     width: '60%',
                     background: 'linear-gradient(90deg, var(--moss) 0%, var(--sage) 100%)',
-                    borderRadius: '4px',
+                    borderRadius: '3px',
                     opacity: 0.8
                   }}
                 />
                 <div
                   style={{
-                    height: '32px',
-                    width: '32px',
+                    height: '24px',
+                    width: '24px',
                     borderRadius: '50%',
                     background: 'var(--gold)',
                     opacity: 0.6
@@ -299,7 +304,7 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '1rem',
+                  gap: '0.75rem',
                   flex: 1
                 }}
               >
@@ -308,29 +313,29 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
                     key={item}
                     style={{
                       background: 'rgba(122, 158, 114, 0.15)',
-                      borderRadius: '6px',
-                      padding: '1rem',
+                      borderRadius: '4px',
+                      padding: '0.75rem',
                       border: '1px solid rgba(58, 82, 54, 0.2)',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '0.75rem'
+                      gap: '0.5rem'
                     }}
                   >
                     <div
                       style={{
-                        height: '16px',
+                        height: '14px',
                         width: '70%',
                         background: 'var(--moss)',
-                        borderRadius: '3px',
+                        borderRadius: '2px',
                         opacity: 0.6
                       }}
                     />
                     <div
                       style={{
-                        height: '12px',
+                        height: '10px',
                         width: '50%',
                         background: 'var(--sage)',
-                        borderRadius: '3px',
+                        borderRadius: '2px',
                         opacity: 0.4
                       }}
                     />
@@ -339,20 +344,6 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
               </div>
             </div>
           </div>
-
-          {/* Декоративный элемент */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '-10%',
-              right: '-10%',
-              width: '200px',
-              height: '200px',
-              background: 'radial-gradient(circle, rgba(201,169,110,0.2) 0%, transparent 70%)',
-              borderRadius: '50%',
-              pointerEvents: 'none'
-            }}
-          />
         </motion.div>
       </motion.div>
     </section>
