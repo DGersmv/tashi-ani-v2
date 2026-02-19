@@ -19,7 +19,7 @@ const TICK_MS = 40;
 const MAP_SCALE_FACTOR = 1.99;     // увеличение на 15% для обрезки нижней части
 const MAP_VERTICAL_OFFSET = '25%'; // смещение вверх для центрирования планеты
 
-const OG_MARKER = '/external/og/lib/res/marker.png';
+const OG_MARKER = '/external/og/lib/res/marker.png'; // PNG 1024×1024 для четкости
 const DEFAULT_CENTER = { lon: 30.36, lat: 59.94 };
 const DEFAULT_LOGO = '/points/default.png';
 
@@ -54,6 +54,7 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef     = useRef<any | null>(null);
   const ogRef        = useRef<any | null>(null);
+  const vectorRef    = useRef<any | null>(null);
   const loopRef      = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [mapSettings, setMapSettings] = useState({
@@ -110,7 +111,9 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
       }
       ogRef.current = og;
 
-      const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      // Увеличиваем DPI для компенсации CSS масштабирования (1.99x)
+      // Canvas рендерится в высоком разрешении, затем масштабируется CSS
+      const dpr = Math.max(2, (window.devicePixelRatio || 1) * MAP_SCALE_FACTOR);
 
       // Слои
       const osm = new XYZ('osm', {
@@ -121,20 +124,9 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
         maxZoom: 19
       });
       const vect = new Vector('tour', { clampToGround: false, async: false, visibility: true });
+      vectorRef.current = vect;
 
-      // Маркеры
-      (ptsRef.current || []).forEach((p, idx) => {
-        vect.add(new Entity({
-          name: p.name || `P${idx + 1}`,
-          lonlat: [p.lon, p.lat, 1],
-          billboard: {
-            src: p.img || pinSrcRef.current,
-            width: 20,
-            height: 20,
-            offset: [0, 15],
-          }
-        }));
-      });
+      // Маркеры добавляются динамически в отдельном useEffect
 
       // Глобус
       const globe = new Globe({
@@ -215,11 +207,13 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
       try { globeRef.current?.destroy?.(); } catch {}
       globeRef.current = null;
       ogRef.current = null;
+      vectorRef.current = null;
       stopLoop();
     };
-    // Не добавляем mapSettings: иначе при загрузке настроек с сервера глобус уничтожается и создаётся заново,
+    // Не добавляем mapSettings и tourPts: иначе при загрузке настроек с сервера глобус уничтожается и создаётся заново,
     // а старые тайлы OpenGlobus ещё грузятся → onload вызывает createTextureDefault у уже null handler.
-  }, [ready, tourPts]);
+    // tourPts обновляются динамически в отдельном useEffect
+  }, [ready]);
 
   // Когда с сервера пришли новые центр/настройки — летим туда без пересоздания глобуса
   useEffect(() => {
@@ -235,6 +229,45 @@ export default function OpenGlobusViewer({ ready = true }: { ready?: boolean }) 
       duration: 1500,
     });
   }, [mapSettings.centerLon, mapSettings.centerLat]);
+
+  // Динамическое обновление маркеров при изменении tourPts
+  useEffect(() => {
+    const vect = vectorRef.current;
+    const og = ogRef.current;
+    if (!vect || !og?.Entity || !og?.LonLat || !tourPts.length) return;
+
+    // Ждем пока vector слой полностью инициализируется
+    const timer = setTimeout(() => {
+      // Очищаем все существующие маркеры
+      try {
+        if (vect._entities && vect._entities.length > 0) {
+          vect.removeEntities();
+        }
+      } catch (e) {
+        console.warn('Не удалось очистить маркеры:', e);
+      }
+
+      // Добавляем новые маркеры (PNG 1024×1024 для четкости при масштабировании карты)
+      tourPts.forEach((p, idx) => {
+        try {
+          vect.add(new og.Entity({
+            name: p.name || `P${idx + 1}`,
+            lonlat: [p.lon, p.lat, 1],
+            billboard: {
+              src: p.img || pinSrcRef.current,
+              width: 40,
+              height: 40,
+              offset: [0, 25],
+            }
+          }));
+        } catch (e) {
+          console.warn('Не удалось добавить маркер:', e);
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [tourPts]);
 
   // Сняли паузу — мягкий рестарт
   useEffect(() => {
