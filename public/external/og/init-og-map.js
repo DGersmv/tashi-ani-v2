@@ -33,7 +33,7 @@ TOUR_POINTS.forEach(([lon, lat], i) => {
     lonlat: [lon, lat],
     billboard: {
       src: '/external/og/lib/res/marker.png',
-      size: [48, 48],
+      size: [40, 40],
       offset: [0, 24]
     }
   }));
@@ -80,7 +80,7 @@ globe.renderer.events.on("lclick", function (e) {
     lonlat: ll,
     billboard: {
       src: '/external/og/lib/res/marker.png',
-      size: [48, 48],
+      size: [40, 40],
       offset: [0, 24]
     }
   }));
