@@ -2952,7 +2952,7 @@ export default function BimModelViewer({
                         width: "50px",
                         height: "50px",
                         border: "4px solid rgba(255, 255, 255, 0.2)",
-                        borderTop: "4px solid rgba(211, 163, 115, 1)",
+                        borderTop: "4px solid rgba(201, 169, 110,  1)",
                         borderRadius: "50%",
                         animation: "spin 1s linear infinite",
                         margin: "0 auto 20px"
@@ -3025,7 +3025,7 @@ export default function BimModelViewer({
                     width: "50px",
                     height: "50px",
                     border: "4px solid rgba(255, 255, 255, 0.2)",
-                    borderTop: "4px solid rgba(211, 163, 115, 1)",
+                    borderTop: "4px solid rgba(201, 169, 110,  1)",
                     borderRadius: "50%",
                     animation: "spin 1s linear infinite",
                     margin: "0 auto 20px"

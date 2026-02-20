@@ -143,7 +143,7 @@ export default function SimplePDFViewer({ fileUrl, fileName, onClose }: SimplePD
             <div style={{
               width: "40px",
               height: "40px",
-              border: "3px solid rgba(255,255,255,0.3)",
+              border: "3px solid rgba(250, 247, 242, 0.3)",
               borderTop: "3px solid white",
               borderRadius: "50%",
               animation: "spin 1s linear infinite"

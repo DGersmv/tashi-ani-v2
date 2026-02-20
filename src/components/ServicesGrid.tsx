@@ -145,7 +145,7 @@ export default function ServicesGrid({ services = DEFAULT_SERVICES }: { services
         }
         .servicesGalleryHeader {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+          padding: 16px 20px; border-bottom: 1px solid rgba(250, 247, 242, 0.1);
         }
         .servicesGalleryClose {
           background: rgba(0,0,0,0.5); color: white; border: none;
@@ -233,7 +233,7 @@ function ServiceCard({
               inset: 0,
               borderRadius: 16,
               overflow: "hidden",
-              background: coverSrc ? undefined : "rgba(255,255,255,0.15)",
+              background: coverSrc ? undefined : "rgba(250, 247, 242, 0.15)",
               backdropFilter: "blur(28px)",
               border: "2.5px solid rgba(211,163,115,0.6)",
               display: "flex",
@@ -332,7 +332,7 @@ function ServicesGalleryModal({ project, onClose }: { project: Project; onClose:
             <button type="button" className="servicesGalleryClose" aria-label="Закрыть" onClick={onClose}>✕</button>
           </div>
           {galleryItems.length === 0 ? (
-            <p style={{ color: "rgba(255,255,255,0.7)", padding: 24 }}>
+            <p style={{ color: "rgba(250, 247, 242, 0.7)", padding: 24 }}>
               В этом разделе пока нет фото.
             </p>
           ) : (

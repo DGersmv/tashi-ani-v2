@@ -136,7 +136,7 @@ export default function DashboardGrid() {
           </h1>
           <p style={{
             fontSize: "1.1rem",
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(250, 247, 242, 0.8)",
             fontFamily: "Arial, sans-serif"
           }}>
             {userEmail ? `Добро пожаловать, ${userName || userEmail}` : "Управляйте своими проектами и настройками"}

@@ -105,7 +105,7 @@ export default function NewsPanel() {
             className="text-2xl md:text-3xl font-medium mb-4"
             style={{
               fontFamily: "var(--font-heading, 'ChinaCyr', Arial, Helvetica, sans-serif)",
-              color: "rgba(211, 163, 115, 1)",
+              color: "rgba(201, 169, 110,  1)",
             }}
           >
             Новости и рекомендации
@@ -119,24 +119,24 @@ export default function NewsPanel() {
           </p>
 
           {loading && hasRss ? (
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 24 }}>Загрузка новостей…</p>
+            <p style={{ color: "rgba(250, 247, 242, 0.7)", marginBottom: 24 }}>Загрузка новостей…</p>
           ) : !hasRss ? (
             <div
               style={{
                 padding: "16px 20px",
                 marginBottom: 24,
-                background: "rgba(211, 163, 115, 0.08)",
-                border: "1px solid rgba(211, 163, 115, 0.25)",
+                background: "rgba(201, 169, 110,  0.08)",
+                border: "1px solid rgba(201, 169, 110,  0.25)",
                 borderRadius: 12,
                 color: "rgba(246, 248, 250, 0.9)",
                 fontSize: "0.95rem",
                 lineHeight: 1.5,
               }}
             >
-              <strong style={{ color: "rgba(211, 163, 115, 1)" }}>Как показать посты здесь</strong>
+              <strong style={{ color: "rgba(201, 169, 110,  1)" }}>Как показать посты здесь</strong>
               <p style={{ margin: "8px 0 0", padding: 0 }}>
                 Чтобы на этой странице отображались посты канала с фото и видео (без перехода в Telegram), в настройках сайта нужно указать <strong>RSS-ленту</strong>. Её можно создать бесплатно: зайдите на{" "}
-                <a href="https://rss.app" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(211, 163, 115, 1)" }}>rss.app</a>
+                <a href="https://rss.app" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(201, 169, 110,  1)" }}>rss.app</a>
                 , выберите «Telegram» → вставьте ссылку на канал ({channelUrl}), скопируйте выданный RSS-адрес и вставьте его в разделе <strong>Настройки сайта</strong> в поле «RSS-лента новостей».
               </p>
             </div>
@@ -149,10 +149,10 @@ export default function NewsPanel() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   style={{
-                    background: "rgba(255,255,255,0.06)",
+                    background: "rgba(250, 247, 242, 0.06)",
                     borderRadius: 12,
                     overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(250, 247, 242, 0.1)",
                   }}
                 >
                   {(post.videoUrl || post.imageUrl) && (
@@ -194,7 +194,7 @@ export default function NewsPanel() {
                               justifyContent: "center",
                               gap: 12,
                               padding: 24,
-                              color: "rgba(255,255,255,0.8)",
+                              color: "rgba(250, 247, 242, 0.8)",
                             }}
                           >
                             <span style={{ fontSize: "0.9rem" }}>Видео можно посмотреть в Telegram</span>
@@ -204,7 +204,7 @@ export default function NewsPanel() {
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
                               style={{
-                                color: "rgba(211, 163, 115, 1)",
+                                color: "rgba(201, 169, 110,  1)",
                                 fontWeight: 500,
                               }}
                             >
@@ -283,7 +283,7 @@ export default function NewsPanel() {
                     )}
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
                       {post.date && (
-                        <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.5)" }}>
+                        <span style={{ fontSize: "0.85rem", color: "rgba(250, 247, 242, 0.5)" }}>
                           {formatDate(post.date)}
                         </span>
                       )}
@@ -292,7 +292,7 @@ export default function NewsPanel() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-sm font-medium"
-                        style={{ color: "rgba(211, 163, 115, 1)" }}
+                        style={{ color: "rgba(201, 169, 110,  1)" }}
                       >
                         <TelegramIcon />
                         В Telegram
@@ -325,7 +325,7 @@ export default function NewsPanel() {
               Не удалось загрузить ленту. Проверьте ссылку в настройках и доступность сервиса.
             </p>
           ) : posts.length === 0 && hasRss ? (
-            <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 24 }}>
+            <p style={{ color: "rgba(250, 247, 242, 0.6)", marginBottom: 24 }}>
               Пока постов в ленте нет. Проверьте, что RSS-адрес в настройках указан верно и в канале есть публичные посты.
             </p>
           ) : null}
@@ -337,9 +337,9 @@ export default function NewsPanel() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors"
               style={{
-                backgroundColor: "rgba(211, 163, 115, 0.2)",
-                color: "rgba(211, 163, 115, 1)",
-                border: "1px solid rgba(211, 163, 115, 0.5)",
+                backgroundColor: "rgba(201, 169, 110,  0.2)",
+                color: "rgba(201, 169, 110,  1)",
+                border: "1px solid rgba(201, 169, 110,  0.5)",
               }}
             >
               <TelegramIcon />
@@ -378,8 +378,8 @@ export default function NewsPanel() {
                   width: 44,
                   height: 44,
                   borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(250, 247, 242, 0.3)",
+                  background: "rgba(250, 247, 242, 0.1)",
                   color: "#fff",
                   fontSize: "1.5rem",
                   lineHeight: 1,
@@ -431,7 +431,7 @@ export default function NewsPanel() {
                   bottom: 24,
                   left: "50%",
                   transform: "translateX(-50%)",
-                  color: "rgba(211, 163, 115, 1)",
+                  color: "rgba(201, 169, 110,  1)",
                   fontSize: "0.9rem",
                 }}
                 onClick={(e) => e.stopPropagation()}

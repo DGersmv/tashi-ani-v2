@@ -300,7 +300,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderTop: "3px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
@@ -372,9 +372,9 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           style={{
-            background: "rgba(255,255,255,0.1)",
+            background: "rgba(250, 247, 242, 0.1)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(255,255,255,0.2)",
+            border: "1px solid rgba(250, 247, 242, 0.2)",
             borderRadius: 16,
             padding: 24,
             marginBottom: 32,
@@ -400,8 +400,8 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
               style={{
                 padding: "12px 16px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(250, 247, 242, 0.3)",
+                background: "rgba(250, 247, 242, 0.1)",
                 color: "white",
                 fontSize: "1rem",
                 fontFamily: "Arial, sans-serif"
@@ -415,8 +415,8 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
               style={{
                 padding: "12px 16px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(250, 247, 242, 0.3)",
+                background: "rgba(250, 247, 242, 0.1)",
                 color: "white",
                 fontSize: "1rem",
                 fontFamily: "Arial, sans-serif"
@@ -433,8 +433,8 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   width: "100%",
                   padding: "12px 50px 12px 16px",
                   borderRadius: 8,
-                  border: "2px solid rgba(255,255,255,0.5)",
-                  background: "rgba(255,255,255,0.2)",
+                  border: "2px solid rgba(250, 247, 242, 0.5)",
+                  background: "rgba(250, 247, 242, 0.2)",
                   color: "white",
                   fontSize: "1rem",
                   fontFamily: "Arial, sans-serif",
@@ -451,7 +451,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   transform: "translateY(-50%)",
                   background: "none",
                   border: "none",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   cursor: "pointer",
                   fontSize: "18px",
                   padding: "4px",
@@ -461,10 +461,10 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   transition: "color 0.2s ease"
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,1)";
+                  e.currentTarget.style.color = "rgba(250, 247, 242, 1)";
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                  e.currentTarget.style.color = "rgba(250, 247, 242, 0.7)";
                 }}
               >
                 {showPassword ? "🙈" : "👁️"}
@@ -477,7 +477,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                 style={{
                   padding: "12px 24px",
                   borderRadius: 8,
-                  border: "1px solid rgba(255,255,255,0.3)",
+                  border: "1px solid rgba(250, 247, 242, 0.3)",
                   background: "transparent",
                   color: "white",
                   fontSize: "1rem",
@@ -525,7 +525,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
       {users.length === 0 ? (
         <div style={{
           textAlign: "center",
-          color: "rgba(255,255,255,0.6)",
+          color: "rgba(250, 247, 242, 0.6)",
           padding: "60px 20px",
           fontFamily: "Arial, sans-serif"
         }}>
@@ -561,7 +561,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   inset: 0,
                   borderRadius: "inherit",
                   overflow: "hidden",
-                  background: "rgba(255,255,255,0.15)",
+                  background: "rgba(250, 247, 242, 0.15)",
                   backdropFilter: "blur(32px)",
                   border: "2px solid rgba(211,163,115,0.6)",
                   display: "flex",
@@ -617,7 +617,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   
                   <p style={{ 
                     fontSize: 14, 
-                    color: "rgba(255,255,255,.9)",
+                    color: "rgba(250, 247, 242, .9)",
                     fontFamily: "Arial, sans-serif",
                     margin: 0
                   }}>
@@ -626,7 +626,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   
                   <div style={{ 
                     fontSize: 12, 
-                    color: "rgba(255,255,255,.7)",
+                    color: "rgba(250, 247, 242, .7)",
                     fontFamily: "Arial, sans-serif"
                   }}>
                     Регистрация: {formatDate(user.createdAt)}
@@ -635,7 +635,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   {user.lastLogin && (
                     <div style={{ 
                       fontSize: 12, 
-                      color: "rgba(255,255,255,.6)",
+                      color: "rgba(250, 247, 242, .6)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       Последний вход: {formatDate(user.lastLogin)}
@@ -644,7 +644,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   
                   <div style={{ 
                     fontSize: 12, 
-                    color: "rgba(255,255,255,.8)",
+                    color: "rgba(250, 247, 242, .8)",
                     fontFamily: "Arial, sans-serif",
                     fontWeight: 500,
                     display: "flex",
@@ -653,7 +653,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                   }}>
                     <div>Объектов: {userObjectCounts[user.id] || 0}</div>
                     <div style={{
-                      color: (unreadMessages[user.id] || 0) > 0 ? "#d3a373" : "rgba(255,255,255,.8)"
+                      color: (unreadMessages[user.id] || 0) > 0 ? "rgba(201, 169, 110, 0.7)" : "rgba(250, 247, 242, .8)"
                     }}>
                       💬 Сообщений: {totalMessages[user.id] || 0} 
                       {(unreadMessages[user.id] || 0) > 0 && (
@@ -667,7 +667,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                       )}
                     </div>
                     <div style={{
-                      color: (unreadComments[user.id] || 0) > 0 ? "#d3a373" : "rgba(255,255,255,.8)"
+                      color: (unreadComments[user.id] || 0) > 0 ? "rgba(201, 169, 110, 0.7)" : "rgba(250, 247, 242, .8)"
                     }}>
                       📷 Комментариев: {totalComments[user.id] || 0}
                       {(unreadComments[user.id] || 0) > 0 && (
@@ -694,9 +694,9 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                         flex: 1,
                         padding: "8px 14px",
                         borderRadius: 8,
-                        border: "1px solid rgba(211, 163, 115, 0.5)",
-                        background: "rgba(211, 163, 115, 0.1)",
-                        color: "rgba(211, 163, 115, 1)",
+                        border: "1px solid rgba(201, 169, 110,  0.5)",
+                        background: "rgba(201, 169, 110,  0.1)",
+                        color: "rgba(201, 169, 110,  1)",
                         fontFamily: "Arial, sans-serif",
                         fontSize: "0.85rem",
                         cursor: "pointer",
@@ -704,11 +704,11 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                         fontWeight: 600
                       }}
                       onMouseOver={(e) => {
-                        e.currentTarget.style.background = "rgba(211, 163, 115, 0.2)";
+                        e.currentTarget.style.background = "rgba(201, 169, 110,  0.2)";
                         e.currentTarget.style.transform = "translateY(-1px)";
                       }}
                       onMouseOut={(e) => {
-                        e.currentTarget.style.background = "rgba(211, 163, 115, 0.1)";
+                        e.currentTarget.style.background = "rgba(201, 169, 110,  0.1)";
                         e.currentTarget.style.transform = "translateY(0)";
                       }}
                     >
@@ -966,7 +966,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                       transform: "translateY(-50%)",
                       background: "none",
                       border: "none",
-                      color: "rgba(255,255,255,0.7)",
+                      color: "rgba(250, 247, 242, 0.7)",
                       cursor: "pointer",
                       fontSize: "16px",
                       padding: "2px",
@@ -976,10 +976,10 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                       transition: "color 0.2s ease"
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.color = "rgba(255,255,255,1)";
+                      e.currentTarget.style.color = "rgba(250, 247, 242, 1)";
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                      e.currentTarget.style.color = "rgba(250, 247, 242, 0.7)";
                     }}
                   >
                     {showEditPassword ? "🙈" : "👁️"}

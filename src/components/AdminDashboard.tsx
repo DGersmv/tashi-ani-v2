@@ -111,7 +111,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
         <div style={{
           width: "60px",
           height: "60px",
-          border: "4px solid rgba(255,255,255,0.3)",
+          border: "4px solid rgba(250, 247, 242, 0.3)",
           borderTop: "4px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite"
@@ -151,7 +151,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
               padding: "10px 20px",
               borderRadius: "6px",
               border: "none",
-              backgroundColor: "rgba(211, 163, 115, 0.8)",
+              backgroundColor: "rgba(201, 169, 110,  0.8)",
               color: "white",
               fontFamily: "ChinaCyr, sans-serif",
               fontWeight: "600",
@@ -194,7 +194,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
         <p style={{
           fontFamily: "Arial, sans-serif",
           fontSize: "1.1rem",
-          color: "rgba(255,255,255,0.8)",
+          color: "rgba(250, 247, 242, 0.8)",
           marginBottom: "8px"
         }}>
           Добро пожаловать, {userEmail}
@@ -202,7 +202,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
         <p style={{
           fontFamily: "Arial, sans-serif",
           fontSize: "0.9rem",
-          color: "rgba(255,255,255,0.6)"
+          color: "rgba(250, 247, 242, 0.6)"
         }}>
           Управление пользователями и проектами
         </p>
@@ -240,7 +240,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
                 maxHeight: "calc(100vh - 40px)",
                 background: "linear-gradient(180deg, rgba(25,28,35,0.98) 0%, rgba(18,20,26,0.98) 100%)",
                 borderRadius: 16,
-                border: "1px solid rgba(211, 163, 115, 0.4)",
+                border: "1px solid rgba(201, 169, 110,  0.4)",
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
@@ -254,7 +254,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: "14px 20px",
-                  borderBottom: "1px solid rgba(255,255,255,0.1)",
+                  borderBottom: "1px solid rgba(250, 247, 242, 0.1)",
                   cursor: "grab",
                   userSelect: "none",
                   flexShrink: 0,
@@ -274,7 +274,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
                     height: 36,
                     borderRadius: "50%",
                     border: "none",
-                    background: "rgba(255,255,255,0.1)",
+                    background: "rgba(250, 247, 242, 0.1)",
                     color: "white",
                     fontSize: 18,
                     cursor: "pointer",

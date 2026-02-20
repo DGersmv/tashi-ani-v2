@@ -46,7 +46,7 @@ export default function SiteNav() {
             borderRadius: "50%",
             background: "rgba(206, 214, 177, 0.18)",
             backdropFilter: "blur(18px)",
-            border: "3px solid rgba(211, 163, 115, 0.6)",
+            border: "3px solid rgba(201, 169, 110,  0.6)",
             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
             display: "flex",
             alignItems: "center",

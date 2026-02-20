@@ -277,7 +277,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         <div style={{
           width: "40px",
           height: "40px",
-          border: "4px solid rgba(255,255,255,0.3)",
+          border: "4px solid rgba(250, 247, 242, 0.3)",
           borderTop: "4px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite"
@@ -407,7 +407,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
               padding: "10px 20px",
               borderRadius: "6px",
               border: "none",
-              backgroundColor: isAddingUser ? "rgba(255, 255, 255, 0.3)" : "rgba(211, 163, 115, 0.8)",
+              backgroundColor: isAddingUser ? "rgba(255, 255, 255, 0.3)" : "rgba(201, 169, 110,  0.8)",
               color: "white",
               fontFamily: "ChinaCyr, sans-serif",
               fontWeight: "600",
@@ -863,7 +863,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
                 <div style={{ color: "white", maxHeight: "100px", overflow: "auto" }}>
                   {userDetails.objects?.length > 0 ? (
                     userDetails.objects.map((obj: any, index: number) => (
-                      <div key={index} style={{ padding: "4px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                      <div key={index} style={{ padding: "4px 0", borderBottom: "1px solid rgba(250, 247, 242, 0.1)" }}>
                         {obj.title} - {obj.status}
                       </div>
                     ))

@@ -297,7 +297,7 @@ export default function CustomerPanoramasSection({
         const isActive = selectedPanoramaCommentId === comment.id;
         const size = isActive ? 22 : 16;
         const color = comment.isAdminComment ? "#38bdf8" : "#f97316";
-        const border = isActive ? "3px solid rgba(255,255,255,0.95)" : "2px solid rgba(255,255,255,0.85)";
+        const border = isActive ? "3px solid rgba(250, 247, 242, 0.95)" : "2px solid rgba(250, 247, 242, 0.85)";
         const description = `${comment.isAdminComment ? "Команда" : "Вы"} • ${comment.content}`;
 
         markers.push({
@@ -683,7 +683,7 @@ export default function CustomerPanoramasSection({
       {!panoramasReady && (
         <div style={{
           textAlign: "center",
-          color: "rgba(255,255,255,0.7)",
+          color: "rgba(250, 247, 242, 0.7)",
           fontFamily: "Arial, sans-serif",
           padding: "24px",
         }}>
@@ -694,7 +694,7 @@ export default function CustomerPanoramasSection({
       {panoramasReady && panoramas.length === 0 && (
         <div style={{
           textAlign: "center",
-          color: "rgba(255,255,255,0.6)",
+          color: "rgba(250, 247, 242, 0.6)",
           fontFamily: "Arial, sans-serif",
           padding: "24px",
         }}>
@@ -714,9 +714,9 @@ export default function CustomerPanoramasSection({
             <div
               key={panorama.id}
               style={{
-                backgroundColor: "rgba(255,255,255,0.08)",
+                backgroundColor: "rgba(250, 247, 242, 0.08)",
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid rgba(250, 247, 242, 0.12)",
                 padding: "16px",
                 display: "flex",
                 flexDirection: "column",
@@ -778,7 +778,7 @@ export default function CustomerPanoramasSection({
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "rgba(255,255,255,0.7)",
+                      color: "rgba(250, 247, 242, 0.7)",
                       fontSize: "0.9rem",
                       padding: "8px",
                       textAlign: "center",
@@ -788,7 +788,7 @@ export default function CustomerPanoramasSection({
                   >
                     <span>🌀</span>
                     {panoramaPreviewErrors[panorama.id] && (
-                      <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.8)" }}>
+                      <span style={{ fontSize: "0.75rem", color: "rgba(250, 247, 242, 0.8)" }}>
                         {panoramaPreviewErrors[panorama.id]}
                       </span>
                     )}
@@ -885,7 +885,7 @@ export default function CustomerPanoramasSection({
                   style={{
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.8rem",
-                    color: "rgba(255,255,255,0.6)",
+                    color: "rgba(250, 247, 242, 0.6)",
                     margin: 0,
                   }}
                 >
@@ -934,7 +934,7 @@ export default function CustomerPanoramasSection({
               </h2>
             <p
               style={{
-                color: "rgba(255,255,255,0.7)",
+                color: "rgba(250, 247, 242, 0.7)",
                 fontFamily: "Arial, sans-serif",
                 fontSize: "0.85rem",
                 margin: "6px 0 0",
@@ -960,7 +960,7 @@ export default function CustomerPanoramasSection({
               }}
               style={{
                 background: "none",
-                border: "1px solid rgba(255,255,255,0.2)",
+                border: "1px solid rgba(250, 247, 242, 0.2)",
                 color: "white",
                 borderRadius: "50%",
                 width: "44px",
@@ -1046,7 +1046,7 @@ export default function CustomerPanoramasSection({
                             borderRadius: "999px",
                             border: "1px solid rgba(59,130,246,0.4)",
                             backgroundColor: "rgba(59,130,246,0.15)",
-                            color: "rgba(255,255,255,0.9)",
+                            color: "rgba(250, 247, 242, 0.9)",
                             cursor: "pointer",
                           }}
                         >
@@ -1095,9 +1095,9 @@ export default function CustomerPanoramasSection({
               <div
                 style={{
                   width: "360px",
-                  backgroundColor: "rgba(255,255,255,0.07)",
+                  backgroundColor: "rgba(250, 247, 242, 0.07)",
                   borderRadius: "12px",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  border: "1px solid rgba(250, 247, 242, 0.15)",
                   padding: "16px",
                   display: "flex",
                   flexDirection: "column",
@@ -1157,11 +1157,11 @@ export default function CustomerPanoramasSection({
                       <div
                         style={{
                           fontSize: "0.8rem",
-                          color: "rgba(255,255,255,0.65)",
-                          background: "rgba(255,255,255,0.05)",
+                          color: "rgba(250, 247, 242, 0.65)",
+                          background: "rgba(250, 247, 242, 0.05)",
                           padding: "8px",
                           borderRadius: "8px",
-                          border: "1px dashed rgba(255,255,255,0.2)",
+                          border: "1px dashed rgba(250, 247, 242, 0.2)",
                         }}
                       >
                         Точка не выбрана
@@ -1171,7 +1171,7 @@ export default function CustomerPanoramasSection({
                     <div
                       style={{
                         fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.78)",
+                        color: "rgba(250, 247, 242, 0.78)",
                         background: "rgba(59,130,246,0.12)",
                         padding: "8px",
                         borderRadius: "8px",
@@ -1198,7 +1198,7 @@ export default function CustomerPanoramasSection({
                       style={{
                         backgroundColor: comment.isAdminComment ? "rgba(59, 130, 246, 0.12)" : "rgba(255, 255, 255, 0.12)",
                         borderRadius: "10px",
-                        border: `1px solid ${comment.isAdminComment ? "rgba(59,130,246,0.35)" : "rgba(255,255,255,0.18)"}`,
+                        border: `1px solid ${comment.isAdminComment ? "rgba(59,130,246,0.35)" : "rgba(250, 247, 242, 0.18)"}`,
                         padding: "12px",
                         display: "flex",
                         flexDirection: "column",
@@ -1229,7 +1229,7 @@ export default function CustomerPanoramasSection({
                             style={{
                               fontFamily: "Arial, sans-serif",
                               fontSize: "0.75rem",
-                              color: "rgba(255,255,255,0.65)",
+                              color: "rgba(250, 247, 242, 0.65)",
                               margin: 0,
                             }}
                           >
@@ -1275,7 +1275,7 @@ export default function CustomerPanoramasSection({
                     <div
                       style={{
                         textAlign: "center",
-                        color: "rgba(255,255,255,0.6)",
+                        color: "rgba(250, 247, 242, 0.6)",
                         fontFamily: "Arial, sans-serif",
                         fontSize: "0.9rem",
                         padding: "20px",
@@ -1288,7 +1288,7 @@ export default function CustomerPanoramasSection({
 
                 <div
                   style={{
-                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    borderTop: "1px solid rgba(250, 247, 242, 0.2)",
                     paddingTop: "12px",
                     display: "flex",
                     flexDirection: "column",
@@ -1311,8 +1311,8 @@ export default function CustomerPanoramasSection({
                       minHeight: "70px",
                       padding: "10px",
                       borderRadius: "8px",
-                      border: "1px solid rgba(255,255,255,0.25)",
-                      backgroundColor: "rgba(255,255,255,0.1)",
+                      border: "1px solid rgba(250, 247, 242, 0.25)",
+                      backgroundColor: "rgba(250, 247, 242, 0.1)",
                       color: "white",
                       fontFamily: "Arial, sans-serif",
                       fontSize: "0.9rem",

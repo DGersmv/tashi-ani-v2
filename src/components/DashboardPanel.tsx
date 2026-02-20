@@ -35,7 +35,7 @@ export default function DashboardPanel({
       case "active": return "rgba(34, 197, 94, 0.8)"; // green
       case "inactive": return "rgba(239, 68, 68, 0.8)"; // red
       case "pending": return "rgba(251, 191, 36, 0.8)"; // yellow
-      default: return "rgba(211, 163, 115, 0.8)"; // default gold
+      default: return "rgba(201, 169, 110,  0.8)"; // default gold
     }
   };
 
@@ -64,7 +64,7 @@ export default function DashboardPanel({
             inset: 5,
             borderRadius: "inherit",
             overflow: "hidden",
-            background: "rgba(255,255,255,0.15)",
+            background: "rgba(250, 247, 242, 0.15)",
             backdropFilter: "blur(32px)",
             border: `2.5px solid ${getStatusColor()}`,
             cursor: "pointer",
@@ -81,7 +81,7 @@ export default function DashboardPanel({
               background: `linear-gradient(135deg, 
                 ${getStatusColor()}20, 
                 ${getStatusColor()}05, 
-                rgba(255,255,255,0.05)
+                rgba(250, 247, 242, 0.05)
               )`,
               filter: "saturate(105%) brightness(0.9)",
               transform: "scale(1)",
@@ -162,7 +162,7 @@ export default function DashboardPanel({
             {description && (
               <p style={{ 
                 fontSize: 14, 
-                color: "rgba(255,255,255,.9)",
+                color: "rgba(250, 247, 242, .9)",
                 fontFamily: "Arial, sans-serif"
               }}>
                 {description}
