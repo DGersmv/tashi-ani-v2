@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import LoginPanel from "@/components/LoginPanel";
@@ -13,6 +14,7 @@ export default function SiteNav() {
   const { currentIndex, goTo } = useFullPageScroll();
   const settings = useSiteSettings();
   const logoSrc = settings.siteLogoPath || "/logo_new.png";
+  const router = useRouter();
 
   const isFirstSlide = currentIndex === 0;
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -153,7 +155,10 @@ export default function SiteNav() {
         onLoginSuccess={(email) => {
           localStorage.setItem("userEmail", email);
           setIsLoginOpen(false);
-          // Функция перенаправления в кабинет будет в LoginPanel после успешного входа
+          // Перенаправляем в кабинет
+          setTimeout(() => {
+            router.push("/dashboard");
+          }, 300);
         }}
       />
     </nav>
