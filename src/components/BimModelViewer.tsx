@@ -2213,7 +2213,7 @@ export default function BimModelViewer({
         }}>
           <div>
             <h2 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.75rem",
               fontWeight: "bold",
               margin: 0,

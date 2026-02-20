@@ -100,7 +100,7 @@ export default function PDFViewer({ fileUrl, fileName, onClose }: PDFViewerProps
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             color: "white",
             margin: 0,

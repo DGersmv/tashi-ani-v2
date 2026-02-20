@@ -247,7 +247,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                 <div style={{ textAlign: "center" }}>
                   <h2 
                     style={{ 
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       fontWeight: 800,
                       fontSize: "1.25rem",
                       lineHeight: 1.2,
@@ -538,7 +538,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       color: "white",
                       fontWeight: 600,
                       fontSize: "14px",
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       cursor: (email && password && isHuman && !isSubmitting) ? "pointer" : "not-allowed",
                       opacity: (email && password && isHuman) ? 1 : 0.6,
                       transition: "all 0.2s"

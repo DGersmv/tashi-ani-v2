@@ -230,7 +230,7 @@ export default function DocumentsPanel({
           marginBottom: "24px"
         }}>
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             margin: 0,
             color: "white"
@@ -267,7 +267,7 @@ export default function DocumentsPanel({
         
         <div style={{ fontSize: "3rem", marginBottom: "16px" }}></div>
         <h4 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.2rem",
           margin: "0 0 8px 0",
           color: "white"
@@ -323,7 +323,7 @@ export default function DocumentsPanel({
           color: "rgba(255, 255, 255, 0.5)"
         }}>
           <div style={{ fontSize: "3rem", marginBottom: "16px" }}></div>
-          <p style={{ fontFamily: "ChinaCyr, sans-serif", fontSize: "1.1rem" }}>
+          <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.1rem" }}>
             Документы не загружены
           </p>
           <p style={{ fontSize: "0.9rem" }}>
@@ -370,7 +370,7 @@ export default function DocumentsPanel({
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h4 style={{
-                    fontFamily: "ChinaCyr, sans-serif",
+                    fontFamily: "var(--font-jost), sans-serif",
                     fontSize: "1rem",
                     margin: "0 0 4px 0",
                     color: "white",
@@ -564,7 +564,7 @@ export default function DocumentsPanel({
             textAlign: "center"
           }}>
             <h3 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.5rem",
               color: "white",
               margin: "0 0 20px 0"

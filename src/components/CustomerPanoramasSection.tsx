@@ -926,7 +926,7 @@ export default function CustomerPanoramasSection({
                 style={{
                   color: "white",
                   fontSize: "1.5rem",
-                  fontFamily: "ChinaCyr, sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   margin: 0,
                 }}
               >
@@ -1111,7 +1111,7 @@ export default function CustomerPanoramasSection({
                       color: "white",
                       fontSize: "1.1rem",
                       margin: "0 0 10px 0",
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                     }}
                   >
                     Комментарии ({panoramaComments.length})

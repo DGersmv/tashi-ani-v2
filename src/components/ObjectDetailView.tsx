@@ -524,7 +524,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -616,7 +616,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
                 }}>
                   <h4 style={{
-                    fontFamily: "ChinaCyr, sans-serif",
+                    fontFamily: "var(--font-jost), sans-serif",
                     fontSize: "1.3rem",
                     color: "white",
                     margin: "0 0 8px 0"
@@ -1045,7 +1045,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
               marginBottom: "24px"
             }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 color: "white",
                 margin: "0 0 20px 0",

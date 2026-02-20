@@ -51,7 +51,7 @@ export default function SimplePDFViewer({ fileUrl, fileName, onClose }: SimplePD
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             color: "white",
             margin: 0,
@@ -242,7 +242,7 @@ export default function SimplePDFViewer({ fileUrl, fileName, onClose }: SimplePD
           }}>
             <div style={{ fontSize: "4rem", marginBottom: "20px" }}>📄</div>
             <h3 style={{ 
-              fontFamily: "ChinaCyr, sans-serif", 
+              fontFamily: "var(--font-jost), sans-serif", 
               fontSize: "1.5rem", 
               color: "#333", 
               margin: "0 0 16px 0" 

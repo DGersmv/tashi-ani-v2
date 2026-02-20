@@ -289,7 +289,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
   return (
     <div style={{ color: "white" }}>
       <h2 style={{
-        fontFamily: "ChinaCyr, sans-serif",
+        fontFamily: "var(--font-jost), sans-serif",
         fontSize: "2rem",
         marginBottom: "24px",
         textAlign: "center"
@@ -319,7 +319,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         backdropFilter: "blur(10px)"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.2rem",
           marginBottom: "16px"
         }}>
@@ -409,7 +409,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
               border: "none",
               backgroundColor: isAddingUser ? "rgba(255, 255, 255, 0.3)" : "rgba(201, 169, 110,  0.8)",
               color: "white",
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontWeight: "600",
               cursor: isAddingUser ? "not-allowed" : "pointer",
               transition: "all 0.2s ease",
@@ -429,7 +429,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         backdropFilter: "blur(10px)"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.2rem",
           marginBottom: "16px"
         }}>
@@ -463,7 +463,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
                     marginBottom: "8px"
                   }}>
                     <span style={{
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       fontWeight: "600",
                       fontSize: "1.1rem"
                     }}>
@@ -632,7 +632,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
             border: "1px solid rgba(255, 255, 255, 0.2)"
           }}>
             <h3 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.5rem",
               marginBottom: "20px",
               textAlign: "center"
@@ -803,7 +803,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
           }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 margin: 0
               }}>

@@ -121,7 +121,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
           >
             <h1 
               className="text-4xl md:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "ChinaCyr, sans-serif" }}
+              style={{ fontFamily: "var(--font-jost), sans-serif" }}
             >
               Добро пожаловать!
             </h1>
@@ -241,7 +241,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                     {/* Заголовок */}
                     <h3 
                       className="text-xl font-bold text-white mb-2"
-                      style={{ fontFamily: "ChinaCyr, sans-serif" }}
+                      style={{ fontFamily: "var(--font-jost), sans-serif" }}
                     >
                       {panel.title}
                     </h3>
@@ -287,7 +287,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                 hover:text-white
                 hover:shadow-lg
               "
-              style={{ fontFamily: "ChinaCyr, sans-serif" }}
+              style={{ fontFamily: "var(--font-jost), sans-serif" }}
             >
               Выйти
             </button>

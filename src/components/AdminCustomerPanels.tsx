@@ -329,7 +329,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
         gap: "16px"
       }}>
         <h2 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "2rem",
           color: "white",
           margin: 0
@@ -345,7 +345,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
             border: "none",
             background: "rgba(34, 197, 94, 0.8)",
             color: "white",
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1rem",
             fontWeight: "600",
             cursor: "pointer",
@@ -382,7 +382,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
           }}
         >
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: 20,
             textAlign: "center"
@@ -609,7 +609,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
                       fontWeight: 800, 
                       fontSize: "1.1rem", 
                       lineHeight: 1.2,
-                      fontFamily: "ChinaCyr, sans-serif"
+                      fontFamily: "var(--font-jost), sans-serif"
                     }}>
                       {user.name || "Без имени"}
                     </h3>
@@ -784,7 +784,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
             }}>
               <h2 style={{
                 color: "white",
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 margin: 0
               }}>
@@ -1132,7 +1132,7 @@ export default function AdminCustomerPanels({ adminToken }: AdminCustomerPanelsP
             }}>
               <h3 style={{
                 color: "white",
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.3rem",
                 margin: "0 0 10px 0"
               }}>

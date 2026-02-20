@@ -139,7 +139,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
           color: "white",
           backdropFilter: "blur(10px)"
         }}>
-          <h2 style={{ fontFamily: "ChinaCyr, sans-serif", marginBottom: "16px" }}>
+          <h2 style={{ fontFamily: "var(--font-jost), sans-serif", marginBottom: "16px" }}>
             Ошибка авторизации
           </h2>
           <p style={{ marginBottom: "20px", fontFamily: "Arial, sans-serif" }}>
@@ -153,7 +153,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
               border: "none",
               backgroundColor: "rgba(201, 169, 110,  0.8)",
               color: "white",
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontWeight: "600",
               cursor: "pointer"
             }}
@@ -184,7 +184,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
         color: "white"
       }}>
         <h1 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "2.5rem",
           fontWeight: 800,
           marginBottom: "10px",
@@ -262,7 +262,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
                 onMouseDown={handleHeaderMouseDown}
                 onMouseUp={() => { dragRef.current = null; }}
               >
-                <h2 style={{ fontFamily: "ChinaCyr, sans-serif", fontSize: "1.25rem", color: "white", margin: 0, pointerEvents: "none" }}>
+                <h2 style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.25rem", color: "white", margin: 0, pointerEvents: "none" }}>
                   Настройки сайта
                 </h2>
                 <button
@@ -309,7 +309,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
           backdropFilter: "blur(10px)"
         }}>
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: "8px",
             color: "white"
@@ -334,7 +334,7 @@ export default function AdminDashboard({ userEmail, onLogout }: AdminDashboardPr
           backdropFilter: "blur(10px)"
         }}>
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: "8px",
             color: "white"

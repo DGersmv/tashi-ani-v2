@@ -268,7 +268,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -295,7 +295,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
         marginLeft: "48px"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.5rem",
           color: "white",
           margin: 0
@@ -311,7 +311,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
             border: "none",
             background: "rgba(34, 197, 94, 0.8)",
             color: "white",
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1rem",
             fontWeight: "600",
             cursor: "pointer",
@@ -349,7 +349,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
           }}
         >
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: 20,
             textAlign: "center"
@@ -504,7 +504,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                 marginBottom: "12px"
               }}>
                 <h3 style={{
-                  fontFamily: "ChinaCyr, sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   fontSize: "1.3rem",
                   color: "rgba(201, 169, 110,  1)",
                   margin: 0,

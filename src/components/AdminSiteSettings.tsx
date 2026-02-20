@@ -30,14 +30,14 @@ const inputStyle: React.CSSProperties = {
   color: "var(--warm-white)",
   fontFamily: "Arial, sans-serif",
 };
-const labelStyle: React.CSSProperties = { display: "block", marginBottom: 6, color: "rgba(250, 247, 242, 0.8)", fontFamily: "ChinaCyr, sans-serif" };
+const labelStyle: React.CSSProperties = { display: "block", marginBottom: 6, color: "rgba(250, 247, 242, 0.8)", fontFamily: "var(--font-jost), sans-serif" };
 const btnStyle: React.CSSProperties = {
   padding: "10px 16px",
   borderRadius: 8,
   border: "none",
   background: "rgba(201, 169, 110, 0.7)",
   color: "var(--ink)",
-  fontFamily: "ChinaCyr, sans-serif",
+  fontFamily: "var(--font-jost), sans-serif",
   fontWeight: 600,
   cursor: "pointer",
   marginRight: 8,
@@ -418,7 +418,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             border: "none",
             background: activeTab === tab.id ? "rgba(201, 169, 110, 0.3)" : "rgba(250, 247, 242, 0.06)",
             color: "white",
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "0.9rem",
             cursor: "pointer",
           }}
@@ -437,7 +437,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
   return (
     <div style={{ marginTop: panelMode ? 0 : 24, display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
       {!panelMode && (
-        <h2 style={{ fontFamily: "ChinaCyr, sans-serif", fontSize: "1.75rem", color: "white", marginBottom: 16 }}>
+        <h2 style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.75rem", color: "white", marginBottom: 16 }}>
           Настройки сайта
         </h2>
       )}
@@ -447,7 +447,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Контакты и шрифты</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Контакты и шрифты</h3>
         <div style={{ display: "grid", gap: 12, maxWidth: 500 }}>
           <label style={labelStyle}>Телефон (в меню)</label>
           <input
@@ -533,7 +533,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </select>
           <div style={{ marginTop: 8 }}>
             <span style={labelStyle}>Образец меню:</span>
-            <p style={{ fontFamily: `${settings.menuFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`, fontSize: "1.1rem", color: "white" }}>
+            <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.1rem", color: "white" }}>
               Главная Услуги Портфолио Контакты
             </p>
           </div>
@@ -550,7 +550,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </select>
           <div style={{ marginTop: 8 }}>
             <span style={labelStyle}>Образец заголовка:</span>
-            <p style={{ fontFamily: `${settings.headingFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`, fontSize: "1.5rem", color: "white" }}>
+            <p style={{ fontFamily: `var(--font-jost), sans-serif`, fontSize: "1.5rem", color: "white" }}>
               Таши-Ани
             </p>
           </div>
@@ -564,7 +564,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Текст на главной</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Текст на главной</h3>
         <p style={{ color: "rgba(250, 247, 242, 0.8)", fontSize: "0.9rem", marginBottom: 16 }}>
           Шрифты и максимальная ширина блока. Строки не выходят за эту ширину и переносятся автоматически.
         </p>
@@ -608,7 +608,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             <div style={{ color: "white", maxWidth: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
               <div
                 style={{
-                  fontFamily: `${settings.mainPageHeadingFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`,
+                  fontFamily: `var(--font-cormorant), serif`,
                   fontSize: "1.5rem",
                   fontWeight: 800,
                   letterSpacing: "0.04em",
@@ -623,7 +623,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
               </div>
               <p
                 style={{
-                  fontFamily: `${settings.mainPageTextFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`,
+                  fontFamily: `var(--font-jost), sans-serif`,
                   fontSize: "1rem",
                   lineHeight: 1.5,
                   margin: 0,
@@ -640,7 +640,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
         </div>
 
         <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(250, 247, 242, 0.2)" }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 8 }}>Редактировать текст на главной</h4>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 8 }}>Редактировать текст на главной</h4>
           <p style={{ color: "rgba(250, 247, 242, 0.7)", fontSize: "0.9rem", marginBottom: 12 }}>Заголовок и блоки текста. Блок 6 — список: каждый пункт с новой строки.</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 600 }}>
             <label style={labelStyle}>Заголовок</label>
@@ -695,7 +695,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Карта</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Карта</h3>
         <div style={{ display: "grid", gap: 12, maxWidth: 400 }}>
           <label style={labelStyle}>Центр карты: долгота</label>
           <input
@@ -740,7 +740,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </button>
         </div>
         <div style={{ marginTop: 20 }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Логотип в шапке (в круге)</h4>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Логотип в шапке (в круге)</h4>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
             <div style={{ flex: "0 0 auto" }}>
               <img
@@ -764,7 +764,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </div>
         </div>
         <div style={{ marginTop: 16 }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "rgba(250, 247, 242, 0.9)", marginBottom: 8 }}>Точки (координаты)</h4>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "rgba(250, 247, 242, 0.9)", marginBottom: 8 }}>Точки (координаты)</h4>
           <p style={{ fontSize: "0.9rem", color: "rgba(250, 247, 242, 0.7)", marginBottom: 8 }}>
             Формат: lon;lat;файл_маркера (файл опционален). Редактируйте и сохраняйте.
           </p>
@@ -792,7 +792,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Фоновые фото</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Фоновые фото</h3>
         <input type="file" accept=".jpg,.jpeg,.png,.webp,.avif" onChange={uploadBg} style={{ marginBottom: 12 }} />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           {bgImages.map((url) => (
@@ -814,7 +814,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Портфолио (фото по разделам)</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Портфолио (фото по разделам)</h3>
         <select
           style={{ ...inputStyle, maxWidth: 300, marginBottom: 12 }}
           value={activePortfolioFolder}
@@ -858,7 +858,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Фото на панелях Услуг</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Фото на панелях Услуг</h3>
         <select
           style={{ ...inputStyle, maxWidth: 300, marginBottom: 12 }}
           value={activeServiceFolder}
