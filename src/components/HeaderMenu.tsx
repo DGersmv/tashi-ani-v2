@@ -90,9 +90,9 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
         margin: "10px 0 0",
         borderRadius: 12,
         backdropFilter: "blur(18px)",
-        background: "linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.12))",
+        background: "linear-gradient(180deg, rgba(250, 247, 242, .18), rgba(250, 247, 242, .12))",
         border: "2px solid rgba(90, 107, 151, 0.6)",
-        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.22)",
+        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(250, 247, 242, .22)",
         padding: "8px 12px",
         overflow: "hidden",
       }
@@ -104,9 +104,9 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
         marginRight: 0,
         borderRadius: 9999,
         backdropFilter: "blur(18px)",
-        background: "linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.12))",
-        border: "2px solid rgba(211, 163, 115, 0.6)",
-        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.22)",
+        background: "linear-gradient(180deg, rgba(250, 247, 242, .18), rgba(250, 247, 242, .12))",
+        border: "2px solid rgba(201, 169, 110,  0.6)",
+        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(250, 247, 242, .22)",
         padding: "12px 22px",
         overflow: "hidden",
       }
@@ -117,9 +117,9 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
         marginRight: 0,
         borderRadius: 16,
         backdropFilter: "blur(18px)",
-        background: "linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.12))",
+        background: "linear-gradient(180deg, rgba(250, 247, 242, .18), rgba(250, 247, 242, .12))",
         border: "2px solid rgba(90, 107, 151, 0.6)",
-        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.22)",
+        boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(250, 247, 242, .22)",
         padding: "10px 16px",
         overflow: "hidden",
       };
@@ -225,7 +225,7 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
                     onClick={() => setMode(isAdmin ? "admin-dashboard" : "dashboard")}
                     style={{ 
                       ...linkFont, 
-                      color: mode === "dashboard" || mode === "admin-dashboard" ? "rgba(211, 163, 115, 1)" : "rgba(211, 163, 115, 0.9)",
+                      color: mode === "dashboard" || mode === "admin-dashboard" ? "rgba(201, 169, 110,  1)" : "rgba(201, 169, 110,  0.9)",
                     }}
                     title={userEmail}
                   >

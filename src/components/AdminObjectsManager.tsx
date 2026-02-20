@@ -192,7 +192,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderTop: "3px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
@@ -250,7 +250,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "16px",
@@ -259,7 +259,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               transition: "all 0.3s ease"
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+              e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
@@ -268,7 +268,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -278,7 +278,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
         <p style={{
           fontFamily: "Arial, sans-serif",
           fontSize: "1rem",
-          color: "rgba(255,255,255,0.8)",
+          color: "rgba(250, 247, 242, 0.8)",
           margin: 0,
           marginLeft: "48px"
         }}>
@@ -295,7 +295,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
         marginLeft: "48px"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.5rem",
           color: "white",
           margin: 0
@@ -311,7 +311,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
             border: "none",
             background: "rgba(34, 197, 94, 0.8)",
             color: "white",
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1rem",
             fontWeight: "600",
             cursor: "pointer",
@@ -338,9 +338,9 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           style={{
-            background: "rgba(255,255,255,0.1)",
+            background: "rgba(250, 247, 242, 0.1)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(255,255,255,0.2)",
+            border: "1px solid rgba(250, 247, 242, 0.2)",
             borderRadius: 16,
             padding: 24,
             marginBottom: 32,
@@ -349,7 +349,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
           }}
         >
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: 20,
             textAlign: "center"
@@ -367,8 +367,8 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               style={{
                 padding: "12px 16px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(250, 247, 242, 0.3)",
+                background: "rgba(250, 247, 242, 0.1)",
                 color: "white",
                 fontSize: "1rem",
                 fontFamily: "Arial, sans-serif"
@@ -382,8 +382,8 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               style={{
                 padding: "12px 16px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(250, 247, 242, 0.3)",
+                background: "rgba(250, 247, 242, 0.1)",
                 color: "white",
                 fontSize: "1rem",
                 fontFamily: "Arial, sans-serif"
@@ -397,8 +397,8 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               style={{
                 padding: "12px 16px",
                 borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(250, 247, 242, 0.3)",
+                background: "rgba(250, 247, 242, 0.1)",
                 color: "white",
                 fontSize: "1rem",
                 fontFamily: "Arial, sans-serif"
@@ -411,7 +411,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                 style={{
                   padding: "12px 24px",
                   borderRadius: 8,
-                  border: "1px solid rgba(255,255,255,0.3)",
+                  border: "1px solid rgba(250, 247, 242, 0.3)",
                   background: "transparent",
                   color: "white",
                   fontSize: "1rem",
@@ -467,7 +467,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
           <div style={{
             gridColumn: "1 / -1",
             textAlign: "center",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(250, 247, 242, 0.6)",
             padding: "60px 20px",
             fontFamily: "Arial, sans-serif"
           }}>
@@ -504,9 +504,9 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                 marginBottom: "12px"
               }}>
                 <h3 style={{
-                  fontFamily: "ChinaCyr, sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   fontSize: "1.3rem",
-                  color: "rgba(211, 163, 115, 1)",
+                  color: "rgba(201, 169, 110,  1)",
                   margin: 0,
                   flex: 1
                 }}>
@@ -550,7 +550,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               {object.description && (
                 <p style={{
                   fontSize: "0.9rem",
-                  color: "rgba(255,255,255,0.8)",
+                  color: "rgba(250, 247, 242, 0.8)",
                   marginBottom: "12px",
                   fontFamily: "Arial, sans-serif"
                 }}>
@@ -562,7 +562,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
               {object.address && (
                 <p style={{
                   fontSize: "0.9rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   marginBottom: "12px",
                   fontFamily: "Arial, sans-serif"
                 }}>
@@ -590,7 +590,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.6)",
+                  color: "rgba(250, 247, 242, 0.6)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   {formatDate(object.createdAt)}
@@ -599,7 +599,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
 
               {/* Статистика */}
               <div style={{
-                borderTop: "1px solid rgba(255,255,255,0.2)",
+                borderTop: "1px solid rgba(250, 247, 242, 0.2)",
                 paddingTop: "16px"
               }}>
                 <div style={{
@@ -614,21 +614,21 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                   }}>
                     <div style={{
                       fontSize: "0.85rem",
-                      color: "rgba(255,255,255,0.8)",
+                      color: "rgba(250, 247, 242, 0.8)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       Проектов: {object.projectsCount}
                     </div>
                     <div style={{
                       fontSize: "0.85rem",
-                      color: "rgba(255,255,255,0.8)",
+                      color: "rgba(250, 247, 242, 0.8)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       Фото: {object.photosCount}
                     </div>
                     <div style={{
                       fontSize: "0.85rem",
-                      color: "rgba(255,255,255,0.8)",
+                      color: "rgba(250, 247, 242, 0.8)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       Документов: {object.documentsCount}
@@ -637,7 +637,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                   
                   {/* Статистика сообщений и комментариев */}
                   <div style={{
-                    borderTop: "1px solid rgba(211, 163, 115, 0.2)",
+                    borderTop: "1px solid rgba(201, 169, 110,  0.2)",
                     paddingTop: "6px",
                     display: "flex",
                     flexDirection: "column",
@@ -645,7 +645,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                   }}>
                     <div style={{
                       fontSize: "0.85rem",
-                      color: (object.unreadMessagesCount || 0) > 0 ? "#d3a373" : "rgba(255,255,255,0.8)",
+                      color: (object.unreadMessagesCount || 0) > 0 ? "#d3a373" : "rgba(250, 247, 242, 0.8)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       💬 Сообщений: {object.totalMessagesCount || 0}
@@ -661,7 +661,7 @@ export default function AdminObjectsManager({ adminToken }: AdminObjectsManagerP
                     </div>
                     <div style={{
                       fontSize: "0.85rem",
-                      color: (object.unreadCommentsCount || 0) > 0 ? "#d3a373" : "rgba(255,255,255,0.8)",
+                      color: (object.unreadCommentsCount || 0) > 0 ? "#d3a373" : "rgba(250, 247, 242, 0.8)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       📷 Комментариев: {object.totalCommentsCount || 0}

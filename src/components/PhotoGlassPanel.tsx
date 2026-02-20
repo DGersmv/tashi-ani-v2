@@ -71,7 +71,7 @@ export default function PhotoGlassPanel({ project }: { project: Project }) {
             inset: 5,
             borderRadius: "inherit",
             overflow: "hidden",
-            background: "rgba(255,255,255,0.15)",
+            background: "rgba(250, 247, 242, 0.15)",
             backdropFilter: "blur(32px)", // стеклянный эффект
             border: "2.5px solid rgba(211,163,115,0.6)",
             display: "flex",
@@ -131,7 +131,7 @@ export default function PhotoGlassPanel({ project }: { project: Project }) {
               </span>
             </div>
             {project.description && (
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,.9)" }}>{project.description}</p>
+              <p style={{ fontSize: 14, color: "rgba(250, 247, 242, .9)" }}>{project.description}</p>
             )}
             <div style={{ justifySelf: "end", opacity: .9, fontSize: 14 }}>Нажмите, чтобы открыть →</div>
           </div>

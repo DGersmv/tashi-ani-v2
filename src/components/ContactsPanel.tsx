@@ -27,7 +27,7 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
     gap: 12,
     padding: "14px 18px",
     borderRadius: 12,
-    background: "rgba(255,255,255,0.08)",
+    background: "rgba(250, 247, 242, 0.08)",
     border: "1px solid rgba(211,163,115,0.4)",
     color: "white",
     textDecoration: "none",
@@ -93,10 +93,10 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                 width: "100%",
                 borderRadius: 16,
                 overflow: "hidden",
-                background: "rgba(255,255,255,0.15)",
+                background: "rgba(250, 247, 242, 0.15)",
                 backdropFilter: "blur(28px)",
                 border: "2.5px solid rgba(211,163,115,0.6)",
-                boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.22)",
+                boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(250, 247, 242, .22)",
                 padding: "28px 24px",
               }}
             >
@@ -111,7 +111,7 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   backgroundColor: "transparent",
                   border: "none",
                   borderRadius: "50%",
@@ -121,10 +121,10 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "white";
-                  e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+                  e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                  e.currentTarget.style.color = "rgba(250, 247, 242, 0.7)";
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
               >
@@ -153,11 +153,11 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                   rel="noopener noreferrer"
                   style={linkStyle}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.15)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.7)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.08)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.4)";
                   }}
                 >
@@ -169,11 +169,11 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                   rel="noopener noreferrer"
                   style={linkStyle}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.15)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.7)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.08)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.4)";
                   }}
                 >
@@ -183,11 +183,11 @@ export default function ContactsPanel({ isOpen, onClose }: ContactsPanelProps) {
                   href={`mailto:${email}`}
                   style={linkStyle}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.15)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.7)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.background = "rgba(250, 247, 242, 0.08)";
                     e.currentTarget.style.borderColor = "rgba(211,163,115,0.4)";
                   }}
                 >

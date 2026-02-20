@@ -444,7 +444,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderTop: "3px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
@@ -506,7 +506,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "16px",
@@ -515,7 +515,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
               transition: "all 0.3s ease"
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+              e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
@@ -524,7 +524,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -535,7 +535,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
           <p style={{
             fontFamily: "Arial, sans-serif",
             fontSize: "1rem",
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(250, 247, 242, 0.8)",
             margin: 0,
             marginLeft: "48px"
           }}>
@@ -546,7 +546,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
           <p style={{
             fontFamily: "Arial, sans-serif",
             fontSize: "0.9rem",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(250, 247, 242, 0.6)",
             margin: 0,
             marginLeft: "48px",
             marginTop: "4px"
@@ -616,7 +616,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
                 }}>
                   <h4 style={{
-                    fontFamily: "ChinaCyr, sans-serif",
+                    fontFamily: "var(--font-jost), sans-serif",
                     fontSize: "1.3rem",
                     color: "white",
                     margin: "0 0 8px 0"
@@ -627,7 +627,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                     <p style={{
                       fontFamily: "Arial, sans-serif",
                       fontSize: "0.9rem",
-                      color: "rgba(255,255,255,0.7)",
+                      color: "rgba(250, 247, 242, 0.7)",
                       margin: "0 0 12px 0"
                     }}>
                       {project.description}
@@ -653,7 +653,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                     </div>
                     <div style={{
                       fontSize: "0.8rem",
-                      color: "rgba(255,255,255,0.6)",
+                      color: "rgba(250, 247, 242, 0.6)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       {formatDate(project.createdAt)}
@@ -697,7 +697,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                         }}>
                           <span style={{
                             fontSize: "0.75rem",
-                            color: "rgba(255,255,255,0.6)",
+                            color: "rgba(250, 247, 242, 0.6)",
                             fontFamily: "Arial, sans-serif"
                           }}>
                             {(document.fileSize / 1024).toFixed(1)} KB
@@ -748,7 +748,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   <div style={{
                     textAlign: "center",
                     padding: "20px",
-                    color: "rgba(255,255,255,0.5)",
+                    color: "rgba(250, 247, 242, 0.5)",
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.9rem"
                   }}>
@@ -776,7 +776,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   padding: '6px 12px',
                   borderRadius: '6px',
                   border: 'none',
-                  backgroundColor: selectedFolderId === null ? 'rgba(211,163,115,0.35)' : 'rgba(255,255,255,0.1)',
+                  backgroundColor: selectedFolderId === null ? 'rgba(211,163,115,0.35)' : 'rgba(250, 247, 242, 0.1)',
                   color: 'white',
                   fontFamily: 'Arial, sans-serif',
                   cursor: 'pointer',
@@ -793,7 +793,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                     padding: '6px 12px',
                     borderRadius: '6px',
                     border: 'none',
-                    backgroundColor: selectedFolderId === f.id ? 'rgba(211,163,115,0.35)' : 'rgba(255,255,255,0.1)',
+                    backgroundColor: selectedFolderId === f.id ? 'rgba(211,163,115,0.35)' : 'rgba(250, 247, 242, 0.1)',
                     color: 'white',
                     fontFamily: 'Arial, sans-serif',
                     cursor: 'pointer',
@@ -839,7 +839,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   borderRadius: "8px",
                   overflow: "hidden",
                   marginBottom: "12px",
-                  backgroundColor: "rgba(255,255,255,0.1)",
+                  backgroundColor: "rgba(250, 247, 242, 0.1)",
                   position: "relative"
                 }}>
                   <img
@@ -863,8 +863,8 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                     height: "100%",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.7)",
+                    backgroundColor: "rgba(250, 247, 242, 0.1)",
+                    color: "rgba(250, 247, 242, 0.7)",
                     fontSize: "2rem"
                   }}>
                     📷
@@ -913,7 +913,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                 <p style={{
                   fontFamily: "Arial, sans-serif",
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.6)",
+                  color: "rgba(250, 247, 242, 0.6)",
                   margin: 0
                 }}>
                   {formatDate(photo.uploadedAt)}
@@ -989,7 +989,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                     <p style={{
                       fontFamily: "Arial, sans-serif",
                       fontSize: "0.75rem",
-                      color: "rgba(255,255,255,0.6)",
+                      color: "rgba(250, 247, 242, 0.6)",
                       margin: 0
                     }}>
                       {doc.documentType}
@@ -999,7 +999,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                 <p style={{
                   fontFamily: "Arial, sans-serif",
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.5)",
+                  color: "rgba(250, 247, 242, 0.5)",
                   margin: "0 0 12px 0"
                 }}>
                   {formatDate(doc.uploadedAt)}
@@ -1045,7 +1045,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
               marginBottom: "24px"
             }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 color: "white",
                 margin: "0 0 20px 0",
@@ -1145,7 +1145,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                   <p style={{
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.75rem",
-                    color: "rgba(255,255,255,0.6)",
+                    color: "rgba(250, 247, 242, 0.6)",
                     margin: 0
                   }}>
                     {formatDate(message.createdAt)}
@@ -1173,7 +1173,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
          (activeTab === 'messages' && object.messages.length === 0) ? (
           <div style={{
             textAlign: "center",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(250, 247, 242, 0.6)",
             padding: "40px",
             fontFamily: "Arial, sans-serif"
           }}>
@@ -1212,7 +1212,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
           <div style={{
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(255,255,255,0.1)",
+            backgroundColor: "rgba(250, 247, 242, 0.1)",
             padding: "20px",
             display: "flex",
             gap: "20px",
@@ -1358,7 +1358,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
               display: "flex",
               flexDirection: "column",
               gap: "16px",
-              backgroundColor: "rgba(255,255,255,0.05)",
+              backgroundColor: "rgba(250, 247, 242, 0.05)",
               borderRadius: "8px",
               padding: "16px",
               maxHeight: "80vh",
@@ -1369,7 +1369,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                borderBottom: "1px solid rgba(255,255,255,0.2)",
+                borderBottom: "1px solid rgba(250, 247, 242, 0.2)",
                 paddingBottom: "12px"
               }}>
                 <h3 style={{
@@ -1418,7 +1418,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                       <p style={{
                         fontFamily: "Arial, sans-serif",
                         fontSize: "0.75rem",
-                        color: "rgba(255,255,255,0.6)",
+                        color: "rgba(250, 247, 242, 0.6)",
                         margin: 0
                       }}>
                         {formatDate(comment.createdAt)}
@@ -1439,7 +1439,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
                 {photoComments.length === 0 && (
                   <div style={{
                     textAlign: "center",
-                    color: "rgba(255,255,255,0.5)",
+                    color: "rgba(250, 247, 242, 0.5)",
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.9rem",
                     padding: "20px"
@@ -1451,7 +1451,7 @@ export default function ObjectDetailView({ userEmail }: ObjectDetailViewProps) {
 
               {/* Форма добавления комментария */}
               <div style={{
-                borderTop: "1px solid rgba(255,255,255,0.2)",
+                borderTop: "1px solid rgba(250, 247, 242, 0.2)",
                 paddingTop: "12px"
               }}>
                 <textarea

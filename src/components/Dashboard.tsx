@@ -67,7 +67,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
       icon: "🏠",
       description: "Управление участками и домами",
       count: userStats.totalObjects,
-      color: "rgba(59, 130, 246, 0.8)"
+      color: "var(--sage)"
     },
     {
       id: "photos",
@@ -75,7 +75,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
       icon: "📸",
       description: "Просмотр фотографий объектов",
       count: userStats.totalPhotos,
-      color: "rgba(34, 197, 94, 0.8)"
+      color: "var(--moss)"
     },
     {
       id: "documents",
@@ -83,7 +83,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
       icon: "📄",
       description: "Проекты и документы",
       count: userStats.totalDocuments,
-      color: "rgba(168, 85, 247, 0.8)"
+      color: "var(--gold)"
     },
     {
       id: "messages",
@@ -91,7 +91,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
       icon: "💬",
       description: "Общение с командой",
       count: userStats.totalMessages,
-      color: "rgba(245, 158, 11, 0.8)"
+      color: "var(--gold)"
     }
   ];
 
@@ -102,7 +102,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
         <div 
           className="w-full h-full"
           style={{
-            background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            background: "linear-gradient(135deg, var(--ink) 0%, rgba(28, 27, 22, 0.8) 50%, rgba(28, 27, 22, 0.6) 100%)",
             backgroundAttachment: "fixed"
           }}
         />
@@ -121,7 +121,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
           >
             <h1 
               className="text-4xl md:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "ChinaCyr, sans-serif" }}
+              style={{ fontFamily: "var(--font-jost), sans-serif" }}
             >
               Добро пожаловать!
             </h1>
@@ -157,9 +157,9 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                     key={stat.label}
                     className="text-center p-4 rounded-xl"
                     style={{
-                      backgroundColor: "rgba(255,255,255,0.1)",
+                      backgroundColor: "rgba(250, 247, 242, 0.08)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255,255,255,0.1)"
+                      border: "1px solid rgba(201, 169, 110, 0.1)"
                     }}
                   >
                     <div 
@@ -207,9 +207,9 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                     group-hover:shadow-2xl
                   "
                   style={{
-                    background: "rgba(255,255,255,0.1)",
+                    background: "rgba(250, 247, 242, 0.08)",
                     backdropFilter: "blur(20px)",
-                    border: "2px solid rgba(211, 163, 115, 0.3)",
+                    border: "2px solid rgba(201, 169, 110, 0.2)",
                     boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
                   }}
                 >
@@ -217,7 +217,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: "linear-gradient(135deg, rgba(211, 163, 115, 0.2), rgba(211, 163, 115, 0.1))"
+                      background: "linear-gradient(135deg, rgba(201, 169, 110, 0.15), rgba(201, 169, 110, 0.08))"
                     }}
                   />
 
@@ -241,7 +241,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                     {/* Заголовок */}
                     <h3 
                       className="text-xl font-bold text-white mb-2"
-                      style={{ fontFamily: "ChinaCyr, sans-serif" }}
+                      style={{ fontFamily: "var(--font-jost), sans-serif" }}
                     >
                       {panel.title}
                     </h3>
@@ -256,7 +256,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                   <div
                     className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      boxShadow: "inset 0 0 20px rgba(211, 163, 115, 0.3)"
+                      boxShadow: "inset 0 0 20px rgba(201, 169, 110,  0.3)"
                     }}
                   />
                 </div>
@@ -287,7 +287,7 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                 hover:text-white
                 hover:shadow-lg
               "
-              style={{ fontFamily: "ChinaCyr, sans-serif" }}
+              style={{ fontFamily: "var(--font-jost), sans-serif" }}
             >
               Выйти
             </button>

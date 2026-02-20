@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
+import LoginPanel from "@/components/LoginPanel";
 
 const PHONE = "+7 921 952-61-17";
 const TEL_HREF = "tel:+79219526117";
@@ -13,8 +14,10 @@ export default function SiteNav() {
   const { currentIndex, goTo } = useFullPageScroll();
   const settings = useSiteSettings();
   const logoSrc = settings.siteLogoPath || "/logo_new.png";
+  const router = useRouter();
 
   const isFirstSlide = currentIndex === 0;
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <nav
@@ -46,7 +49,7 @@ export default function SiteNav() {
             borderRadius: "50%",
             background: "rgba(206, 214, 177, 0.18)",
             backdropFilter: "blur(18px)",
-            border: "3px solid rgba(211, 163, 115, 0.6)",
+            border: "3px solid rgba(201, 169, 110,  0.6)",
             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
             display: "flex",
             alignItems: "center",
@@ -120,12 +123,13 @@ export default function SiteNav() {
         >
           О нас
         </button>
-        <Link
-          href="/dashboard"
+        <button
+          type="button"
+          onClick={() => setIsLoginOpen(true)}
           style={linkStyle(isFirstSlide)}
         >
           Кабинет
-        </Link>
+        </button>
       </div>
 
       {/* Телефон */}
@@ -143,6 +147,20 @@ export default function SiteNav() {
       >
         {PHONE}
       </a>
+
+      {/* Login Panel */}
+      <LoginPanel 
+        isOpen={isLoginOpen} 
+        onClose={() => setIsLoginOpen(false)}
+        onLoginSuccess={(email) => {
+          localStorage.setItem("userEmail", email);
+          setIsLoginOpen(false);
+          // Перенаправляем в кабинет
+          setTimeout(() => {
+            router.push("/dashboard");
+          }, 300);
+        }}
+      />
     </nav>
   );
 }

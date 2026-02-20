@@ -102,7 +102,7 @@ export default function PrinciplesSlide({ index = 2 }: { index?: number }) {
               className="principles-card"
               style={{
                 padding: "36px 32px",
-                background: "rgba(255,255,255,.025)",
+                background: "rgba(250, 247, 242, .025)",
                 borderTop: "1px solid rgba(201,169,110,.13)",
                 position: "relative",
                 overflow: "hidden",

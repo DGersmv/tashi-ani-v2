@@ -152,7 +152,7 @@ export default function BimModelsList({
       }}>
         <div>
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             margin: 0,
             color: "white"

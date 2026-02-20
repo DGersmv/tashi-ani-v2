@@ -14,30 +14,30 @@ const FONT_OPTIONS = [
 const SERVICE_FOLDERS = ["Проектирование", "Визуализация", "Реализация", "Сопровождение"];
 
 const panelStyle: React.CSSProperties = {
-  backgroundColor: "rgba(255, 255, 255, 0.08)",
+  backgroundColor: "rgba(250, 247, 242, 0.06)",
   borderRadius: 12,
   padding: 20,
   marginBottom: 16,
-  border: "1px solid rgba(211, 163, 115, 0.3)",
+  border: "1px solid rgba(201, 169, 110, 0.2)",
 };
 const inputStyle: React.CSSProperties = {
   width: "100%",
   maxWidth: 400,
   padding: "10px 12px",
   borderRadius: 8,
-  border: "1px solid rgba(255,255,255,0.3)",
-  background: "rgba(0,0,0,0.3)",
-  color: "white",
+  border: "1px solid rgba(201, 169, 110, 0.2)",
+  background: "rgba(0,0,0,0.2)",
+  color: "var(--warm-white)",
   fontFamily: "Arial, sans-serif",
 };
-const labelStyle: React.CSSProperties = { display: "block", marginBottom: 6, color: "rgba(255,255,255,0.9)", fontFamily: "ChinaCyr, sans-serif" };
+const labelStyle: React.CSSProperties = { display: "block", marginBottom: 6, color: "rgba(250, 247, 242, 0.8)", fontFamily: "var(--font-jost), sans-serif" };
 const btnStyle: React.CSSProperties = {
   padding: "10px 16px",
   borderRadius: 8,
   border: "none",
-  background: "rgba(211, 163, 115, 0.8)",
-  color: "white",
-  fontFamily: "ChinaCyr, sans-serif",
+  background: "rgba(201, 169, 110, 0.7)",
+  color: "var(--ink)",
+  fontFamily: "var(--font-jost), sans-serif",
   fontWeight: 600,
   cursor: "pointer",
   marginRight: 8,
@@ -400,13 +400,13 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
   if (!settings) {
     return (
       <div style={{ ...panelStyle, margin: panelMode ? 20 : 0 }}>
-        <p style={{ color: "rgba(255,255,255,0.7)" }}>Загрузка настроек…</p>
+          <p style={{ color: "rgba(250, 247, 242, 0.6)" }}>Загрузка настроек…</p>
       </div>
     );
   }
 
   const tabRow = panelMode ? (
-    <div style={{ display: "flex", gap: 4, padding: "12px 20px", borderBottom: "1px solid rgba(255,255,255,0.1)", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", gap: 4, padding: "12px 20px", borderBottom: "1px solid rgba(250, 247, 242, 0.1)", flexWrap: "wrap" }}>
       {TABS.map((tab) => (
         <button
           key={tab.id}
@@ -416,9 +416,9 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             padding: "8px 14px",
             borderRadius: 8,
             border: "none",
-            background: activeTab === tab.id ? "rgba(211, 163, 115, 0.5)" : "rgba(255,255,255,0.08)",
+            background: activeTab === tab.id ? "rgba(201, 169, 110, 0.3)" : "rgba(250, 247, 242, 0.06)",
             color: "white",
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "0.9rem",
             cursor: "pointer",
           }}
@@ -437,17 +437,17 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
   return (
     <div style={{ marginTop: panelMode ? 0 : 24, display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
       {!panelMode && (
-        <h2 style={{ fontFamily: "ChinaCyr, sans-serif", fontSize: "1.75rem", color: "white", marginBottom: 16 }}>
+        <h2 style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.75rem", color: "white", marginBottom: 16 }}>
           Настройки сайта
         </h2>
       )}
       {tabRow}
       <div style={{ overflow: "auto", padding: panelMode ? 20 : 0, flex: 1 }}>
-        {message && <p style={{ color: "rgba(211,163,115,1)", marginBottom: 12 }}>{message}</p>}
+        {message && <p style={{ color: "rgba(201, 169, 110, 0.9)", marginBottom: 12 }}>{message}</p>}
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Контакты и шрифты</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Контакты и шрифты</h3>
         <div style={{ display: "grid", gap: 12, maxWidth: 500 }}>
           <label style={labelStyle}>Телефон (в меню)</label>
           <input
@@ -468,7 +468,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             onChange={(e) => setSettings((s) => (s ? { ...s, contactTelegram: e.target.value } : null))}
           />
           <label style={labelStyle}>Адрес канала для новостей</label>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", marginBottom: 6 }}>
+          <p style={{ color: "rgba(250, 247, 242, 0.65)", fontSize: "0.85rem", marginBottom: 6 }}>
             Username канала (tashiani) или полная ссылка (https://t.me/s/tashiani) — ссылка «Открыть в Telegram»
           </p>
           <input
@@ -478,7 +478,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             placeholder="tashiani или https://t.me/s/tashiani"
           />
           <label style={labelStyle}>RSS-лента новостей (отображение на сайте)</label>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", marginBottom: 6 }}>
+          <p style={{ color: "rgba(250, 247, 242, 0.65)", fontSize: "0.85rem", marginBottom: 6 }}>
             URL RSS-ленты канала — посты с фото и видео будут показываться прямо на странице. Создать ленту: rss.app → Telegram → вставьте ссылку на канал
           </p>
           <input
@@ -493,9 +493,9 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             value={settings.contactEmail ?? ""}
             onChange={(e) => setSettings((s) => (s ? { ...s, contactEmail: e.target.value } : null))}
           />
-          <div style={{ marginTop: 16, marginBottom: 8, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.2)" }}>
+          <div style={{ marginTop: 16, marginBottom: 8, paddingTop: 16, borderTop: "1px solid rgba(250, 247, 242, 0.2)" }}>
             <span style={labelStyle}>Загрузить свой шрифт</span>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", marginBottom: 8 }}>TTF, WOFF, WOFF2 — сразу появится в списке и в образце ниже</p>
+            <p style={{ color: "rgba(250, 247, 242, 0.7)", fontSize: "0.9rem", marginBottom: 8 }}>TTF, WOFF, WOFF2 — сразу появится в списке и в образце ниже</p>
             <form onSubmit={handleFontUpload} style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
               <input
                 ref={fontFileInputRef}
@@ -521,7 +521,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             )}
           </div>
           <label style={labelStyle}>Шрифт меню</label>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", marginBottom: 6 }}>Пункты в шапке: Главная, Услуги, Портфолио, Контакты</p>
+          <p style={{ color: "rgba(250, 247, 242, 0.65)", fontSize: "0.85rem", marginBottom: 6 }}>Пункты в шапке: Главная, Услуги, Портфолио, Контакты</p>
           <select
             style={inputStyle}
             value={settings.menuFont ?? "ChinaCyr"}
@@ -533,12 +533,12 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </select>
           <div style={{ marginTop: 8 }}>
             <span style={labelStyle}>Образец меню:</span>
-            <p style={{ fontFamily: `${settings.menuFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`, fontSize: "1.1rem", color: "white" }}>
+            <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "1.1rem", color: "white" }}>
               Главная Услуги Портфолио Контакты
             </p>
           </div>
           <label style={labelStyle}>Шрифт заголовков и названий панелей</label>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", marginBottom: 6 }}>Заголовок панели «Контакты», названия разделов Услуг и Портфолио, заголовки в личном кабинете</p>
+          <p style={{ color: "rgba(250, 247, 242, 0.65)", fontSize: "0.85rem", marginBottom: 6 }}>Заголовок панели «Контакты», названия разделов Услуг и Портфолио, заголовки в личном кабинете</p>
           <select
             style={inputStyle}
             value={settings.headingFont ?? "ChinaCyr"}
@@ -550,7 +550,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </select>
           <div style={{ marginTop: 8 }}>
             <span style={labelStyle}>Образец заголовка:</span>
-            <p style={{ fontFamily: `${settings.headingFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`, fontSize: "1.5rem", color: "white" }}>
+            <p style={{ fontFamily: `var(--font-jost), sans-serif`, fontSize: "1.5rem", color: "white" }}>
               Таши-Ани
             </p>
           </div>
@@ -564,8 +564,8 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Текст на главной</h3>
-        <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", marginBottom: 16 }}>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Текст на главной</h3>
+        <p style={{ color: "rgba(250, 247, 242, 0.8)", fontSize: "0.9rem", marginBottom: 16 }}>
           Шрифты и максимальная ширина блока. Строки не выходят за эту ширину и переносятся автоматически.
         </p>
         <div style={{ display: "grid", gap: 12, maxWidth: 500 }}>
@@ -599,20 +599,20 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
             value={settings.mainPageTextMaxWidth ?? 720}
             onChange={(e) => setSettings((s) => (s ? { ...s, mainPageTextMaxWidth: parseInt(e.target.value, 10) || undefined } : null))}
           />
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>
+          <p style={{ color: "rgba(250, 247, 242, 0.6)", fontSize: "0.85rem" }}>
             Строки переносятся в пределах этой ширины; длинные слова при необходимости разбиваются.
           </p>
 
           <div style={{ marginTop: 16, padding: 16, background: "rgba(0,0,0,0.25)", borderRadius: 8, maxWidth: settings.mainPageTextMaxWidth ?? 720 }}>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.8rem", marginBottom: 10 }}>Как будет выглядеть:</p>
+            <p style={{ color: "rgba(250, 247, 242, 0.7)", fontSize: "0.8rem", marginBottom: 10 }}>Как будет выглядеть:</p>
             <div style={{ color: "white", maxWidth: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>
               <div
                 style={{
-                  fontFamily: `${settings.mainPageHeadingFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`,
+                  fontFamily: `var(--font-cormorant), serif`,
                   fontSize: "1.5rem",
                   fontWeight: 800,
                   letterSpacing: "0.04em",
-                  background: "linear-gradient(90deg, #faecd1 0%, #d3a373 100%)",
+                  background: "linear-gradient(90deg, rgba(250, 247, 242, 0.9) 0%, rgba(201, 169, 110, 0.7) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   marginBottom: 12,
@@ -623,7 +623,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
               </div>
               <p
                 style={{
-                  fontFamily: `${settings.mainPageTextFont ?? "ChinaCyr"}, ChinaCyr, Arial, sans-serif`,
+                  fontFamily: `var(--font-jost), sans-serif`,
                   fontSize: "1rem",
                   lineHeight: 1.5,
                   margin: 0,
@@ -639,9 +639,9 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </button>
         </div>
 
-        <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.2)" }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 8 }}>Редактировать текст на главной</h4>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", marginBottom: 12 }}>Заголовок и блоки текста. Блок 6 — список: каждый пункт с новой строки.</p>
+        <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(250, 247, 242, 0.2)" }}>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 8 }}>Редактировать текст на главной</h4>
+          <p style={{ color: "rgba(250, 247, 242, 0.7)", fontSize: "0.9rem", marginBottom: 12 }}>Заголовок и блоки текста. Блок 6 — список: каждый пункт с новой строки.</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 600 }}>
             <label style={labelStyle}>Заголовок</label>
             <input
@@ -695,7 +695,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Карта</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Карта</h3>
         <div style={{ display: "grid", gap: 12, maxWidth: 400 }}>
           <label style={labelStyle}>Центр карты: долгота</label>
           <input
@@ -719,7 +719,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
               <img
                 src={(settings.mapLogoPath || "/points/default.png") + "?v=" + mapLogoVersion}
                 alt="Логотип"
-                style={{ width: 64, height: 64, objectFit: "contain", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(0,0,0,0.2)" }}
+                style={{ width: 64, height: 64, objectFit: "contain", borderRadius: 8, border: "1px solid rgba(250, 247, 242, 0.2)", background: "rgba(0,0,0,0.2)" }}
                 onError={(e) => { (e.target as HTMLImageElement).src = "/points/default.png"; }}
               />
             </div>
@@ -740,7 +740,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </button>
         </div>
         <div style={{ marginTop: 20 }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Логотип в шапке (в круге)</h4>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Логотип в шапке (в круге)</h4>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
             <div style={{ flex: "0 0 auto" }}>
               <img
@@ -764,8 +764,8 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           </div>
         </div>
         <div style={{ marginTop: 16 }}>
-          <h4 style={{ fontFamily: "ChinaCyr, sans-serif", color: "rgba(255,255,255,0.9)", marginBottom: 8 }}>Точки (координаты)</h4>
-          <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", marginBottom: 8 }}>
+          <h4 style={{ fontFamily: "var(--font-jost), sans-serif", color: "rgba(250, 247, 242, 0.9)", marginBottom: 8 }}>Точки (координаты)</h4>
+          <p style={{ fontSize: "0.9rem", color: "rgba(250, 247, 242, 0.7)", marginBottom: 8 }}>
             Формат: lon;lat;файл_маркера (файл опционален). Редактируйте и сохраняйте.
           </p>
           <textarea
@@ -792,7 +792,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Фоновые фото</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Фоновые фото</h3>
         <input type="file" accept=".jpg,.jpeg,.png,.webp,.avif" onChange={uploadBg} style={{ marginBottom: 12 }} />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           {bgImages.map((url) => (
@@ -814,7 +814,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Портфолио (фото по разделам)</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Портфолио (фото по разделам)</h3>
         <select
           style={{ ...inputStyle, maxWidth: 300, marginBottom: 12 }}
           value={activePortfolioFolder}
@@ -858,7 +858,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
 
         {contentWrap(
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: "ChinaCyr, sans-serif", color: "white", marginBottom: 12 }}>Фото на панелях Услуг</h3>
+        <h3 style={{ fontFamily: "var(--font-jost), sans-serif", color: "white", marginBottom: 12 }}>Фото на панелях Услуг</h3>
         <select
           style={{ ...inputStyle, maxWidth: 300, marginBottom: 12 }}
           value={activeServiceFolder}
@@ -875,7 +875,7 @@ export default function AdminSiteSettings({ adminToken, panelMode = false }: Adm
           onChange={(e) => uploadService(activeServiceFolder, e)}
           style={{ marginBottom: 12 }}
         />
-        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginTop: -6, marginBottom: 12 }}>Можно выбрать несколько файлов сразу</p>
+        <p style={{ color: "rgba(250, 247, 242, 0.6)", fontSize: "0.85rem", marginTop: -6, marginBottom: 12 }}>Можно выбрать несколько файлов сразу</p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           {(servicesProjects.find((p) => p.name === activeServiceFolder)?.items ?? []).map((item) => (
             <div key={item.file} style={{ position: "relative" }}>

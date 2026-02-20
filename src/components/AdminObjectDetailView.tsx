@@ -175,14 +175,14 @@ function ProjectStatusRow({
       gap: "12px",
       flexWrap: "wrap",
       padding: "12px 16px",
-      backgroundColor: "rgba(255,255,255,0.08)",
+      backgroundColor: "rgba(250, 247, 242, 0.08)",
       borderRadius: "12px",
-      border: "1px solid rgba(255,255,255,0.12)",
+      border: "1px solid rgba(250, 247, 242, 0.12)",
     }}>
       <span style={{ color: "white", fontFamily: "Arial, sans-serif", flex: "1 1 200px", minWidth: 0 }}>
         {project.title}
       </span>
-      <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem" }}>
+      <span style={{ color: "rgba(250, 247, 242, 0.7)", fontSize: "0.9rem" }}>
         {PROJECT_STATUS_LABELS[project.status] ?? project.status}
       </span>
       <select
@@ -192,15 +192,15 @@ function ProjectStatusRow({
         style={{
           padding: "8px 12px",
           borderRadius: "8px",
-          border: "1px solid rgba(255,255,255,0.3)",
-          background: "rgba(255,255,255,0.1)",
+          border: "1px solid rgba(250, 247, 242, 0.3)",
+          background: "rgba(250, 247, 242, 0.1)",
           color: "white",
           fontFamily: "Arial, sans-serif",
           cursor: updating ? "not-allowed" : "pointer",
         }}
       >
         {(["PLANNING", "IN_PROGRESS", "COMPLETED", "ON_HOLD"] as const).map((s) => (
-          <option key={s} value={s} style={{ background: "#1a1a2e", color: "white" }}>
+          <option key={s} value={s} style={{ background: "var(--ink)", color: "white" }}>
             {PROJECT_STATUS_LABELS[s]}
           </option>
         ))}
@@ -261,7 +261,7 @@ export default function AdminObjectDetailView({ adminToken }: AdminObjectDetailV
   const lastFetchedPanoramaIdRef = useRef<number | null>(null);
   const createMarkerHtml = useCallback((color: string, isActive: boolean, isPending = false) => {
     const size = isActive ? 20 : 16;
-    const border = isPending ? "2px dashed rgba(59,130,246,0.9)" : "2px solid rgba(255,255,255,0.9)";
+    const border = isPending ? "2px dashed rgba(59,130,246,0.9)" : "2px solid rgba(250, 247, 242, 0.9)";
     const background = isPending ? "rgba(59,130,246,0.75)" : color;
     return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${background};border:${border};box-shadow:0 0 12px rgba(0,0,0,0.45);"></div>`;
   }, []);
@@ -1679,7 +1679,7 @@ useEffect(() => {
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderTop: "3px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
@@ -1742,7 +1742,7 @@ useEffect(() => {
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "16px",
@@ -1751,7 +1751,7 @@ useEffect(() => {
               transition: "all 0.3s ease"
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+              e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
@@ -1760,7 +1760,7 @@ useEffect(() => {
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -1777,7 +1777,7 @@ useEffect(() => {
             <p style={{
               fontFamily: "Arial, sans-serif",
               fontSize: "1rem",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               margin: 0
             }}>
               {object?.description}
@@ -1787,7 +1787,7 @@ useEffect(() => {
             <p style={{
               fontFamily: "Arial, sans-serif",
               fontSize: "0.9rem",
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(250, 247, 242, 0.6)",
               margin: 0
             }}>
               📍 {object?.address}
@@ -1796,7 +1796,7 @@ useEffect(() => {
           <p style={{
             fontFamily: "Arial, sans-serif",
             fontSize: "0.9rem",
-            color: "rgba(255,255,255,0.7)",
+            color: "rgba(250, 247, 242, 0.7)",
             margin: 0
           }}>
             Заказчик: {object?.user?.name || object?.user?.email}
@@ -2018,7 +2018,7 @@ useEffect(() => {
                       }}>
                         <span style={{
                           fontSize: "0.75rem",
-                          color: "rgba(255,255,255,0.7)",
+                          color: "rgba(250, 247, 242, 0.7)",
                           fontFamily: "Arial, sans-serif"
                         }}>
                           {formatDate(photo.uploadedAt)}
@@ -2060,7 +2060,7 @@ useEffect(() => {
                               <div style={{
                                 width: "12px",
                                 height: "12px",
-                                border: "2px solid rgba(255,255,255,0.3)",
+                                border: "2px solid rgba(250, 247, 242, 0.3)",
                                 borderTop: "2px solid white",
                                 borderRadius: "50%",
                                 animation: "spin 1s linear infinite"
@@ -2078,13 +2078,13 @@ useEffect(() => {
                         <div style={{ 
                           marginBottom: "12px",
                           padding: "8px",
-                          background: "rgba(211, 163, 115, 0.15)",
+                          background: "rgba(201, 169, 110,  0.15)",
                           borderRadius: "6px",
-                          border: "1px solid rgba(211, 163, 115, 0.3)"
+                          border: "1px solid rgba(201, 169, 110,  0.3)"
                         }}>
                           <div style={{
                             fontSize: "0.75rem",
-                            color: "rgba(255,255,255,0.7)",
+                            color: "rgba(250, 247, 242, 0.7)",
                             marginBottom: "2px",
                             fontFamily: "Arial, sans-serif"
                           }}>
@@ -2143,7 +2143,7 @@ useEffect(() => {
             ) : (
               <div style={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(250, 247, 242, 0.6)",
                 padding: "60px 20px",
                 fontFamily: "Arial, sans-serif"
               }}>
@@ -2293,7 +2293,7 @@ useEffect(() => {
                         </span>
                         <span style={{
                           fontSize: "0.75rem",
-                          color: "rgba(255,255,255,0.7)",
+                          color: "rgba(250, 247, 242, 0.7)",
                           fontFamily: "Arial, sans-serif"
                         }}>
                           {formatDate(photo.uploadedAt)}
@@ -2306,7 +2306,7 @@ useEffect(() => {
             ) : (
               <div style={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(250, 247, 242, 0.6)",
                 padding: "60px 20px",
                 fontFamily: "Arial, sans-serif"
               }}>
@@ -2415,7 +2415,7 @@ useEffect(() => {
                         width: "100%",
                         height: "100%",
                         fontSize: "3rem",
-                        color: "rgba(255,255,255,0.9)"
+                        color: "rgba(250, 247, 242, 0.9)"
                       }}>
                         🌀
                       </div>
@@ -2504,7 +2504,7 @@ useEffect(() => {
                       }}>
                         <span style={{
                           fontSize: "0.75rem",
-                          color: "rgba(255,255,255,0.7)",
+                          color: "rgba(250, 247, 242, 0.7)",
                           fontFamily: "Arial, sans-serif"
                         }}>
                           {formatDate(panorama.uploadedAt)}
@@ -2586,7 +2586,7 @@ useEffect(() => {
             ) : (
               <div style={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(250, 247, 242, 0.6)",
                 padding: "60px 20px",
                 fontFamily: "Arial, sans-serif"
               }}>
@@ -2601,7 +2601,7 @@ useEffect(() => {
         {activeTab === 'projects' && (
           <div>
             <h3 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.5rem",
               color: "white",
               margin: "0 0 24px 0",
@@ -2616,7 +2616,7 @@ useEffect(() => {
             {object.projects?.length > 0 ? (
               <>
                 <p style={{
-                  color: "rgba(255,255,255,0.75)",
+                  color: "rgba(250, 247, 242, 0.75)",
                   fontSize: "0.95rem",
                   marginBottom: "12px",
                   fontFamily: "Arial, sans-serif"
@@ -2641,7 +2641,7 @@ useEffect(() => {
                 </div>
               </>
             ) : (
-              <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: "24px", fontSize: "0.95rem" }}>
+              <p style={{ color: "rgba(250, 247, 242, 0.6)", marginBottom: "24px", fontSize: "0.95rem" }}>
                 У этого объекта пока нет проектов. Создайте проект в разделе документов или через API.
               </p>
             )}
@@ -2660,7 +2660,7 @@ useEffect(() => {
         {activeTab === 'payments' && (
           <div style={{
             textAlign: "center",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(250, 247, 242, 0.6)",
             padding: "60px 20px",
             fontFamily: "Arial, sans-serif"
           }}>
@@ -2682,7 +2682,7 @@ useEffect(() => {
               marginBottom: "24px"
             }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 color: "white",
                 margin: "0 0 20px 0",
@@ -2783,7 +2783,7 @@ useEffect(() => {
                       <p style={{
                         fontFamily: "Arial, sans-serif",
                         fontSize: "0.75rem",
-                        color: "rgba(255,255,255,0.6)",
+                        color: "rgba(250, 247, 242, 0.6)",
                         margin: 0
                       }}>
                         {formatDate(message.createdAt)}
@@ -2834,7 +2834,7 @@ useEffect(() => {
             ) : (
               <div style={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(250, 247, 242, 0.6)",
                 padding: "40px",
                 fontFamily: "Arial, sans-serif"
               }}>
@@ -2879,7 +2879,7 @@ useEffect(() => {
          (activeTab === 'models' && (!object.bimModels || object.bimModels.length === 0)) ? (
           <div style={{
             textAlign: "center",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(250, 247, 242, 0.6)",
             padding: "40px",
             fontFamily: "Arial, sans-serif"
           }}>
@@ -2914,7 +2914,7 @@ useEffect(() => {
             textAlign: "center"
           }}>
             <h3 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.5rem",
               color: "white",
               margin: "0 0 20px 0"
@@ -3109,7 +3109,7 @@ useEffect(() => {
                           borderRadius: "999px",
                           border: "1px solid rgba(59,130,246,0.4)",
                           backgroundColor: "rgba(59,130,246,0.18)",
-                          color: "rgba(255,255,255,0.9)",
+                          color: "rgba(250, 247, 242, 0.9)",
                           cursor: "pointer"
                         }}
                       >
@@ -3153,9 +3153,9 @@ useEffect(() => {
 
             <div style={{
               width: "360px",
-              backgroundColor: "rgba(255,255,255,0.06)",
+              backgroundColor: "rgba(250, 247, 242, 0.06)",
               borderRadius: "12px",
-              border: "1px solid rgba(255,255,255,0.12)",
+              border: "1px solid rgba(250, 247, 242, 0.12)",
               padding: "16px",
               display: "flex",
               flexDirection: "column",
@@ -3167,13 +3167,13 @@ useEffect(() => {
                   color: "white",
                   fontSize: "1.1rem",
                   margin: "0 0 10px 0",
-                  fontFamily: "ChinaCyr, sans-serif"
+                  fontFamily: "var(--font-jost), sans-serif"
                 }}>
                   Комментарии ({panoramaComments.length})
                 </h3>
                 <p style={{
                   fontSize: "0.85rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   margin: "0 0 12px 0",
                   fontFamily: "Arial, sans-serif",
                   lineHeight: 1.4
@@ -3218,11 +3218,11 @@ useEffect(() => {
                   ) : (
                     <div style={{
                       fontSize: "0.8rem",
-                      color: "rgba(255,255,255,0.65)",
-                      background: "rgba(255,255,255,0.05)",
+                      color: "rgba(250, 247, 242, 0.65)",
+                      background: "rgba(250, 247, 242, 0.05)",
                       padding: "8px",
                       borderRadius: "8px",
-                      border: "1px dashed rgba(255,255,255,0.2)"
+                      border: "1px dashed rgba(250, 247, 242, 0.2)"
                     }}>
                       Точка не выбрана
                     </div>
@@ -3230,7 +3230,7 @@ useEffect(() => {
                 ) : (
                   <div style={{
                     fontSize: "0.8rem",
-                    color: "rgba(255,255,255,0.78)",
+                    color: "rgba(250, 247, 242, 0.78)",
                     background: "rgba(59,130,246,0.12)",
                     padding: "8px",
                     borderRadius: "8px",
@@ -3259,7 +3259,7 @@ useEffect(() => {
                         padding: "12px",
                         borderRadius: "10px",
                         backgroundColor: comment.isAdminComment ? "rgba(59,130,246,0.12)" : "rgba(34,197,94,0.12)",
-                        border: isActive ? "1px solid rgba(59,130,246,0.6)" : "1px solid rgba(255,255,255,0.1)",
+                        border: isActive ? "1px solid rgba(59,130,246,0.6)" : "1px solid rgba(250, 247, 242, 0.1)",
                         transition: "border 0.2s ease, transform 0.2s ease"
                       }}
                     >
@@ -3285,7 +3285,7 @@ useEffect(() => {
                         }}>
                           <span style={{
                             fontSize: "0.7rem",
-                            color: "rgba(255,255,255,0.55)",
+                            color: "rgba(250, 247, 242, 0.55)",
                             fontFamily: "Arial, sans-serif"
                           }}>
                             {new Date(comment.createdAt).toLocaleString('ru-RU', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}
@@ -3323,7 +3323,7 @@ useEffect(() => {
                       </p>
                       <div style={{
                         fontSize: "0.75rem",
-                        color: "rgba(255,255,255,0.55)",
+                        color: "rgba(250, 247, 242, 0.55)",
                         fontFamily: "Arial, sans-serif"
                       }}>
                         Позиция: {comment.hasValidPosition && typeof comment.yaw === 'number' && typeof comment.pitch === 'number'
@@ -3337,7 +3337,7 @@ useEffect(() => {
                 {panoramaComments.length === 0 && (
                   <div style={{
                     textAlign: "center",
-                    color: "rgba(255,255,255,0.6)",
+                    color: "rgba(250, 247, 242, 0.6)",
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.85rem",
                     padding: "24px"
@@ -3368,7 +3368,7 @@ useEffect(() => {
                     minHeight: '80px',
                     padding: '10px',
                     borderRadius: '8px',
-                    border: '1px солид rgba(255,255,255,0.25)',
+                    border: '1px солид rgba(250, 247, 242, 0.25)',
                     backgroundColor: 'rgba(0,0,0,0.35)',
                     color: 'white',
                     fontFamily: 'Arial, sans-serif',
@@ -3417,7 +3417,7 @@ useEffect(() => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            color: "rgba(255,255,255,0.75)",
+            color: "rgba(250, 247, 242, 0.75)",
             fontFamily: "Arial, sans-serif",
             fontSize: "0.85rem"
           }}>
@@ -3452,7 +3452,7 @@ useEffect(() => {
           <div style={{
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(255,255,255,0.1)",
+            backgroundColor: "rgba(250, 247, 242, 0.1)",
             padding: "20px",
             display: "flex",
             gap: "20px",
@@ -3610,7 +3610,7 @@ useEffect(() => {
               display: "flex",
               flexDirection: "column",
               gap: "16px",
-              backgroundColor: "rgba(255,255,255,0.05)",
+              backgroundColor: "rgba(250, 247, 242, 0.05)",
               borderRadius: "8px",
               padding: "16px",
               maxHeight: "80vh",
@@ -3619,14 +3619,14 @@ useEffect(() => {
               {/* Селектор папки */}
               <div style={{
                 padding: "12px",
-                background: "rgba(211, 163, 115, 0.15)",
+                background: "rgba(201, 169, 110,  0.15)",
                 borderRadius: "8px",
-                border: "1px solid rgba(211, 163, 115, 0.3)"
+                border: "1px solid rgba(201, 169, 110,  0.3)"
               }}>
                 <label style={{
                   display: "block",
                   fontSize: "0.85rem",
-                  color: "rgba(255,255,255,0.9)",
+                  color: "rgba(250, 247, 242, 0.9)",
                   marginBottom: "12px",
                   fontFamily: "Arial, sans-serif",
                   fontWeight: 600
@@ -3649,13 +3649,13 @@ useEffect(() => {
                     gap: "8px",
                     padding: "8px 12px",
                     background: tempSelectedFolder === null 
-                      ? "rgba(211, 163, 115, 0.2)" 
+                      ? "rgba(201, 169, 110,  0.2)" 
                       : "rgba(255, 255, 255, 0.05)",
                     borderRadius: "6px",
                     cursor: "pointer",
                     transition: "all 0.2s ease",
                     border: tempSelectedFolder === null 
-                      ? "1px solid rgba(211, 163, 115, 0.5)" 
+                      ? "1px solid rgba(201, 169, 110,  0.5)" 
                       : "1px solid rgba(255, 255, 255, 0.1)"
                   }}>
                     <input
@@ -3685,13 +3685,13 @@ useEffect(() => {
                       gap: "8px",
                       padding: "8px 12px",
                       background: tempSelectedFolder === folder.id 
-                        ? "rgba(211, 163, 115, 0.2)" 
+                        ? "rgba(201, 169, 110,  0.2)" 
                         : "rgba(255, 255, 255, 0.05)",
                       borderRadius: "6px",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
                       border: tempSelectedFolder === folder.id 
-                        ? "1px solid rgba(211, 163, 115, 0.5)" 
+                        ? "1px solid rgba(201, 169, 110,  0.5)" 
                         : "1px solid rgba(255, 255, 255, 0.1)"
                     }}>
                       <input
@@ -3729,7 +3729,7 @@ useEffect(() => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                borderBottom: "1px solid rgba(255,255,255,0.2)",
+                borderBottom: "1px solid rgba(250, 247, 242, 0.2)",
                 paddingBottom: "12px"
               }}>
                 <h3 style={{
@@ -3778,7 +3778,7 @@ useEffect(() => {
                       <p style={{
                         fontFamily: "Arial, sans-serif",
                         fontSize: "0.75rem",
-                        color: "rgba(255,255,255,0.6)",
+                        color: "rgba(250, 247, 242, 0.6)",
                         margin: 0
                       }}>
                         {new Date(comment.createdAt).toLocaleDateString('ru-RU', {
@@ -3803,7 +3803,7 @@ useEffect(() => {
                 {photoComments.length === 0 && (
                   <div style={{
                     textAlign: "center",
-                    color: "rgba(255,255,255,0.5)",
+                    color: "rgba(250, 247, 242, 0.5)",
                     fontFamily: "Arial, sans-serif",
                     fontSize: "0.9rem",
                     padding: "20px"
@@ -3815,7 +3815,7 @@ useEffect(() => {
 
               {/* Форма добавления комментария */}
               <div style={{
-                borderTop: "1px solid rgba(255,255,255,0.2)",
+                borderTop: "1px solid rgba(250, 247, 242, 0.2)",
                 paddingTop: "12px"
               }}>
                 <textarea

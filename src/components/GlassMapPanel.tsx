@@ -56,9 +56,9 @@ export default function GlassMapPanel({ enteredHome = false, forceHidden = false
             inset: pad,
             borderRadius: "inherit",
             overflow: "hidden",
-            background: "rgba(255,255,255,0.15)",
+            background: "rgba(250, 247, 242, 0.15)",
             backdropFilter: "blur(32px)",            // статичный blur ок; не анимируем
-            border: "2.5px solid rgba(211, 163, 115, 0.6)",
+            border: "2.5px solid rgba(201, 169, 110,  0.6)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

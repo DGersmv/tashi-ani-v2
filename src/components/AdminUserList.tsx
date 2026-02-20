@@ -277,7 +277,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         <div style={{
           width: "40px",
           height: "40px",
-          border: "4px solid rgba(255,255,255,0.3)",
+          border: "4px solid rgba(250, 247, 242, 0.3)",
           borderTop: "4px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite"
@@ -289,7 +289,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
   return (
     <div style={{ color: "white" }}>
       <h2 style={{
-        fontFamily: "ChinaCyr, sans-serif",
+        fontFamily: "var(--font-jost), sans-serif",
         fontSize: "2rem",
         marginBottom: "24px",
         textAlign: "center"
@@ -319,7 +319,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         backdropFilter: "blur(10px)"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.2rem",
           marginBottom: "16px"
         }}>
@@ -407,9 +407,9 @@ export default function AdminUserList({ token }: AdminUserListProps) {
               padding: "10px 20px",
               borderRadius: "6px",
               border: "none",
-              backgroundColor: isAddingUser ? "rgba(255, 255, 255, 0.3)" : "rgba(211, 163, 115, 0.8)",
+              backgroundColor: isAddingUser ? "rgba(255, 255, 255, 0.3)" : "rgba(201, 169, 110,  0.8)",
               color: "white",
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontWeight: "600",
               cursor: isAddingUser ? "not-allowed" : "pointer",
               transition: "all 0.2s ease",
@@ -429,7 +429,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
         backdropFilter: "blur(10px)"
       }}>
         <h3 style={{
-          fontFamily: "ChinaCyr, sans-serif",
+          fontFamily: "var(--font-jost), sans-serif",
           fontSize: "1.2rem",
           marginBottom: "16px"
         }}>
@@ -463,7 +463,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
                     marginBottom: "8px"
                   }}>
                     <span style={{
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       fontWeight: "600",
                       fontSize: "1.1rem"
                     }}>
@@ -632,7 +632,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
             border: "1px solid rgba(255, 255, 255, 0.2)"
           }}>
             <h3 style={{
-              fontFamily: "ChinaCyr, sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontSize: "1.5rem",
               marginBottom: "20px",
               textAlign: "center"
@@ -803,7 +803,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
           }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.5rem",
                 margin: 0
               }}>
@@ -863,7 +863,7 @@ export default function AdminUserList({ token }: AdminUserListProps) {
                 <div style={{ color: "white", maxHeight: "100px", overflow: "auto" }}>
                   {userDetails.objects?.length > 0 ? (
                     userDetails.objects.map((obj: any, index: number) => (
-                      <div key={index} style={{ padding: "4px 0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                      <div key={index} style={{ padding: "4px 0", borderBottom: "1px solid rgba(250, 247, 242, 0.1)" }}>
                         {obj.title} - {obj.status}
                       </div>
                     ))

@@ -273,7 +273,7 @@ export default function CustomerPhotosPanel({ objectId, adminToken, onPhotosUpda
       <div
         style={{
           padding: "16px",
-          background: "rgba(211, 163, 115, 0.1)",
+          background: "rgba(201, 169, 110,  0.1)",
           borderRadius: "8px",
           marginBottom: "24px",
           color: "#d3a373",
@@ -320,18 +320,18 @@ export default function CustomerPhotosPanel({ objectId, adminToken, onPhotosUpda
             }}
             style={{
               background: selectedFolder === null 
-                ? "rgba(211, 163, 115, 0.2)" 
+                ? "rgba(201, 169, 110,  0.2)" 
                 : "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(10px)",
               border: selectedFolder === null 
-                ? "1.5px solid rgba(211, 163, 115, 0.8)" 
-                : "1.5px solid rgba(211, 163, 115, 0.3)",
+                ? "1.5px solid rgba(201, 169, 110,  0.8)" 
+                : "1.5px solid rgba(201, 169, 110,  0.3)",
               borderRadius: "12px",
               padding: "20px",
               cursor: "pointer",
               transition: "all 0.3s",
             }}
-            whileHover={{ scale: 1.02, borderColor: "rgba(211, 163, 115, 0.6)" }}
+            whileHover={{ scale: 1.02, borderColor: "rgba(201, 169, 110,  0.6)" }}
           >
             <div
               style={{
@@ -374,18 +374,18 @@ export default function CustomerPhotosPanel({ objectId, adminToken, onPhotosUpda
               }}
               style={{
                 background: selectedFolder === folder.id 
-                  ? "rgba(211, 163, 115, 0.2)" 
+                  ? "rgba(201, 169, 110,  0.2)" 
                   : "rgba(255, 255, 255, 0.05)",
                 backdropFilter: "blur(10px)",
                 border: selectedFolder === folder.id 
-                  ? "1.5px solid rgba(211, 163, 115, 0.8)" 
-                  : "1.5px solid rgba(211, 163, 115, 0.3)",
+                  ? "1.5px solid rgba(201, 169, 110,  0.8)" 
+                  : "1.5px solid rgba(201, 169, 110,  0.3)",
                 borderRadius: "12px",
                 padding: "20px",
                 cursor: "pointer",
                 transition: "all 0.3s",
               }}
-              whileHover={{ scale: 1.02, borderColor: "rgba(211, 163, 115, 0.6)" }}
+              whileHover={{ scale: 1.02, borderColor: "rgba(201, 169, 110,  0.6)" }}
             >
               {editingFolder?.id === folder.id ? (
                 <div>

@@ -91,7 +91,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderTop: "3px solid white",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
@@ -138,7 +138,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "16px",
@@ -147,7 +147,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
               transition: "all 0.3s ease"
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+              e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = "transparent";
@@ -156,7 +156,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
             ←
           </button>
           <h2 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "2rem",
             margin: 0
           }}>
@@ -166,7 +166,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
         <p style={{
           fontFamily: "Arial, sans-serif",
           fontSize: "1rem",
-          color: "rgba(255,255,255,0.8)",
+          color: "rgba(250, 247, 242, 0.8)",
           margin: 0,
           marginLeft: "48px"
         }}>
@@ -214,7 +214,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
               marginBottom: "16px"
             }}>
               <h3 style={{
-                fontFamily: "ChinaCyr, sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontSize: "1.25rem",
                 color: "white",
                 margin: 0,
@@ -242,7 +242,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
               <p style={{
                 fontFamily: "Arial, sans-serif",
                 fontSize: "0.9rem",
-                color: "rgba(255,255,255,0.8)",
+                color: "rgba(250, 247, 242, 0.8)",
                 marginBottom: "8px"
               }}>
                 {object.description}
@@ -252,7 +252,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
               <p style={{
                 fontFamily: "Arial, sans-serif",
                 fontSize: "0.85rem",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(250, 247, 242, 0.6)",
                 marginBottom: "16px"
               }}>
                 📍 {object.address}
@@ -277,7 +277,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   Проекты
@@ -294,7 +294,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   Фото
@@ -311,7 +311,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   Документы
@@ -337,7 +337,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   Сообщения
@@ -363,7 +363,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
                 </div>
                 <div style={{
                   fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   Комментарии
@@ -374,7 +374,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
             {/* Дата создания */}
             <div style={{
               fontSize: "0.75rem",
-              color: "rgba(255,255,255,0.5)",
+              color: "rgba(250, 247, 242, 0.5)",
               fontFamily: "Arial, sans-serif",
               textAlign: "center"
             }}>
@@ -393,7 +393,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
           padding: "40px"
         }}>
           <h3 style={{
-            fontFamily: "ChinaCyr, sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontSize: "1.5rem",
             marginBottom: "8px"
           }}>
@@ -401,7 +401,7 @@ export default function UserObjectsGrid({ userEmail }: UserObjectsGridProps) {
           </h3>
           <p style={{
             fontFamily: "Arial, sans-serif",
-            color: "rgba(255,255,255,0.8)"
+            color: "rgba(250, 247, 242, 0.8)"
           }}>
             У вас пока нет объектов. Обратитесь к Таше или Ане для добавления объектов.
           </p>

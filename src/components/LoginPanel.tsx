@@ -184,13 +184,13 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                 aspectRatio: "1 / 1.41",
                 borderRadius: 16,
                 overflow: "hidden",
-                background: "rgba(255,255,255,0.15)",
+                background: "rgba(250, 247, 242, 0.15)",
                 backdropFilter: "blur(28px)",
                 border: "2.5px solid rgba(211,163,115,0.6)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.22)"
+                boxShadow: "0 8px 24px rgba(0,0,0,.25), inset 0 0 0 1px rgba(250, 247, 242, .22)"
               }}
             >
               {/* Кнопка закрытия */}
@@ -205,7 +205,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "rgba(255,255,255,0.7)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   backgroundColor: "transparent",
                   border: "none",
                   borderRadius: "50%",
@@ -215,10 +215,10 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "white";
-                  e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.1)";
+                  e.currentTarget.style.backgroundColor = "rgba(250, 247, 242, 0.1)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                  e.currentTarget.style.color = "rgba(250, 247, 242, 0.7)";
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
               >
@@ -247,7 +247,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                 <div style={{ textAlign: "center" }}>
                   <h2 
                     style={{ 
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       fontWeight: 800,
                       fontSize: "1.25rem",
                       lineHeight: 1.2,
@@ -259,7 +259,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                   </h2>
                   <p style={{ 
                     fontSize: "14px",
-                    color: "rgba(255,255,255,0.8)",
+                    color: "rgba(250, 247, 242, 0.8)",
                     margin: 0
                   }}>
                     Введите email и пароль для входа
@@ -337,7 +337,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       htmlFor="email"
                       style={{
                         display: "block",
-                        color: "rgba(255,255,255,0.9)",
+                        color: "rgba(250, 247, 242, 0.9)",
                         fontSize: "14px",
                         fontWeight: 500,
                         marginBottom: "8px"
@@ -355,9 +355,9 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       style={{
                         width: "100%",
                         padding: "12px 16px",
-                        background: "rgba(255,255,255,0.1)",
+                        background: "rgba(250, 247, 242, 0.1)",
                         backdropFilter: "blur(10px)",
-                        border: "1px solid rgba(255,255,255,0.2)",
+                        border: "1px solid rgba(250, 247, 242, 0.2)",
                         borderRadius: 12,
                         color: "white",
                         fontSize: "14px",
@@ -373,7 +373,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       htmlFor="password"
                       style={{
                         display: "block",
-                        color: "rgba(255,255,255,0.9)",
+                        color: "rgba(250, 247, 242, 0.9)",
                         fontSize: "14px",
                         fontWeight: 500,
                         marginBottom: "8px"
@@ -392,9 +392,9 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                         style={{
                           width: "100%",
                           padding: "12px 48px 12px 16px",
-                          background: "rgba(255,255,255,0.1)",
+                          background: "rgba(250, 247, 242, 0.1)",
                           backdropFilter: "blur(10px)",
-                          border: "1px solid rgba(255,255,255,0.2)",
+                          border: "1px solid rgba(250, 247, 242, 0.2)",
                           borderRadius: 12,
                           color: "white",
                           fontSize: "14px",
@@ -412,7 +412,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                           transform: "translateY(-50%)",
                           background: "transparent",
                           border: "none",
-                          color: "rgba(255,255,255,0.7)",
+                          color: "rgba(250, 247, 242, 0.7)",
                           cursor: "pointer",
                           padding: 4,
                           display: "flex",
@@ -421,10 +421,10 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                           transition: "color 0.2s"
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "rgba(255,255,255,1)";
+                          e.currentTarget.style.color = "rgba(250, 247, 242, 1)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+                          e.currentTarget.style.color = "rgba(250, 247, 242, 0.7)";
                         }}
                       >
                         {showPassword ? (
@@ -449,20 +449,20 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       alignItems: "center", 
                       gap: 12,
                       padding: "12px 16px",
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.15)",
+                      background: "rgba(250, 247, 242, 0.05)",
+                      border: "1px solid rgba(250, 247, 242, 0.15)",
                       borderRadius: 8,
                       cursor: "pointer",
                       transition: "all 0.2s"
                     }}
                     onClick={() => setIsHuman(!isHuman)}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+                      e.currentTarget.style.background = "rgba(250, 247, 242, 0.08)";
+                      e.currentTarget.style.borderColor = "rgba(250, 247, 242, 0.25)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                      e.currentTarget.style.background = "rgba(250, 247, 242, 0.05)";
+                      e.currentTarget.style.borderColor = "rgba(250, 247, 242, 0.15)";
                     }}
                   >
                     <input
@@ -473,7 +473,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                       style={{
                         width: 18,
                         height: 18,
-                        accentColor: "rgba(211, 163, 115, 0.8)",
+                        accentColor: "rgba(201, 169, 110,  0.8)",
                         cursor: "pointer",
                         margin: 0
                       }}
@@ -492,7 +492,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                         height="16" 
                         viewBox="0 0 24 24" 
                         fill="none" 
-                        stroke={isHuman ? "rgba(211, 163, 115, 0.8)" : "rgba(255,255,255,0.6)"}
+                        stroke={isHuman ? "rgba(201, 169, 110,  0.8)" : "rgba(250, 247, 242, 0.6)"}
                         strokeWidth="2"
                       >
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -503,7 +503,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                     <label
                       htmlFor="isHuman"
                       style={{
-                        color: "rgba(255,255,255,0.9)",
+                        color: "rgba(250, 247, 242, 0.9)",
                         fontSize: "14px",
                         fontFamily: "Arial, sans-serif",
                         cursor: "pointer",
@@ -518,7 +518,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                     {/* Дополнительная иконка */}
                     <div style={{ 
                       fontSize: "12px",
-                      color: "rgba(255,255,255,0.5)",
+                      color: "rgba(250, 247, 242, 0.5)",
                       fontFamily: "Arial, sans-serif"
                     }}>
                       reCAPTCHA
@@ -532,13 +532,13 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                     style={{
                       width: "100%",
                       padding: "12px 24px",
-                      background: "rgba(211, 163, 115, 0.8)",
+                      background: "rgba(201, 169, 110,  0.8)",
                       border: "none",
                       borderRadius: 12,
                       color: "white",
                       fontWeight: 600,
                       fontSize: "14px",
-                      fontFamily: "ChinaCyr, sans-serif",
+                      fontFamily: "var(--font-jost), sans-serif",
                       cursor: (email && password && isHuman && !isSubmitting) ? "pointer" : "not-allowed",
                       opacity: (email && password && isHuman) ? 1 : 0.6,
                       transition: "all 0.2s"
@@ -549,7 +549,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                         <div style={{
                           width: "16px",
                           height: "16px",
-                          border: "2px solid rgba(255,255,255,0.3)",
+                          border: "2px solid rgba(250, 247, 242, 0.3)",
                           borderTop: "2px solid white",
                           borderRadius: "50%",
                           animation: "spin 1s linear infinite"
@@ -566,7 +566,7 @@ export default function LoginPanel({ isOpen, onClose, onLoginSuccess }: LoginPan
                 <div style={{ textAlign: "center" }}>
                   <p style={{
                     fontSize: "12px",
-                    color: "rgba(255,255,255,0.6)",
+                    color: "rgba(250, 247, 242, 0.6)",
                     margin: 0
                   }}>
                     Нажимая "Войти", вы соглашаетесь с нашими условиями использования

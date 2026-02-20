@@ -157,7 +157,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
         <div style={{
           width: "40px",
           height: "40px",
-          border: "3px solid rgba(255,255,255,0.3)",
+          border: "3px solid rgba(250, 247, 242, 0.3)",
           borderBottomColor: "white",
           borderRadius: "50%",
           display: "inline-block",
@@ -220,7 +220,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.8)",
+              color: "rgba(250, 247, 242, 0.8)",
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "10px",
@@ -228,21 +228,21 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               fontFamily: "Arial, sans-serif"
             }}
             onMouseEnter={(e) => e.currentTarget.style.color = "white"}
-            onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.8)"}
+            onMouseLeave={(e) => e.currentTarget.style.color = "rgba(250, 247, 242, 0.8)"}
           >
             ←
           </button>
           <h1 style={{
             fontSize: "2.5rem",
             fontWeight: 800,
-            fontFamily: "ChinaCyr, sans-serif"
+            fontFamily: "var(--font-jost), sans-serif"
           }}>
             Фото объекта
           </h1>
         </div>
         <p style={{
           fontSize: "1.1rem",
-          color: "rgba(255,255,255,0.8)",
+          color: "rgba(250, 247, 242, 0.8)",
           fontFamily: "Arial, sans-serif"
         }}>
           Просматривайте и комментируйте фото вашего объекта.
@@ -251,7 +251,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
 
       {photos.length === 0 ? (
         <div style={{
-          backgroundColor: "rgba(255,255,255,0.1)",
+          backgroundColor: "rgba(250, 247, 242, 0.1)",
           borderRadius: "12px",
           padding: "24px",
           textAlign: "center",
@@ -279,7 +279,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                 padding: '6px 12px',
                 borderRadius: '6px',
                 border: 'none',
-                backgroundColor: selectedFolderId === null ? 'rgba(211,163,115,0.35)' : 'rgba(255,255,255,0.1)',
+                backgroundColor: selectedFolderId === null ? 'rgba(211,163,115,0.35)' : 'rgba(250, 247, 242, 0.1)',
                 color: 'white',
                 fontFamily: 'Arial, sans-serif',
                 cursor: 'pointer',
@@ -298,7 +298,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                     padding: '6px 12px',
                     borderRadius: '6px',
                     border: 'none',
-                    backgroundColor: selectedFolderId === folder.id ? 'rgba(211,163,115,0.35)' : 'rgba(255,255,255,0.1)',
+                    backgroundColor: selectedFolderId === folder.id ? 'rgba(211,163,115,0.35)' : 'rgba(250, 247, 242, 0.1)',
                     color: 'white',
                     fontFamily: 'Arial, sans-serif',
                     cursor: 'pointer',
@@ -317,10 +317,10 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               style={{
-                background: "rgba(255,255,255,0.1)",
+                background: "rgba(250, 247, 242, 0.1)",
                 backdropFilter: "blur(10px)",
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.2)",
+                border: "1px solid rgba(250, 247, 242, 0.2)",
                 padding: "16px",
                 color: "white",
                 cursor: "pointer",
@@ -335,7 +335,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                 borderRadius: "8px",
                 overflow: "hidden",
                 marginBottom: "12px",
-                backgroundColor: "rgba(255,255,255,0.1)"
+                backgroundColor: "rgba(250, 247, 242, 0.1)"
               }}>
                 <img
                   src={photo.thumbnailUrl || `/api/uploads/objects/${photo.objectId}/${photo.filename}?email=${encodeURIComponent(userEmail)}`}
@@ -358,8 +358,8 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                   height: "100%",
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.7)",
+                  backgroundColor: "rgba(250, 247, 242, 0.1)",
+                  color: "rgba(250, 247, 242, 0.7)",
                   fontFamily: "Arial, sans-serif"
                 }}>
                   📷 Фото
@@ -387,7 +387,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               
               <div style={{
                 fontSize: "0.85rem",
-                color: "rgba(255,255,255,0.7)",
+                color: "rgba(250, 247, 242, 0.7)",
                 fontFamily: "Arial, sans-serif",
                 marginBottom: "8px"
               }}>
@@ -396,7 +396,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               
               <div style={{
                 fontSize: "0.85rem",
-                color: "rgba(255,255,255,0.7)",
+                color: "rgba(250, 247, 242, 0.7)",
                 fontFamily: "Arial, sans-serif"
               }}>
                 Комментариев: {photo.comments.length}
@@ -424,7 +424,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
           <div style={{
             maxWidth: "90vw",
             maxHeight: "90vh",
-            backgroundColor: "rgba(255,255,255,0.1)",
+            backgroundColor: "rgba(250, 247, 242, 0.1)",
             borderRadius: "12px",
             padding: "20px",
             display: "flex",
@@ -523,7 +523,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
             <div style={{
               maxHeight: "200px",
               overflowY: "auto",
-              borderTop: "1px solid rgba(255,255,255,0.2)",
+              borderTop: "1px solid rgba(250, 247, 242, 0.2)",
               paddingTop: "16px"
             }}>
               <h3 style={{
@@ -537,7 +537,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               
               {selectedPhoto.comments.map((comment) => (
                 <div key={comment.id} style={{
-                  backgroundColor: "rgba(255,255,255,0.1)",
+                  backgroundColor: "rgba(250, 247, 242, 0.1)",
                   borderRadius: "8px",
                   padding: "12px",
                   marginBottom: "8px"
@@ -557,7 +557,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                       {comment.isAdminComment ? "👨‍💼 Администратор" : "👤 " + comment.user.name}
                     </span>
                     <span style={{
-                      color: "rgba(255,255,255,0.6)",
+                      color: "rgba(250, 247, 242, 0.6)",
                       fontSize: "0.8rem",
                       fontFamily: "Arial, sans-serif"
                     }}>
@@ -579,7 +579,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
               <div style={{
                 marginTop: "16px",
                 paddingTop: "16px",
-                borderTop: "1px solid rgba(255,255,255,0.2)"
+                borderTop: "1px solid rgba(250, 247, 242, 0.2)"
               }}>
                 <textarea
                   value={newComment}
@@ -588,8 +588,8 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                   style={{
                     width: "100%",
                     minHeight: "60px",
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                    border: "1px solid rgba(255,255,255,0.2)",
+                    backgroundColor: "rgba(250, 247, 242, 0.1)",
+                    border: "1px solid rgba(250, 247, 242, 0.2)",
                     borderRadius: "6px",
                     padding: "8px",
                     color: "white",
@@ -602,7 +602,7 @@ export default function CustomerPhotoViewer({ userEmail }: CustomerPhotoViewerPr
                   onClick={() => handleCommentSubmit(selectedPhoto.id)}
                   disabled={!newComment.trim() || submittingComment}
                   style={{
-                    backgroundColor: newComment.trim() && !submittingComment ? "rgba(34, 197, 94, 0.8)" : "rgba(255,255,255,0.2)",
+                    backgroundColor: newComment.trim() && !submittingComment ? "rgba(34, 197, 94, 0.8)" : "rgba(250, 247, 242, 0.2)",
                     border: "none",
                     color: "white",
                     padding: "8px 16px",

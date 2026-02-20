@@ -90,7 +90,7 @@ export default function AboutSlide({ index = 1 }: { index?: number }) {
             style={{
               marginTop: 36,
               padding: "20px 22px",
-              background: "rgba(255,255,255,.04)",
+              background: "rgba(250, 247, 242, .04)",
               borderLeft: "2px solid var(--gold)",
               backdropFilter: "blur(4px)",
               maxWidth: 440,
