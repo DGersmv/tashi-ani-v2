@@ -66,62 +66,71 @@ export default function FooterSlide({ index }: FooterSlideProps) {
         color: 'var(--warm-white)'
       }}
     >
+      {/* Верхняя часть - логотип и описание */}
+      <motion.div
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
+        variants={itemVariants}
+        style={{
+          marginBottom: '2rem'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+          <Image
+            src="/logo_new_no_back.png"
+            alt="ТАШИ-АНИ"
+            width={44}
+            height={44}
+          />
+          <div>
+            <div style={{ 
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: '1.25rem',
+              fontWeight: 400,
+              color: 'var(--warm-white)'
+            }}>
+              ТАШИ-АНИ
+            </div>
+            <div style={{ 
+              fontSize: '0.75rem',
+              color: 'var(--stone)',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}>
+              Строительная компания
+            </div>
+          </div>
+        </div>
+        <p style={{
+          fontSize: '0.95rem',
+          lineHeight: 1.6,
+          color: 'var(--stone)',
+          maxWidth: '400px'
+        }}>
+          Профессиональное управление строительными проектами с 2010 года. 15 лет опыта, 200+ успешных проектов.
+        </p>
+      </motion.div>
+
+      {/* Нижняя часть футера - ссылки, контакты, навигация */}
       <motion.div
         initial="hidden"
         animate={isActive ? "visible" : "hidden"}
         variants={containerVariants}
         style={{
+          paddingTop: '2rem',
+          borderTop: '1px solid rgba(201, 169, 110, 0.2)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '3rem',
-          marginBottom: '3rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2rem'
         }}
       >
-        {/* Логотип и описание */}
-        <motion.div variants={itemVariants}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-            <Image
-              src="/logo_new_no_back.png"
-              alt="ТАШИ-АНИ"
-              width={44}
-              height={44}
-            />
-            <div>
-              <div style={{ 
-                fontFamily: 'var(--font-cormorant)',
-                fontSize: '1.25rem',
-                fontWeight: 400,
-                color: 'var(--warm-white)'
-              }}>
-                ТАШИ-АНИ
-              </div>
-              <div style={{ 
-                fontSize: '0.75rem',
-                color: 'var(--stone)',
-                textTransform: 'uppercase',
-                letterSpacing: '1px'
-              }}>
-                Строительная компания
-              </div>
-            </div>
-          </div>
-          <p style={{
-            fontSize: '0.95rem',
-            lineHeight: 1.6,
-            color: 'var(--stone)',
-            maxWidth: '300px'
-          }}>
-            Профессиональное управление строительными проектами с 2010 года
-          </p>
-        </motion.div>
-
         {/* Навигация */}
         <motion.div variants={itemVariants}>
           <h3 style={{
-            fontSize: '1.125rem',
-            fontWeight: 400,
+            fontSize: '0.875rem',
+            fontWeight: 500,
             color: 'var(--gold)',
-            marginBottom: '1.5rem',
+            marginBottom: '1rem',
             textTransform: 'uppercase',
             letterSpacing: '1px'
           }}>
@@ -129,9 +138,10 @@ export default function FooterSlide({ index }: FooterSlideProps) {
           </h3>
           <nav style={{
             display: 'grid',
-            gap: '0.75rem'
+            gap: '0.5rem',
+            fontSize: '0.875rem'
           }}>
-            {navLinks.map((link, idx) => (
+            {navLinks.slice(0, 4).map((link, idx) => (
               <button
                 key={idx}
                 onClick={() => goTo(link.slideIndex)}
@@ -139,7 +149,49 @@ export default function FooterSlide({ index }: FooterSlideProps) {
                   background: 'none',
                   border: 'none',
                   color: 'var(--stone)',
-                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  padding: '0',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--warm-white)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--stone)';
+                }}
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
+        </motion.div>
+
+        {/* Навигация 2 */}
+        <motion.div variants={itemVariants}>
+          <h3 style={{
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            color: 'var(--gold)',
+            marginBottom: '1rem',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}>
+            Разделы
+          </h3>
+          <nav style={{
+            display: 'grid',
+            gap: '0.5rem',
+            fontSize: '0.875rem'
+          }}>
+            {navLinks.slice(4).map((link, idx) => (
+              <button
+                key={idx}
+                onClick={() => goTo(link.slideIndex)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--stone)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   padding: '0',
@@ -161,10 +213,10 @@ export default function FooterSlide({ index }: FooterSlideProps) {
         {/* Контакты */}
         <motion.div variants={itemVariants}>
           <h3 style={{
-            fontSize: '1.125rem',
-            fontWeight: 400,
+            fontSize: '0.875rem',
+            fontWeight: 500,
             color: 'var(--gold)',
-            marginBottom: '1.5rem',
+            marginBottom: '1rem',
             textTransform: 'uppercase',
             letterSpacing: '1px'
           }}>
@@ -172,16 +224,17 @@ export default function FooterSlide({ index }: FooterSlideProps) {
           </h3>
           <div style={{
             display: 'grid',
-            gap: '1.25rem'
+            gap: '0.75rem',
+            fontSize: '0.875rem'
           }}>
             {contacts.map((contact, idx) => (
               <div key={idx}>
                 <div style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.7rem',
                   color: 'var(--stone)',
                   textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  marginBottom: '0.25rem'
+                  letterSpacing: '0.5px',
+                  marginBottom: '0.2rem'
                 }}>
                   {contact.label}
                 </div>
@@ -189,7 +242,6 @@ export default function FooterSlide({ index }: FooterSlideProps) {
                   <a
                     href={contact.href}
                     style={{
-                      fontSize: '1rem',
                       color: 'var(--warm-white)',
                       textDecoration: 'none',
                       transition: 'color 0.3s ease'
@@ -205,7 +257,6 @@ export default function FooterSlide({ index }: FooterSlideProps) {
                   </a>
                 ) : (
                   <div style={{
-                    fontSize: '1rem',
                     color: 'var(--warm-white)'
                   }}>
                     {contact.value}
@@ -215,50 +266,79 @@ export default function FooterSlide({ index }: FooterSlideProps) {
             ))}
           </div>
         </motion.div>
+
+        {/* Политика */}
+        <motion.div variants={itemVariants}>
+          <h3 style={{
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            color: 'var(--gold)',
+            marginBottom: '1rem',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}>
+            Правовые
+          </h3>
+          <nav style={{
+            display: 'grid',
+            gap: '0.5rem',
+            fontSize: '0.875rem'
+          }}>
+            <button
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--stone)',
+                cursor: 'pointer',
+                textAlign: 'left',
+                padding: 0,
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--warm-white)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--stone)';
+              }}
+            >
+              Политика конфиденциальности
+            </button>
+            <button
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--stone)',
+                cursor: 'pointer',
+                textAlign: 'left',
+                padding: 0,
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--warm-white)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--stone)';
+              }}
+            >
+              Условия использования
+            </button>
+          </nav>
+        </motion.div>
       </motion.div>
 
-      {/* Нижняя часть футера */}
+      {/* Самый низ - copyright */}
       <motion.div
         variants={itemVariants}
         style={{
+          marginTop: '2rem',
           paddingTop: '2rem',
-          borderTop: '1px solid rgba(201, 169, 110, 0.2)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          fontSize: '0.875rem',
+          borderTop: '1px solid rgba(201, 169, 110, 0.1)',
+          textAlign: 'center',
+          fontSize: '0.775rem',
           color: 'var(--stone)'
         }}
       >
-        <div>
-          © 2025 ТАШИ-АНИ · Строительная компания
-        </div>
-        <div style={{
-          display: 'flex',
-          gap: '2rem'
-        }}>
-          <button
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--stone)',
-              cursor: 'pointer',
-              padding: 0,
-              fontSize: '0.875rem',
-              transition: 'color 0.3s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--warm-white)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--stone)';
-            }}
-          >
-            Политика конфиденциальности
-          </button>
-        </div>
+        © 2025 ТАШИ-АНИ. Строительная компания. Все права защищены.
       </motion.div>
     </section>
   );
