@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
+import LoginPanel from "@/components/LoginPanel";
 
 const PHONE = "+7 921 952-61-17";
 const TEL_HREF = "tel:+79219526117";
@@ -15,6 +15,7 @@ export default function SiteNav() {
   const logoSrc = settings.siteLogoPath || "/logo_new.png";
 
   const isFirstSlide = currentIndex === 0;
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <nav
@@ -120,12 +121,13 @@ export default function SiteNav() {
         >
           О нас
         </button>
-        <Link
-          href="/dashboard"
+        <button
+          type="button"
+          onClick={() => setIsLoginOpen(true)}
           style={linkStyle(isFirstSlide)}
         >
           Кабинет
-        </Link>
+        </button>
       </div>
 
       {/* Телефон */}
@@ -143,6 +145,17 @@ export default function SiteNav() {
       >
         {PHONE}
       </a>
+
+      {/* Login Panel */}
+      <LoginPanel 
+        isOpen={isLoginOpen} 
+        onClose={() => setIsLoginOpen(false)}
+        onLoginSuccess={(email) => {
+          localStorage.setItem("userEmail", email);
+          setIsLoginOpen(false);
+          // Функция перенаправления в кабинет будет в LoginPanel после успешного входа
+        }}
+      />
     </nav>
   );
 }
