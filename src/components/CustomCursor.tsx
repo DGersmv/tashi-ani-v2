@@ -113,7 +113,7 @@ export default function CustomCursor() {
           zIndex: 2,
         }}
       />
-      {/* Кружок — с задержкой (lerp) */}
+      {/* Ёлочка — с задержкой (lerp) */}
       <div
         ref={ringRef}
         style={{
@@ -122,13 +122,31 @@ export default function CustomCursor() {
           top: 0,
           width: ringSize,
           height: ringSize,
-          borderRadius: "50%",
-          border: "1px solid rgba(201, 169, 110, 0.65)",
           transform: "translate(-50%, -50%)",
           transition: "width 0.2s, height 0.2s",
           zIndex: 1,
         }}
-      />
+      >
+        <svg
+          viewBox="0 0 100 120"
+          width={ringSize}
+          height={ringSize}
+          fill="none"
+          stroke="rgba(201, 169, 110, 0.65)"
+          strokeWidth="4"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        >
+          {/* Ярус 1 — верхушка */}
+          <polygon points="50,4 68,32 32,32" />
+          {/* Ярус 2 */}
+          <polygon points="50,18 76,52 24,52" />
+          {/* Ярус 3 — основание кроны */}
+          <polygon points="50,34 84,74 16,74" />
+          {/* Ствол */}
+          <rect x="43" y="74" width="14" height="18" rx="2" />
+        </svg>
+      </div>
     </div>
   );
 }
