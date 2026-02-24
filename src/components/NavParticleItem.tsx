@@ -18,6 +18,7 @@ function lerp(a: number, b: number, t: number) {
 
 const FONT_FAMILY = "'ChinaCyr',serif";
 const MAX_PARTICLES = 500;
+const LOGO_TEXT = "TASHI-ANI";
 
 export default function NavParticleItem({
   text,
@@ -275,6 +276,217 @@ export default function NavParticleItem({
       }}
     >
       <canvas ref={canvasRef} style={{ display: "block" }} />
+    </div>
+  );
+}
+
+// ─── LOGO PARTICLE CANVAS ────────────────────────────────────────────────────
+// Ported from topnav-menu.html LogoParticles + FontFace loader (document.fonts.ready)
+
+interface LogoParticle {
+  x: number; y: number;
+  size: number; bright: number;
+  // regular particle fields
+  tx?: number; ty?: number; ox?: number; oy?: number;
+  delay?: number; gm?: number;
+  dispX?: number; dispY?: number; ox2?: number; oy2?: number;
+  // ambient particle fields
+  vx?: number; vy?: number;
+  ambient?: boolean;
+}
+
+export function LogoParticleCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const cvs: HTMLCanvasElement = canvas;
+    const context: CanvasRenderingContext2D = ctx;
+
+    const dpr = window.devicePixelRatio || 1;
+    let W = 0, H = 0;
+    let pixels: Array<{ x: number; y: number }> = [];
+    let parts: LogoParticle[] = [];
+    let frame = 0, phase = 0, timer = 0;
+    const raf = { id: null as number | null };
+    let mounted = true;
+
+    const FORM = 280, HOLD = 300, DISP = 320;
+
+    function resize() {
+      const z = cvs.parentElement;
+      if (!z) return;
+      W = z.clientWidth; H = z.clientHeight;
+      cvs.width = W * dpr; cvs.height = H * dpr;
+      cvs.style.width = W + "px"; cvs.style.height = H + "px";
+      context.scale(dpr, dpr);
+      sample(); init();
+    }
+
+    function sample() {
+      const off = document.createElement("canvas");
+      off.width = W; off.height = H;
+      const oc = off.getContext("2d")!;
+      let fs = Math.min(W / 5.5, H / 1.4);
+      oc.font = `normal ${fs}px ${FONT_FAMILY}`;
+      const pad = W * 0.16, mxW = W - pad * 2;
+      const mw = oc.measureText(LOGO_TEXT).width;
+      if (mw > mxW) fs *= mxW / mw;
+      oc.font = `normal ${fs}px ${FONT_FAMILY}`;
+      oc.fillStyle = "#fff"; oc.textAlign = "center"; oc.textBaseline = "middle";
+      oc.fillText(LOGO_TEXT, W / 2, H / 2);
+      const data = oc.getImageData(0, 0, W, H).data;
+      pixels = [];
+      const step = Math.max(2, Math.floor(W / 150));
+      for (let y = 0; y < H; y += step)
+        for (let x = 0; x < W; x += step)
+          if (data[(y * W + x) * 4 + 3] > 128) pixels.push({ x, y });
+    }
+
+    function spawnPt() {
+      return Math.random() < 0.5 ? { x: Math.random() * W, y: -12 } : { x: -12, y: Math.random() * H };
+    }
+    function edgePt() {
+      return Math.random() < 0.5 ? { x: Math.random() * W, y: H + 12 } : { x: W + 12, y: Math.random() * H };
+    }
+
+    function init() {
+      const n = Math.min(pixels.length, 1800); parts = [];
+      for (let i = 0; i < n; i++) {
+        const tg = pixels[Math.floor(Math.random() * pixels.length)];
+        const sp = spawnPt();
+        parts.push({ x: sp.x, y: sp.y, tx: tg.x, ty: tg.y, ox: sp.x, oy: sp.y,
+          size: Math.random() * 1.3 + 0.5, bright: Math.random() * 0.5 + 0.55,
+          delay: Math.random() * 80, gm: Math.random(), dispX: 0, dispY: 0, ox2: 0, oy2: 0 });
+      }
+      for (let i = 0; i < 80; i++) {
+        const a = Math.random() * Math.PI * 2, spd = Math.random() * 0.08 + 0.02;
+        parts.push({ x: Math.random() * W, y: Math.random() * H,
+          vx: Math.cos(a) * spd, vy: Math.sin(a) * spd,
+          size: Math.random() * 0.8 + 0.2, bright: Math.random() * 0.18 + 0.04, ambient: true });
+      }
+    }
+
+    function draw() {
+      if (!mounted) return;
+      frame++; timer++;
+      if (phase === 0 && timer >= FORM) { phase = 1; timer = 0; }
+      else if (phase === 1 && timer >= HOLD) {
+        phase = 2; timer = 0;
+        for (const p of parts) if (!p.ambient) {
+          const e = edgePt(); p.dispX = e.x; p.dispY = e.y; p.ox2 = p.x; p.oy2 = p.y;
+        }
+      } else if (phase === 2 && timer >= DISP) {
+        phase = 0; timer = 0;
+        for (const p of parts) if (!p.ambient) {
+          const s = spawnPt(), t = pixels[Math.floor(Math.random() * pixels.length)];
+          p.x = s.x; p.y = s.y; p.ox = s.x; p.oy = s.y; p.tx = t.x; p.ty = t.y; p.delay = Math.random() * 80;
+        }
+      }
+
+      context.fillStyle = "#060b06"; context.fillRect(0, 0, W, H);
+
+      for (const p of parts) {
+        if (p.ambient) {
+          p.x += p.vx!; p.y += p.vy!;
+          if (p.x < -5) p.x = W + 5; if (p.x > W + 5) p.x = -5;
+          if (p.y < -5) p.y = H + 5; if (p.y > H + 5) p.y = -5;
+          const al = p.bright * (0.5 + 0.5 * Math.sin(frame * 0.025 + p.x));
+          context.beginPath(); context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          context.fillStyle = `rgba(58,82,54,${al})`; context.fill(); continue;
+        }
+        let px = 0, py = 0, cp = 0, al = 1;
+        if (phase === 0) {
+          const t = Math.min(1, Math.max(0, (timer - p.delay!) / (FORM - p.delay!)));
+          px = lerp(p.ox!, p.tx!, easeInOutCubic(t)); py = lerp(p.oy!, p.ty!, easeInOutCubic(t));
+          p.x = px; p.y = py; al = t;
+        } else if (phase === 1) {
+          px = p.tx! + Math.sin(frame * 0.015 + p.tx! * 0.01) * 0.5;
+          py = p.ty! + Math.cos(frame * 0.015 + p.ty! * 0.01) * 0.5;
+          p.x = px; p.y = py; cp = Math.min(1, timer / 50); al = Math.max(0, 1 - timer / 50);
+        } else {
+          const t = Math.min(1, timer / DISP);
+          px = lerp(p.ox2!, p.dispX!, easeInOutCubic(t)); py = lerp(p.oy2!, p.dispY!, easeInOutCubic(t));
+          p.x = px; p.y = py; al = Math.max(0, 1 - t / 0.65);
+        }
+        if (al <= 0.01) continue;
+        const r = Math.round(lerp(lerp(58, 122, p.gm!), 201, cp));
+        const g = Math.round(lerp(lerp(82, 158, p.gm!), 169, cp));
+        const b = Math.round(lerp(lerp(54, 114, p.gm!), 110, cp));
+        const br = p.bright * al;
+        const gr = context.createRadialGradient(px, py, 0, px, py, p.size * 3);
+        gr.addColorStop(0, `rgba(${r},${g},${b},${br})`);
+        gr.addColorStop(0.4, `rgba(${r},${g},${b},${br * 0.3})`);
+        gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+        context.beginPath(); context.arc(px, py, p.size * 3, 0, Math.PI * 2);
+        context.fillStyle = gr; context.fill();
+        context.beginPath(); context.arc(px, py, p.size * 0.6, 0, Math.PI * 2);
+        context.fillStyle = `rgba(${Math.min(255, r + 60)},${Math.min(255, g + 50)},${Math.min(255, b + 30)},${br})`;
+        context.fill();
+      }
+
+      if (phase === 1 || phase === 2) {
+        const fi = phase === 1 ? Math.min(1, timer / 80) : 1;
+        const fo = phase === 2 ? Math.max(0, 1 - timer / 90) : 1;
+        const a = fi * fo;
+        if (a > 0.01) {
+          let fs = Math.min(W / 5.5, H / 1.4);
+          context.font = `normal ${fs}px ${FONT_FAMILY}`;
+          const pad = W * 0.16, mxW = W - pad * 2;
+          const mw = context.measureText(LOGO_TEXT).width;
+          if (mw > mxW) fs *= mxW / mw;
+          context.save(); context.font = `normal ${fs}px ${FONT_FAMILY}`;
+          context.textAlign = "center"; context.textBaseline = "middle";
+          const gd = context.createLinearGradient(0, H / 2 - fs * 0.5, 0, H / 2 + fs * 0.5);
+          gd.addColorStop(0, `rgba(230,200,140,${a})`);
+          gd.addColorStop(0.5, `rgba(201,169,110,${a})`);
+          gd.addColorStop(1, `rgba(180,140,80,${a})`);
+          context.shadowColor = `rgba(201,169,110,${0.55 * a})`; context.shadowBlur = 18;
+          context.fillStyle = gd; context.fillText(LOGO_TEXT, W / 2, H / 2); context.restore();
+        }
+      }
+
+      raf.id = requestAnimationFrame(draw);
+    }
+
+    const handleResize = () => { resize(); };
+
+    // FontFace loader: wait for ChinaCyr font (loaded via CSS @font-face) before drawing
+    document.fonts.ready.then(() => {
+      if (!mounted) return;
+      // Initialize: logo.resize(); logo.draw();
+      resize();
+      raf.id = requestAnimationFrame(draw);
+      window.addEventListener("resize", handleResize);
+    });
+
+    return () => {
+      mounted = false;
+      if (raf.id) { cancelAnimationFrame(raf.id); raf.id = null; }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: 320,
+        height: 72,
+        flexShrink: 0,
+        overflow: "hidden",
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        id="logoCanvas"
+        style={{ position: "absolute", top: 0, left: 0 }}
+      />
     </div>
   );
 }

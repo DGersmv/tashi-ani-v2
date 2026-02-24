@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import { useGlobalLogin } from "@/components/ui/GlobalLoginContext";
-import NavParticleItem from "@/components/NavParticleItem";
+import NavParticleItem, { LogoParticleCanvas } from "@/components/NavParticleItem";
 
 const PHONE = "+7 921 952-61-17";
 const TEL_HREF = "tel:+79219526117";
@@ -65,30 +65,7 @@ export default function SiteNav() {
             priority
           />
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-cormorant), serif",
-              fontSize: "1.875rem",
-              fontWeight: 600,
-              color: "var(--cream)",
-              letterSpacing: "0.02em",
-            }}
-          >
-            ТАШИ-АНИ
-          </span>
-          <span
-            style={{
-              fontSize: "0.78rem",
-              color: "var(--gold)",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              fontFamily: "var(--font-jost), sans-serif",
-            }}
-          >
-            Ландшафтная студия
-          </span>
-        </div>
+        <LogoParticleCanvas />
       </div>
 
       {/* Ссылки — переход по слайдам */}
