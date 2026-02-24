@@ -389,7 +389,7 @@ export function LogoParticleCanvas() {
         }
       }
 
-      context.fillStyle = "#060b06"; context.fillRect(0, 0, W, H);
+      context.clearRect(0, 0, W, H);
 
       for (const p of parts) {
         if (p.ambient) {
@@ -443,10 +443,10 @@ export function LogoParticleCanvas() {
           context.save(); context.font = `normal ${fs}px ${FONT_FAMILY}`;
           context.textAlign = "center"; context.textBaseline = "middle";
           const gd = context.createLinearGradient(0, H / 2 - fs * 0.5, 0, H / 2 + fs * 0.5);
-          gd.addColorStop(0, `rgba(230,200,140,${a})`);
-          gd.addColorStop(0.5, `rgba(201,169,110,${a})`);
-          gd.addColorStop(1, `rgba(180,140,80,${a})`);
-          context.shadowColor = `rgba(201,169,110,${0.55 * a})`; context.shadowBlur = 18;
+          gd.addColorStop(0, `rgba(255,255,255,${a})`);
+          gd.addColorStop(0.5, `rgba(255,255,255,${a})`);
+          gd.addColorStop(1, `rgba(255,255,255,${a})`);
+          context.shadowColor = `rgba(255,255,255,${0.55 * a})`; context.shadowBlur = 18;
           context.fillStyle = gd; context.fillText(LOGO_TEXT, W / 2, H / 2); context.restore();
         }
       }
