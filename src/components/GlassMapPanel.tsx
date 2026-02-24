@@ -97,6 +97,11 @@ export default function GlassMapPanel({ enteredHome = false, forceHidden = false
           margin: 0 auto;
           min-width: 0;
         }
+        @media (max-width: 767px) {
+          .mapWrapper {
+            aspect-ratio: 1 / 1;
+          }
+        }
         @media (min-width: 1024px) {
           .mapWrapper {
             width: 100%;
