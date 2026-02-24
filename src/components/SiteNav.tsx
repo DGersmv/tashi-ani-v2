@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import { useGlobalLogin } from "@/components/ui/GlobalLoginContext";
+import NavParticleItem from "@/components/NavParticleItem";
 
 const PHONE = "+7 921 952-61-17";
 const TEL_HREF = "tel:+79219526117";
@@ -14,8 +14,7 @@ export default function SiteNav() {
   const { currentIndex, goTo } = useFullPageScroll();
   const settings = useSiteSettings();
   const logoSrc = settings.siteLogoPath || "/logo_new.png";
-  const router = useRouter();
-  const { isLoginOpen, openLogin, closeLogin } = useGlobalLogin();
+  const { openLogin } = useGlobalLogin();
 
   const isFirstSlide = currentIndex === 0;
 
@@ -102,34 +101,10 @@ export default function SiteNav() {
           justifyContent: "center",
         }}
       >
-        <button
-          type="button"
-          onClick={() => goTo(3)}
-          style={linkStyle(isFirstSlide)}
-        >
-          Услуги
-        </button>
-        <button
-          type="button"
-          onClick={() => goTo(4)}
-          style={linkStyle(isFirstSlide)}
-        >
-          Портфолио
-        </button>
-        <button
-          type="button"
-          onClick={() => goTo(1)}
-          style={linkStyle(isFirstSlide)}
-        >
-          О нас
-        </button>
-        <button
-          type="button"
-          onClick={openLogin}
-          style={linkStyle(isFirstSlide)}
-        >
-          Кабинет
-        </button>
+        <NavParticleItem text="Услуги" onClick={() => goTo(3)} startDelay={0} />
+        <NavParticleItem text="Портфолио" onClick={() => goTo(4)} startDelay={350} />
+        <NavParticleItem text="О нас" onClick={() => goTo(1)} startDelay={700} />
+        <NavParticleItem text="Кабинет" onClick={openLogin} startDelay={1050} />
       </div>
 
       {/* Телефон */}
@@ -150,19 +125,4 @@ export default function SiteNav() {
 
     </nav>
   );
-}
-
-function linkStyle(isFirstSlide: boolean): React.CSSProperties {
-  return {
-    color: isFirstSlide ? "var(--cream)" : "var(--warm-white)",
-    background: "none",
-    border: "none",
-    padding: "12px 6px",
-    cursor: "none",
-    fontFamily: "var(--font-jost), sans-serif",
-    fontSize: "1.35rem",
-    fontWeight: 500,
-    textDecoration: "none",
-    transition: "opacity 0.2s",
-  };
 }
