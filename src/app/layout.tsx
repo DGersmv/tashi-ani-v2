@@ -6,9 +6,11 @@ import { LoginFlowProvider } from "@/components/ui/LoginFlowContext";
 import { SiteSettingsProvider } from "@/components/ui/SiteSettingsContext";
 import { OpenSiteSettingsProvider } from "@/components/ui/OpenSiteSettingsContext";
 import { AuthProvider } from "@/components/ui/AuthContext";
+import { GlobalLoginProvider } from "@/components/ui/GlobalLoginContext";
 import ModeSync from "@/components/ui/ModeSync";           // ← синхронизация режима по URL
 import HtmlModeClass from "@/components/ui/HtmlModeClass"; // ← класс на <html> для глобальных стилей
 import CustomCursor from "@/components/CustomCursor";
+import GlobalLoginPanel from "@/components/GlobalLoginPanel";
 import { getSiteSettings, buildFontStack } from "@/lib/siteSettings";
 
 const montserrat = Montserrat_Alternates({
@@ -70,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       >
         <ViewModeProvider>
           <LoginFlowProvider>
+            <GlobalLoginProvider>
             <OpenSiteSettingsProvider>
             <SiteSettingsProvider initialSettings={initialSettings}>
             <AuthProvider>
@@ -82,6 +85,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
             <CustomCursor />
 
+            {/* Глобальная панель входа */}
+            <GlobalLoginPanel />
+
             {/* контент страниц */}
             <div className="main-content">
               {children}
@@ -89,6 +95,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </AuthProvider>
             </SiteSettingsProvider>
             </OpenSiteSettingsProvider>
+            </GlobalLoginProvider>
           </LoginFlowProvider>
         </ViewModeProvider>
       </body>

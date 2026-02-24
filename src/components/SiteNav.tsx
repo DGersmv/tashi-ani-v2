@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useFullPageScroll } from "@/components/FullPageScroll";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
-import LoginPanel from "@/components/LoginPanel";
+import { useGlobalLogin } from "@/components/ui/GlobalLoginContext";
 
 const PHONE = "+7 921 952-61-17";
 const TEL_HREF = "tel:+79219526117";
@@ -15,9 +15,9 @@ export default function SiteNav() {
   const settings = useSiteSettings();
   const logoSrc = settings.siteLogoPath || "/logo_new.png";
   const router = useRouter();
+  const { isLoginOpen, openLogin, closeLogin } = useGlobalLogin();
 
   const isFirstSlide = currentIndex === 0;
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <nav
@@ -125,7 +125,7 @@ export default function SiteNav() {
         </button>
         <button
           type="button"
-          onClick={() => setIsLoginOpen(true)}
+          onClick={openLogin}
           style={linkStyle(isFirstSlide)}
         >
           Кабинет
@@ -148,19 +148,6 @@ export default function SiteNav() {
         {PHONE}
       </a>
 
-      {/* Login Panel */}
-      <LoginPanel 
-        isOpen={isLoginOpen} 
-        onClose={() => setIsLoginOpen(false)}
-        onLoginSuccess={(email) => {
-          localStorage.setItem("userEmail", email);
-          setIsLoginOpen(false);
-          // Перенаправляем в кабинет
-          setTimeout(() => {
-            router.push("/dashboard");
-          }, 300);
-        }}
-      />
     </nav>
   );
 }

@@ -5,7 +5,7 @@ import { useLoginFlow } from "@/components/ui/LoginFlowContext";
 import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import { useOpenSiteSettings } from "@/components/ui/OpenSiteSettingsContext";
 import { useAuth } from "@/components/ui/AuthContext";
-import LoginPanel from "@/components/LoginPanel";
+import { useGlobalLogin } from "@/components/ui/GlobalLoginContext";
 import ContactsPanel from "@/components/ContactsPanel";
 
 interface HeaderMenuProps {
@@ -20,7 +20,7 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
   const [isTabletLocal, setIsTabletLocal] = useState(typeof window !== "undefined" ? window.innerWidth > 650 && window.innerWidth <= 1200 : false);
   const isMobile = propIsMobile ?? isMobileLocal;
   const isTablet = propIsTablet ?? isTabletLocal;
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const { isLoginOpen, openLogin, closeLogin } = useGlobalLogin();
   const [isContactsOpen, setIsContactsOpen] = useState(false);
   const { isLoggedIn, isAdmin, userEmail, refreshAuth } = useAuth();
   const { setMode, mode } = useViewMode();
@@ -207,11 +207,7 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
                   className="menu-link"
                   onClick={() => {
                     setLoginRequested(true);
-                    if (loginOpenTimerRef.current) clearTimeout(loginOpenTimerRef.current);
-                    loginOpenTimerRef.current = setTimeout(() => {
-                      loginOpenTimerRef.current = null;
-                      setIsLoginOpen(true);
-                    }, 520);
+                    openLogin();
                   }}
                   style={linkFont}
                 >
@@ -259,16 +255,6 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
               )}
         </div>
       </nav>
-
-      {/* Панель входа */}
-      <LoginPanel 
-        isOpen={isLoginOpen} 
-        onClose={() => {
-          setIsLoginOpen(false);
-          setLoginRequested(false);
-        }}
-        onLoginSuccess={handleLoginSuccess}
-      />
 
       {/* Панель контактов (телефон → Telegram, email) — то же поведение, что и панель входа */}
       <ContactsPanel
