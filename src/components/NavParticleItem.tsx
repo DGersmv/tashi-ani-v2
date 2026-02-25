@@ -28,6 +28,7 @@ export default function NavParticleItem({
 }: NavParticleItemProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -52,7 +53,7 @@ export default function NavParticleItem({
     }
 
     let parts: Particle[] = [];
-    let phase = 0; // 0=gather, 1=hold(idle), 2=disperse(hover out), 3=reform(hover in)
+    let phase = 0; // 0=gather, 1=hold(idle), 2=disperse(on click), 3=reform
     let timer = 0;
     // Use a mutable object so cleanup always cancels the latest frame
     const raf = { id: null as number | null };
@@ -216,7 +217,7 @@ export default function NavParticleItem({
       raf.id = requestAnimationFrame(tick);
     }
 
-    function hover() {
+    function triggerDisperse() {
       if (phase === 2 || phase === 3) return;
       if (phase === 1) {
         for (const p of parts) {
@@ -230,7 +231,7 @@ export default function NavParticleItem({
       }
     }
 
-    const handleMouseEnter = () => hover();
+    const handleClick = () => triggerDisperse();
     const container = containerRef.current;
     let startTimerId: ReturnType<typeof setTimeout> | null = null;
 
@@ -246,13 +247,13 @@ export default function NavParticleItem({
       }, startDelay);
     });
 
-    if (container) container.addEventListener("mouseenter", handleMouseEnter);
+    if (container) container.addEventListener("click", handleClick);
 
     return () => {
       mounted = false;
       if (raf.id) { cancelAnimationFrame(raf.id); raf.id = null; }
       if (startTimerId !== null) { clearTimeout(startTimerId); startTimerId = null; }
-      if (container) container.removeEventListener("mouseenter", handleMouseEnter);
+      if (container) container.removeEventListener("click", handleClick);
     };
   }, [text, startDelay]);
 
@@ -263,8 +264,12 @@ export default function NavParticleItem({
         position: "relative",
         cursor: "none",
         display: "inline-block",
+        transform: isHovered ? "translateY(-2px)" : "translateY(0)",
+        transition: "transform 0.18s ease",
         ...style,
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
       role="button"
       tabIndex={0}

@@ -165,8 +165,8 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
           variants={item}
           style={{
             flex: 1,
-            height: "50vh",
-            minHeight: 280,
+            width: "100%",
+            aspectRatio: "1 / 1",
             background: "rgba(28,27,22,0.6)",
             border: "1px solid rgba(201,169,110,.2)",
             borderRadius: 8,
