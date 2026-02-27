@@ -8,6 +8,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from "framer-motion";
+import { useRouter } from "next/navigation"; // for reliable navigation back to portfolio
 
 // ─── Дефолтные фото ────────────────────────────────────────────────────────────
 const DEFAULT_IMAGES = [
@@ -22,13 +23,13 @@ const DEFAULT_IMAGES = [
 
 // ─── Константы — настройте под себя ───────────────────────────────────────────
 const TOTAL_CARDS = 20;    // количество карточек
-const CARD_W = 280;        // ширина карточки в px
-const CARD_H = 400;        // высота карточки в px
+const CARD_W = 500;        // ширина карточки в px
+const CARD_H = 700;        // высота карточки в px
 const STEP_X = 180;        // шаг между карточками по X
 const STEP_Y = -120;       // шаг между карточками по Y
 const STEP_Z = -220;       // шаг между карточками по Z (глубина)
-const LINE_X = -200;       // смещение линии: < 0 влево, > 0 вправо
-const LINE_Y = 80;         // смещение линии: < 0 вверх, > 0 вниз
+const LINE_X = -100;       // смещение линии: < 0 влево, > 0 вправо
+const LINE_Y = 0;         // смещение линии: < 0 вверх, > 0 вниз
 const MODAL_PAD_X = 80;   // отступ слева/справа когда карточка открыта
 const MODAL_PAD_Y = 60;   // отступ сверху/снизу когда карточка открыта
 
@@ -74,7 +75,7 @@ function Card({ src, label, cardIndex, title, velX, isOpen, anyOpen, onOpen, onC
         } : anyOpen ? {
           rotateY: 45, rotateX: -15,
           scale: 0.95, z: 0, x: 0, y: 0,
-          opacity: 0.08,
+          opacity: 0.03, // fade other cards even more when one is open
         } : {
           rotateY: 45, rotateX: -15,
           scale: 1, z: 0, x: 0, y: 0,
@@ -94,7 +95,7 @@ function Card({ src, label, cardIndex, title, velX, isOpen, anyOpen, onOpen, onC
             onMouseLeave={() => setHovered(false)}
             onClick={(e) => {
               if (isOpen) { e.stopPropagation(); setHovered(false); onClose(); }
-              else if (!anyOpen) { onOpen(cardIndex); }
+              else if (!anyOpen) { e.stopPropagation(); onOpen(cardIndex); }
             }}
             style={{
               width: "100%", height: "100%",
@@ -175,7 +176,17 @@ function Card({ src, label, cardIndex, title, velX, isOpen, anyOpen, onOpen, onC
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────────
-export default function DiagonalCarousel({ images = DEFAULT_IMAGES }) {
+export default function DiagonalCarousel({ images = DEFAULT_IMAGES, onExit }) {
+  const router = useRouter();
+
+  // if no handler supplied, fall back to router push to portfolio (more
+  // robust than history.back in many reception scenarios).
+  const exitHandler = onExit || (() => {
+    if (typeof window !== "undefined") {
+      // route to portfolio page explicitly
+      router.push("/portfolio");
+    }
+  });
   const N = images.length;
   const [openId, setOpenId] = useState(null);
   const frozen = openId !== null;
@@ -238,9 +249,16 @@ export default function DiagonalCarousel({ images = DEFAULT_IMAGES }) {
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: transparent; overflow: hidden; height: 100vh; }
         .grain {
-          position: fixed; inset: 0; pointer-events: none; z-index: 500; opacity: 0.04;
+          position: fixed; inset: 0; pointer-events: none; z-index: 500; opacity: 0.02;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
           background-size: 160px;
+        }
+        .bg-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.1); /* mostly transparent so underlying page shows through */
+          pointer-events: none;
+          z-index: 400;
         }
         .root { width: 100vw; height: 100vh; position: relative; }
         .bottom-bar {
@@ -269,14 +287,58 @@ export default function DiagonalCarousel({ images = DEFAULT_IMAGES }) {
 
       <div className="root">
         <div className="grain" />
+        {/* darken anything behind carousel so page colour (green etc) isn't
+            distracting. pointer-events none allows wheel/clicks to pass
+            through to the carousel itself. */}
+        <div className="bg-overlay" />
+        {/*
+          When the carousel is rendered standalone (e.g. inside a modal) it can
+          be hard to figure out how to get back.  An explicit close icon
+          improves the UX when the parent passes an onExit callback.  The
+          parent (CarouselModal) will forward its onClose handler.
+        */}
+        {/* Очень заметная кнопка "Обратно на Портфолио" в левом верхнем углу */}
+        <button
+          onClick={exitHandler}
+          aria-label="Back to Portfolio / Вернуться на Портфолио"
+          title="Вернуться на Портфолио"
+          style={{
+            position: "fixed",
+            top: 20,
+            left: 20,
+            zIndex: 1100,
+            background: "rgba(0,0,0,0.6)",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: 4,
+            color: "#fff",
+            fontSize: 14,
+            fontWeight: 600,
+            cursor: "pointer",
+            padding: "10px 16px",
+            transition: "background 0.2s, color 0.2s",
+            fontFamily: "'DM Mono', monospace",
+            letterSpacing: "0.1em",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "rgba(0,0,0,0.8)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(0,0,0,0.6)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+          }}
+        >
+          ← ОБРАТНО
+        </button>
 
+        {/* Overlay for clicking outside an opened card to close card and return to carousel */}
         {frozen && (
           <div onClick={() => setOpenId(null)} style={{
             position: "fixed", inset: 0, zIndex: 100, cursor: "zoom-out",
           }} />
         )}
 
-        <div className="stage" ref={containerRef}>
+        <div className="stage" ref={containerRef} onClick={!frozen ? exitHandler : undefined} style={{ cursor: !frozen ? "pointer" : "default" }}>
           <motion.div
             className="world"
             style={{
@@ -305,7 +367,9 @@ export default function DiagonalCarousel({ images = DEFAULT_IMAGES }) {
         <div className={`bottom-bar${frozen ? " frozen" : ""}`}>
           <div className="hint">
             <div className="hint-line" />
-            {frozen ? "ESC or click to close" : "Click · Scroll"}
+            {frozen
+              ? "ESC or click to close"
+              : "Click · Scroll · ✕ to exit"}
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12, pointerEvents: frozen ? "none" : "auto" }}>
             <div style={{ display: "flex", gap: 6 }}>

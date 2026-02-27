@@ -182,16 +182,14 @@ export default function PortfolioSlide({ index }: PortfolioSlideProps) {
                 transition: { duration: 0.4, ease: [0.77, 0, 0.18, 1] }
               }}
               onClick={() => {
-                // Открываем карусель при клике на первый проект
-                if (idx === 0) {
-                  setSelectedCarousel('1');
-                }
+                // открываем карусель для каждого проекта из соответствующей папки
+                setSelectedCarousel(String(idx + 1));
               }}
               style={{
                 flex: 1,
                 position: 'relative',
                 overflow: 'hidden',
-                cursor: idx === 0 ? 'pointer' : 'default',
+                cursor: 'pointer',
                 transition: 'flex 0.4s cubic-bezier(0.77, 0, 0.18, 1)'
               }}
             >
@@ -299,7 +297,7 @@ export default function PortfolioSlide({ index }: PortfolioSlideProps) {
         isOpen={selectedCarousel !== null}
         onClose={() => setSelectedCarousel(null)}
         folder={selectedCarousel || '1'}
-        title="Административный комплекс"
+        title={selectedCarousel ? projects[parseInt(selectedCarousel) - 1]?.title || 'Проект' : 'Проект'}
       />
     </section>
   );
