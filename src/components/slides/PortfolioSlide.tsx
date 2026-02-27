@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useFullPageScroll } from '@/components/FullPageScroll';
 import Image from 'next/image';
+import CarouselModal from '@/components/CarouselModal';
 
 interface PortfolioSlideProps {
   index: number;
@@ -65,6 +67,7 @@ const itemVariants = {
 export default function PortfolioSlide({ index }: PortfolioSlideProps) {
   const { currentIndex } = useFullPageScroll();
   const isActive = currentIndex === index;
+  const [selectedCarousel, setSelectedCarousel] = useState<string | null>(null);
 
   return (
     <section
@@ -178,11 +181,17 @@ export default function PortfolioSlide({ index }: PortfolioSlideProps) {
                 flex: 1.08,
                 transition: { duration: 0.4, ease: [0.77, 0, 0.18, 1] }
               }}
+              onClick={() => {
+                // Открываем карусель при клике на первый проект
+                if (idx === 0) {
+                  setSelectedCarousel('1');
+                }
+              }}
               style={{
                 flex: 1,
                 position: 'relative',
                 overflow: 'hidden',
-                cursor: 'pointer',
+                cursor: idx === 0 ? 'pointer' : 'default',
                 transition: 'flex 0.4s cubic-bezier(0.77, 0, 0.18, 1)'
               }}
             >
@@ -284,6 +293,14 @@ export default function PortfolioSlide({ index }: PortfolioSlideProps) {
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Модальное окно с каруселью */}
+      <CarouselModal
+        isOpen={selectedCarousel !== null}
+        onClose={() => setSelectedCarousel(null)}
+        folder={selectedCarousel || '1'}
+        title="Административный комплекс"
+      />
     </section>
   );
 }
