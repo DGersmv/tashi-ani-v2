@@ -38,9 +38,9 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
           position: "absolute",
           inset: 0,
           background: `
-            radial-gradient(ellipse at 65% 35%, rgba(58,82,54,.65) 0%, transparent 55%),
-            radial-gradient(ellipse at 18% 75%, rgba(122,158,114,.2) 0%, transparent 50%),
-            linear-gradient(165deg, #0B0E08 0%, #141a0f 35%, #1e2a16 65%, #1C1B16 100%)
+            radial-gradient(ellipse at 65% 35%, rgba(58,82,54,.55) 0%, transparent 55%),
+            radial-gradient(ellipse at 18% 75%, rgba(122,158,114,.15) 0%, transparent 50%),
+            linear-gradient(165deg, rgba(11,14,8,.88) 0%, rgba(20,26,15,.88) 35%, rgba(30,42,22,.88) 65%, rgba(28,27,22,.88) 100%)
           `,
           animation: "heroBreathe 9s ease-in-out infinite alternate",
         }}

@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import SlideNav from "@/components/SlideNav";
 import SiteNav from "@/components/SiteNav";
 import ScrollHint from "@/components/ScrollHint";
+import SvgBackgroundAnimation from "@/components/SvgBackgroundAnimation";
 
 const easing = [0.77, 0, 0.18, 1] as const;
 const duration = 0.9;
@@ -55,12 +56,12 @@ export default function FullPageScroll({
     [totalSlides]
   );
 
-  // Колесо мыши, debounce 800ms
+  // Колесо мыши, debounce 280ms
   const handleWheel = useCallback(
     (e: React.WheelEvent) => {
       e.preventDefault();
       const now = Date.now();
-      if (now - lastWheelRef.current < 800) return;
+      if (now - lastWheelRef.current < 280) return;
       lastWheelRef.current = now;
       if (e.deltaY > 0) goTo(currentIndex + 1);
       else if (e.deltaY < 0) goTo(currentIndex - 1);
@@ -130,6 +131,7 @@ export default function FullPageScroll({
           outline: "none",
         }}
       >
+        <SvgBackgroundAnimation />
         <AnimatePresence initial={false} mode="wait">
           {slides.map(
             (slide, i) =>
@@ -148,6 +150,7 @@ export default function FullPageScroll({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    zIndex: 1,
                   }}
                 >
                   {slide}
