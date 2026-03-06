@@ -7,8 +7,6 @@ import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import { useGlobalLogin } from "@/components/ui/GlobalLoginContext";
 import NavParticleItem, { LogoParticleCanvas } from "@/components/NavParticleItem";
 
-const PHONE = "+7 921 952-61-17";
-const TEL_HREF = "tel:+79219526117";
 const MOBILE_BP = 768;
 
 export default function SiteNav() {
@@ -90,38 +88,22 @@ export default function SiteNav() {
           {!isMobile && <LogoParticleCanvas />}
         </div>
 
-        {/* Десктоп: ссылки и телефон */}
+        {/* Десктоп: ссылки меню */}
         {!isMobile && (
-          <>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 42,
-                flexWrap: "wrap",
-                justifyContent: "center",
-              }}
-            >
-              <NavParticleItem text="Услуги" onClick={() => goTo(3)} startDelay={0} />
-              <NavParticleItem text="Портфолио" onClick={() => goTo(4)} startDelay={350} />
-              <NavParticleItem text="О нас" onClick={() => goTo(1)} startDelay={700} />
-              <NavParticleItem text="Кабинет" onClick={openLogin} startDelay={1050} />
-            </div>
-            <a
-              href={TEL_HREF}
-              style={{
-                color: "var(--gold)",
-                textDecoration: "none",
-                fontFamily: "var(--font-jost), sans-serif",
-                fontSize: "1.43rem",
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-                flexShrink: 0,
-              }}
-            >
-              {PHONE}
-            </a>
-          </>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 42,
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            <NavParticleItem text="Услуги" onClick={() => goTo(3)} startDelay={0} />
+            <NavParticleItem text="Портфолио" onClick={() => goTo(4)} startDelay={350} />
+            <NavParticleItem text="О нас" onClick={() => goTo(1)} startDelay={700} />
+            <NavParticleItem text="Кабинет" onClick={openLogin} startDelay={1050} />
+          </div>
         )}
 
         {/* Мобайл: гамбургер */}
@@ -209,22 +191,6 @@ export default function SiteNav() {
               {label}
             </button>
           ))}
-          <a
-            href={TEL_HREF}
-            onClick={() => setMenuOpen(false)}
-            style={{
-              display: "block",
-              padding: "14px 24px",
-              textDecoration: "none",
-              fontFamily: "var(--font-jost), sans-serif",
-              fontSize: "1rem",
-              fontWeight: 500,
-              color: "rgba(201,169,110,0.6)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            {PHONE}
-          </a>
         </div>
       )}
     </>

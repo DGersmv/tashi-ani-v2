@@ -3,7 +3,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useFullPageScroll } from "@/components/FullPageScroll";
+import { useSiteSettings } from "@/components/ui/SiteSettingsContext";
 import OpenGlobusViewer from "@/components/OpenGlobusViewer";
+
+const TEL_HREF = "tel:+79219526117";
 
 const container = {
   hidden: { opacity: 0 },
@@ -20,6 +23,8 @@ const item = {
 
 export default function HeroSlide({ index = 0 }: { index?: number }) {
   const { goTo, currentIndex } = useFullPageScroll();
+  const settings = useSiteSettings();
+  const phone = settings.contactPhone ?? "+7 921 952-61-17";
   const isActive = currentIndex === index;
 
   return (
@@ -157,6 +162,20 @@ export default function HeroSlide({ index = 0 }: { index?: number }) {
             >
               Смотреть портфолио →
             </button>
+            <a
+              href={TEL_HREF}
+              style={{
+                display: "block",
+                width: "100%",
+                marginTop: 20,
+                fontSize: "1.9rem",
+                color: "var(--gold)",
+                fontFamily: "var(--font-jost), sans-serif",
+                textDecoration: "none",
+              }}
+            >
+              {phone}
+            </a>
           </motion.div>
         </div>
 

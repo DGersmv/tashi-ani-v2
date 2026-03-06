@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useFullPageScroll } from '@/components/FullPageScroll';
-import Image from 'next/image';
 
 interface TeamPhotoSlideProps {
   index: number;
@@ -42,31 +41,10 @@ export default function TeamPhotoSlide({ index }: TeamPhotoSlideProps) {
         position: 'relative',
         width: '100%',
         height: '100%',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        background: 'rgba(19,21,15,0.92)'
       }}
     >
-      {/* Фоновое изображение */}
-      <Image
-        src="/images/land-02.jpg"
-        alt="Команда ТАШИ-АНИ"
-        fill
-        style={{
-          objectFit: 'cover',
-          objectPosition: 'center 35%'
-        }}
-        priority
-      />
-
-      {/* Градиентный оверлей */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to right, rgba(28,27,22,0.85) 0%, rgba(28,27,22,0.4) 60%, transparent 100%)',
-          zIndex: 1
-        }}
-      />
-
       {/* Контент */}
       <motion.div
         initial="hidden"

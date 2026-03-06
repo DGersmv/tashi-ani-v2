@@ -79,7 +79,7 @@ export default function PortfolioSlide({ index }: PortfolioSlideProps) {
         flexDirection: 'column',
         justifyContent: 'center',
         padding: '0 5%',
-        background: 'var(--ink)',
+        background: 'rgba(19,21,15,0.92)',
         color: 'var(--warm-white)',
         overflow: 'hidden'
       }}

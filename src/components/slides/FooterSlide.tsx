@@ -62,7 +62,7 @@ export default function FooterSlide({ index }: FooterSlideProps) {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '5vh 5%',
-        background: '#0A0D07',
+        background: 'rgba(19,21,15,0.92)',
         color: 'var(--warm-white)'
       }}
     >

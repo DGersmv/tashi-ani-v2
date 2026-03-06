@@ -151,22 +151,6 @@ export default function HeaderMenu({ isMobile: propIsMobile, isTablet: propIsTab
         >
           <button
             type="button"
-            className="menu-link"
-            style={linkFont}
-            onClick={() => {
-              setLoginRequested(true);
-              if (contactsOpenTimerRef.current) clearTimeout(contactsOpenTimerRef.current);
-              contactsOpenTimerRef.current = setTimeout(() => {
-                contactsOpenTimerRef.current = null;
-                setIsContactsOpen(true);
-              }, 520);
-            }}
-          >
-            {settings.contactPhone ?? "+7 921 952-61-17"}
-          </button>
-
-          <button
-            type="button"
             className={`menu-link ${mode === "home" ? 'active' : ''}`}
             onClick={() => setMode("home")}
             style={linkFont}

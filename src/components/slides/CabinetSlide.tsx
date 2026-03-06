@@ -67,7 +67,7 @@ export default function CabinetSlide({ index }: CabinetSlideProps) {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '5vh 5%',
-        background: 'var(--moss)',
+        background: 'rgba(19,21,15,0.92)',
         color: 'var(--warm-white)',
         overflow: 'hidden'
       }}

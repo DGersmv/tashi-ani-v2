@@ -45,7 +45,7 @@ export default function CtaSlide({ index }: CtaSlideProps) {
         justifyContent: 'center',
         alignItems: 'center',
         padding: '5vh 5%',
-        background: 'var(--ink)',
+        background: 'rgba(19,21,15,0.92)',
         color: 'var(--warm-white)',
         textAlign: 'center'
       }}

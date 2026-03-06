@@ -44,7 +44,7 @@ export default function PrinciplesSlide({ index = 2 }: { index?: number }) {
         position: "relative",
         width: "100%",
         height: "100%",
-        background: "#161510",
+        background: "rgba(19,21,15,0.92)",
         padding: "clamp(40px, 6vw, 80px) clamp(24px, 5vw, 52px)",
         display: "flex",
         flexDirection: "column",
